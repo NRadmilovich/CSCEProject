@@ -70,6 +70,7 @@ public class DataConverter {
 		JsonWrite.printJSON("data/Products.json", repairs);
 		JsonWrite.printJSON("data/Products.json", concessions);
 		JsonWrite.printJSON("data/Products.json", tows);
+		JsonWrite.printJSON("data/Products.json", products);
 	}
 
 }
