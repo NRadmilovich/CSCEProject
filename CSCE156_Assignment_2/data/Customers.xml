@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<Customer>
+<com.bc.Customer>
+  <customerCode>lsvntk</customerCode>
+  <customerType>B</customerType>
+  <name>State of Nebraska</name>
+  <primaryContact>
+    <personCode>123a</personCode>
+    <firstName> Petra</firstName>
+    <lastName>Battle</lastName>
+    <Address>
+      <Street>1 Blue Jays Way</Street>
+      <City> Toronto</City>
+      <State> ON</State>
+      <Zip> M5V 1J1</Zip>
+      <Country> Canada</Country>
+    </Address>
+    <Email>
+      <string>danextpm@canada.gov</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>100 W Fake Street</Street>
+    <City>Albaquerque</City>
+    <State>NM</State>
+    <Zip>80706</Zip>
+    <Country>USA</Country>
+  </address>
+</com.bc.Customer>
+<com.bc.Customer>
+  <customerCode>dvkh</customerCode>
+  <customerType>P</customerType>
+  <name>Wacky Wally&apos;s Used Cars</name>
+  <primaryContact>
+    <personCode>zyx321</personCode>
+    <firstName> Ayaana</firstName>
+    <lastName>Dolan</lastName>
+    <Address>
+      <Street>23450 Cabo San Lucas</Street>
+      <City> Los Cabos</City>
+      <State> BCS</State>
+      <Zip></Zip>
+      <Country> Mexico</Country>
+    </Address>
+  </primaryContact>
+  <address>
+    <Street>123 Madison Avenue</Street>
+    <City> Bodega</City>
+    <State> NL</State>
+    <Zip></Zip>
+    <Country>CUBA</Country>
+  </address>
+</com.bc.Customer>
+<com.bc.Customer>
+  <customerCode>l0000000000ngc0d3</customerCode>
+  <customerType>B</customerType>
+  <name>Demolition Derby</name>
+  <primaryContact>
+    <personCode>lejnr4</personCode>
+    <firstName> Kenan</firstName>
+    <lastName>Spooner</lastName>
+    <Address>
+      <Street>123 N 1st Street</Street>
+      <City>Compton</City>
+      <State>CA</State>
+      <Zip>90210</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>kspoons@emailservice.domain</string>
+      <string>thespoonman@soundgarden.com</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>126-01 Roosevelt Ave</Street>
+    <City> Flushing</City>
+    <State> NY</State>
+    <Zip>11368</Zip>
+    <Country>USA</Country>
+  </address>
+</com.bc.Customer>
+<com.bc.Customer>
+  <customerCode>asdf419</customerCode>
+  <customerType>P</customerType>
+  <name>Fenton Industries</name>
+  <primaryContact>
+    <personCode>biz45</personCode>
+    <firstName> Fenton</firstName>
+    <lastName>Hart</lastName>
+    <Address>
+      <Street>1 Wall Street</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10005-0012</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>fentony@windstream.net</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>1060 West Addison Street</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60613</Zip>
+    <Country>USA</Country>
+  </address>
+</com.bc.Customer>
+<com.bc.Customer>
+  <customerCode>421asdf</customerCode>
+  <customerType>B</customerType>
+  <name>Foundation for the Arts</name>
+  <primaryContact>
+    <personCode>biz45</personCode>
+    <firstName> Fenton</firstName>
+    <lastName>Hart</lastName>
+    <Address>
+      <Street>1 Wall Street</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10005-0012</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>fentony@windstream.net</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>1 MetLife Stadium Dr</Street>
+    <City> East Rutherford</City>
+    <State> NJ</State>
+    <Zip>07073</Zip>
+    <Country>USA</Country>
+  </address>
+</com.bc.Customer>
+<com.bc.Customer>
+  <customerCode>avnkbkjds</customerCode>
+  <customerType>P</customerType>
+  <name>Juno Stephenson</name>
+  <primaryContact>
+    <personCode>SKVUZH</personCode>
+    <firstName> Isadora</firstName>
+    <lastName>Hicks</lastName>
+    <Address>
+      <Street>142 Drive</Street>
+      <City> Shanghai</City>
+      <State></State>
+      <Zip>200012</Zip>
+      <Country>China</Country>
+    </Address>
+    <Email>
+      <string>ihicks@shu.edu.cn</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>123 N 1st Street</Street>
+    <City>Compton</City>
+    <State>CA</State>
+    <Zip>90210</Zip>
+    <Country>USA</Country>
+  </address>
+</com.bc.Customer>
+</Customer>

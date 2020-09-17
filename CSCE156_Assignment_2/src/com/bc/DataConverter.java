@@ -4,11 +4,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.google.gson.*;
+import java.util.HashMap;
 
 public class DataConverter {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//Data conversion for Person, Customer.
+		ArrayList<Person> people = Person.importPerson("Persons.dat");
+		HashMap<String,Person> personMap = Person.personMap(people);
+		ArrayList<Customer> customers = Customer.importCustomer("Customers.dat", personMap);
+		
 		
 		// Data Conversion for Products
 		ArrayList<Rental> rentals = null;
@@ -55,7 +62,9 @@ public class DataConverter {
 			System.err.print("File not Found");
 			e.printStackTrace();
 		}
-		
+		//Print xml to file
+		XMLPrint.printXML("data/Persons.xml", people, "Person");
+		XMLPrint.printXML("data/Customers.xml", customers, "Customer");
 		// Print json to file
 		JsonWrite.printJSON("data/Products.json", rentals);
 		JsonWrite.printJSON("data/Products.json", repairs);

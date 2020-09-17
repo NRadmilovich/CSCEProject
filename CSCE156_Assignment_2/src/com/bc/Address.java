@@ -1,7 +1,5 @@
 package com.bc;
 
-
-
 public class Address {
 	private String Street;
 	private String City;
