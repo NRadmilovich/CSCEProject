@@ -65,7 +65,9 @@ public class DataConverter {
 		XMLPrint.printXML("data/Customers.xml", customers, "Customer");
 		XMLPrint.printXML("data/Products.xml", products, "Products");
 		// Print json to file
-		JsonWrite.printJSON("data/Products.json", products);
+		JsonWrite.printJSON("data/Products.json", products, "Products");
+		JsonWrite.printJSON("data/Persons.json", people, "Person");
+		JsonWrite.printJSON("data/Customers.json", customers, "Customer");
 	}
 
 }
