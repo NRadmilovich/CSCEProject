@@ -3,9 +3,9 @@ package com.bc;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
-import com.google.gson.*;
+
 import java.util.HashMap;
 
 public class DataConverter {
@@ -19,17 +19,17 @@ public class DataConverter {
 
 		
 		// Data Conversion for Products
-		List<Products> products  = new ArrayList<Products>();
+		ArrayList<Products> products  = new ArrayList<Products>();
 		
 		Scanner s;
 		
 		try {
 			
 			s = new Scanner(new File("data/Products.dat"));
-			
+			int productNum = Integer.parseInt(s.nextLine());
 			while (s.hasNext()) {
 				
-				String[] tokens = s.nextLine().split(",");
+				String[] tokens = s.nextLine().split(";");
 				
 				if (tokens[1].compareTo("R") == 0) {
 					Rental r = null;
