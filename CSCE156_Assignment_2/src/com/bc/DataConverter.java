@@ -5,13 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import java.util.Scanner;
-
 import java.util.HashMap;
-
+/*
+ * Assignment 2
+ * Nick Radmilovich
+ * Caden Kirby
+ */
 public class DataConverter {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//Data conversion for Person, Customer.
 		ArrayList<Person> people = Person.importPerson("Persons.dat");
 		HashMap<String,Person> personMap = Person.personMap(people);
