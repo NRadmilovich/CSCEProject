@@ -11,12 +11,20 @@ public class XMLPrint {
 
 	public static <P> void printXML(String filepath, ArrayList<P> list, String className) {
 		XStream xstream = new XStream(new DomDriver());
-	
-		
+		String classN = "com.bc." + className;
+		Class<?> classPath = null;
+		try {
+			classPath = Class.forName(classN);
+		} catch (ClassNotFoundException e1) {
+
+			e1.printStackTrace();
+		}
+		String header = "<" + className + ">";
+		String closer = "</" + className + ">";
+		String classLower = className.toLowerCase();
+		xstream.alias(classLower, classPath);
 		try {
 			PrintWriter out= new PrintWriter(new File(filepath));
-			String header = "<" + className + ">";
-			String closer = "</" + className + ">";
 			out.print("<?xml version=\"1.0\"?>\n");
 			out.write(header);
 			out.write("\n");

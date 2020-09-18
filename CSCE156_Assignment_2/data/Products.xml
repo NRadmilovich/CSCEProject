@@ -1,57 +1,30 @@
 <?xml version="1.0"?>
 <Products>
 <com.bc.Rental>
-  <productCode>qwertyuiop</productCode>
+  <productCode>qeuriopt</productCode>
   <productType>R</productType>
-  <productLabel>2007 Ford Crown Victoria</productLabel>
-  <dailyCost>50.75</dailyCost>
-  <deposit>200.0</deposit>
-  <cleaningFee>25.39</cleaningFee>
+  <productLabel>1964 Chevy Impala</productLabel>
+  <dailyCost>89.29</dailyCost>
+  <deposit>400.0</deposit>
+  <cleaningFee>25.69</cleaningFee>
 </com.bc.Rental>
 <com.bc.Repair>
-  <productCode>b4z1ng4</productCode>
+  <productCode>nfein2929</productCode>
   <productType>F</productType>
-  <productLabel>Bumper Replacement</productLabel>
-  <partsCost>100.0</partsCost>
-  <hourlyLaborCost>75.0</hourlyLaborCost>
+  <productLabel>Light Replacement</productLabel>
+  <partsCost>233.0</partsCost>
+  <hourlyLaborCost>12.0</hourlyLaborCost>
 </com.bc.Repair>
 <com.bc.Concession>
-  <productCode>k04l4</productCode>
+  <productCode>aldkjflaksjdfh</productCode>
   <productType>C</productType>
-  <productLabel>12-oz Coffee</productLabel>
-  <unitCost>4.75</unitCost>
+  <productLabel>Hot Doggo</productLabel>
+  <unitCost>89898.23</unitCost>
 </com.bc.Concession>
 <com.bc.Towing>
-  <productCode>sievub</productCode>
+  <productCode>utieow39</productCode>
   <productType>T</productType>
-  <productLabel>Tow &lt; 10 Miles</productLabel>
-  <costPerMile>6.0</costPerMile>
-</com.bc.Towing>
-<com.bc.Rental>
-  <productCode>yuasi</productCode>
-  <productType>R</productType>
-  <productLabel>Tesla Cybertruck</productLabel>
-  <dailyCost>1000.0</dailyCost>
-  <deposit>5000.0</deposit>
-  <cleaningFee>50.0</cleaningFee>
-</com.bc.Rental>
-<com.bc.Repair>
-  <productCode>t0m03</productCode>
-  <productType>F</productType>
-  <productLabel>Full Wheel Replacement</productLabel>
-  <partsCost>800.0</partsCost>
-  <hourlyLaborCost>25.0</hourlyLaborCost>
-</com.bc.Repair>
-<com.bc.Concession>
-  <productCode>kvnjgbf5</productCode>
-  <productType>C</productType>
-  <productLabel>Large &quot;Homemade&quot; Raisin Cookie</productLabel>
-  <unitCost>10.0</unitCost>
-</com.bc.Concession>
-<com.bc.Towing>
-  <productCode>ugis43</productCode>
-  <productType>T</productType>
-  <productLabel>Tow &gt; 10 miles</productLabel>
-  <costPerMile>4.0</costPerMile>
+  <productLabel>Tow 20 Miles</productLabel>
+  <costPerMile>6.45</costPerMile>
 </com.bc.Towing>
 </Products>

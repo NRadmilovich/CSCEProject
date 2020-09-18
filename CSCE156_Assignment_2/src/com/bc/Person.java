@@ -104,7 +104,7 @@ public class Person  {
 	
 	//Methods
 	//Converts string to Person, while calling appropriate constructor.
- 	public static Person stringtoPerson(String input) {
+ 	public static Person stringToPerson(String input) {
 		Person out = null;
 		//Breaks string apart into token.
 		String[] splitToken = input.split(";");
@@ -131,7 +131,7 @@ public class Person  {
 		while(scanner.hasNext()) {
 			String Token = scanner.nextLine();
 			String[] splitToken = Token.split(";");
-			// Checks for email address, and creates person to add based on result.
+			// Checks for the optional email address input, and creates a Person based on result.
 			if(splitToken.length > 3)
 				people.add(new Person(splitToken[0], splitToken[1], splitToken[2], splitToken[3]));
 			else {
@@ -142,7 +142,11 @@ public class Person  {
 		scanner.close();
 		return people;
 	}
-	//Converts an ArrayList input to a HashMap, with the key being the personCode.
+	/**Converts an ArrayList input to a HashMap, with the key being the personCode.
+	 * This is for use with the Customer class, to assign primary contact info.
+	 * @param list
+	 * @return
+	 */
 	public static HashMap<String,Person> personMap(ArrayList<Person> list){
 		HashMap<String,Person> map = new HashMap<String,Person>();
 		for(Person p: list) {

@@ -1,5 +1,9 @@
 package com.bc;
 
+/**
+ * @author nradm
+ * 
+ */
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.io.File;
@@ -13,6 +17,7 @@ public class Customer {
 	private Person primaryContact;
 	private Address address;
 
+	// Getters and setters for Customer class.
 	public String getCustomerCode() {
 		return customerCode;
 	}
@@ -54,6 +59,7 @@ public class Customer {
 	}
 
 	// Constructors
+	// Multiple constructors created to account for most input cases.
 	// Constructor based on HashMap
 	public Customer(String code, String type, String name, HashMap<String, Person> map, String contactCode,
 			String address) {
@@ -72,7 +78,7 @@ public class Customer {
 		this.customerCode = code;
 		this.customerType = type;
 		this.name = name;
-		this.primaryContact = Person.stringtoPerson(contact);
+		this.primaryContact = Person.stringToPerson(contact);
 		this.address = new Address(address);
 	}
 
@@ -122,13 +128,18 @@ public class Customer {
 		while (s.hasNext()) {
 			String Token = s.nextLine();
 			String[] splitToken = Token.split(";");
+			/**
+			 * Uses the input HashMap of Persons, to assign primary contact info to the customer.  If no matching person is found,
+			 * A new empty person is created with the appropriate person code for later assignment.
+			 */
+			
 			if (contacts.get(splitToken[3]) != null) {
 				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2], contacts, splitToken[3],
 						splitToken[4]));
 			} else {
 				Person p = new Person();
 				p.setPersonCode(splitToken[3]);
-				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2],p, splitToken[4]));
+				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2], p, splitToken[4]));
 			}
 		}
 		s.close();

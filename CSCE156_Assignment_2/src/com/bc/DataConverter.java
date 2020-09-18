@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.HashMap;
 /*
  * Assignment 2
+ * Authors:
  * Nick Radmilovich
  * Caden Kirby
  */
