@@ -10,7 +10,7 @@ import java.util.HashMap;
  * Assignment 2
  * Authors:
  * Nick Radmilovich
- * Caden Kirby
+ * Caden J Kirby
  */
 public class DataConverter {
 
