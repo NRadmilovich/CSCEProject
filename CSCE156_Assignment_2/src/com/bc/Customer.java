@@ -68,7 +68,7 @@ public class Customer {
 		this.customerType = type;
 		this.name = name;
 		this.primaryContact = map.get(contactCode);
-		this.address = new Address(address);
+		this.address = Address.stringToAddress(address);
 
 	}
 
@@ -79,7 +79,7 @@ public class Customer {
 		this.customerType = type;
 		this.name = name;
 		this.primaryContact = Person.stringToPerson(contact);
-		this.address = new Address(address);
+		this.address = Address.stringToAddress(address);
 	}
 
 	// Constructor based on Person input, String address
@@ -89,7 +89,7 @@ public class Customer {
 		this.customerType = type;
 		this.name = name;
 		this.primaryContact = contact;
-		this.address = new Address(address);
+		this.address = Address.stringToAddress(address);
 	}
 
 	// Constructor based on Person input, Address input.
@@ -110,7 +110,7 @@ public class Customer {
 		this.name = name;
 		this.primaryContact = new Person();
 		System.out.println(address);
-		this.address = new Address(address);
+		this.address = Address.stringToAddress(address);
 	}
 
 	// Methods
@@ -144,5 +144,13 @@ public class Customer {
 		}
 		s.close();
 		return customers;
+	}
+	// Creates a HashMap of customers mapped to their customer codes.
+	public static HashMap<String,Customer> customerMap(ArrayList<Customer> list){
+		HashMap<String,Customer> map = new HashMap<String,Customer>();
+		for(Customer c: list) {
+			map.put(c.getCustomerCode(),c);
+		}
+		return map;
 	}
 }

@@ -23,71 +23,65 @@ public class Person  {
 	public String getPersonCode() {
 		return personCode;
 	}
-	public void setPersonCode(String personCode) {
-		this.personCode = personCode;
-	}
+
 	public String getFirstName() {
 		return firstName;
 	}
-	public void setFirstName(String name) {
-		this.firstName = name;
-	}
+
 	public String getLastName() {
 		return lastName;
 	}
-	public void setLastName(String name) {
-		this.lastName = name;
-	}
+
 	public Address getAddress() {
 		return Address;
 	}
-	public void setAddress(String address) {
-		this.Address = new Address(address);
-	}
-	public void setAddress(Address address) {
-		this.Address = address;
-	}
+
 	public String[] getEmail() {
 		return Email;
 	}
-	public void setEmail(String email) {
-		this.Email = email.split(",");
+	// One setter kept, in order to assign an empty person to the customer class.  This allows the customers person code
+	//to be retained, when no matching person is present.
+	public void setPersonCode(String personCode) {
+		this.personCode = personCode;
 	}
-	
 	//Constructors
 	//General Constructor
 	public Person() {
 		super();
 	}
+	//Test constructor for variable arguments.
+	public Person(Object[] args) {
+		
+	}
 	//Constructor for String Address input, with email.
-	public Person(String personCode, String Name, String Address, String email) {
+	public Person(String personCode, String Name, String address, String email) {
 		super();
 		String[] names = Name.split(",");
 		this.personCode = personCode;
-		this.Address = new Address(Address);
+		this.Address = Address.stringToAddress(address);
 		this.lastName = names[0];
 		this.firstName = names[1];
 		this.Email = email.split(",");
 	}	
 	//Constructor for Address class address, with email.
-	public Person(String personCode, String Name, Address Address, String Email) {
+	public Person(String personCode, String Name, Address address, String Email) {
 		super();
 		String[] names = Name.split(",");
 		this.personCode = personCode;
 		this.lastName = names[0];
 		this.firstName = names[1];
-		this.Address = Address;
+		this.Address = address;
 		this.Email = Email.split(",");
 	}	
 	//Constructor for String Address, and no email.	
-	public Person(String personCode, String Name, String Address) {
+	public Person(String personCode, String Name, String address) {
 		super();
 		String[] names = Name.split(",");
 		this.Email = null;
 		this.personCode = personCode;
 		this.lastName = names[0];
 		this.firstName = names[1];
-		this.Address = new Address(Address);
+		this.Address = Address.stringToAddress(address);
 		
 	}
 	//Constructor for Address class address, and no email.

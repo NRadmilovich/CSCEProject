@@ -49,17 +49,21 @@ public class Address {
 		this.Zip = zip;
 		this.Country = country;
 	}
-	// Constructor from string
-	public Address(String Address) {
+	public Address() {
 		super();
+	}
+	// Method
+	public static Address stringToAddress(String Address) {
+		Address out = new Address();
 		String[] Tokens = Address.split(",");
-		this.Street = Tokens[0];
-		this.City = Tokens[1];
-		this.State = Tokens[2];
-		this.Country = Tokens[4];
+		out.Street = Tokens[0];
+		out.City = Tokens[1];
+		out.State = Tokens[2];
+		out.Country = Tokens[4];
 		if(Tokens[3] != null) {
-			this.Zip = Tokens[3];
+			out.Zip = Tokens[3];
 		}
+		return out;
 	}
 	
 	
