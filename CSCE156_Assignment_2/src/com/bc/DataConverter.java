@@ -71,6 +71,7 @@ public class DataConverter {
 		JsonWrite.printJSON("data/Products.json", products, "Products");
 		JsonWrite.printJSON("data/Persons.json", people, "Person");
 		JsonWrite.printJSON("data/Customers.json", customers, "Customer");
+		
 	}
 
 }

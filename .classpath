@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="CSCE156_Assignment_2/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="CSCE156_Assignment_2/src"/>
+	<classpathentry kind="lib" path="/CSCE156_Assignment_2/lib/xstream-1.4.13.jar"/>
+	<classpathentry kind="lib" path="/CSCE156_Assignment_2/lib/gson-2.8.6.jar"/>
+	<classpathentry kind="output" path="CSCE156_Assignment_2/bin"/>
+</classpath>
