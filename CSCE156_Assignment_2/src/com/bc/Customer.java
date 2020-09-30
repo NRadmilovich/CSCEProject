@@ -22,56 +22,24 @@ public class Customer {
 		return customerCode;
 	}
 
-	public void setCustomerCode(String customerCode) {
-		this.customerCode = customerCode;
-	}
-
 	public String getCustomerType() {
 		return customerType;
-	}
-
-	public void setCustomerType(String customerType) {
-		this.customerType = customerType;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Person getPrimaryContact() {
 		return primaryContact;
-	}
-
-	public void setPrimaryContact(Person primaryContact) {
-		this.primaryContact = primaryContact;
 	}
 
 	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
 	// Constructors
 	// Multiple constructors created to account for most input cases.
-	// Constructor based on HashMap
-	public Customer(String code, String type, String name, HashMap<String, Person> map, String contactCode,
-			String address) {
-		super();
-		this.customerCode = code;
-		this.customerType = type;
-		this.name = name;
-		this.primaryContact = map.get(contactCode);
-		this.address = Address.stringToAddress(address);
-
-	}
-
 	// Constructor based on All Strings
 	public Customer(String code, String type, String name, String contact, String address) {
 		super();
@@ -102,17 +70,6 @@ public class Customer {
 		this.address = address;
 	}
 
-	// Constructor for no included primary contact
-	public Customer(String code, String type, String name, String address) {
-		super();
-		this.customerCode = code;
-		this.customerType = type;
-		this.name = name;
-		this.primaryContact = new Person();
-		System.out.println(address);
-		this.address = Address.stringToAddress(address);
-	}
-
 	// Methods
 	// Imports file and converts to ArrayList of Customers
 	public static ArrayList<Customer> importCustomer(String filename, HashMap<String, Person> contacts) {
@@ -134,7 +91,8 @@ public class Customer {
 			 */
 			
 			if (contacts.get(splitToken[3]) != null) {
-				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2], contacts, splitToken[3],
+				Person primaryContact = contacts.get(splitToken[3]);
+				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2], primaryContact,
 						splitToken[4]));
 			} else {
 				Person p = new Person();
