@@ -150,8 +150,7 @@ public class Person  {
 	}
 	@Override
 	public String toString() {
-		return "Person [personCode=" + personCode + ", firstName=" + firstName + ", lastName=" + lastName + ", Address="
-				+ Address + ", Email=" + Arrays.toString(Email) + "]";
+		return lastName + ", " + firstName;
 	}
 	
 }

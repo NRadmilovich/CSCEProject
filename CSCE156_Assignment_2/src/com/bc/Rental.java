@@ -39,6 +39,35 @@ public class Rental extends Products{
 	public void setCleaningFee(Double cleaningFee) {
 		this.cleaningFee = cleaningFee;
 	}
+
+	@Override
+	public double getSubtotal(double daysRented) {
+		return (getDailyCost() * daysRented) + getDeposit();
+	}
+
+	@Override
+	public double getDiscounts() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getFees() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getTaxes() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getTotal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

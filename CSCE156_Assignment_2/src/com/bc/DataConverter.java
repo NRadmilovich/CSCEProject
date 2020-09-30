@@ -79,6 +79,9 @@ public class DataConverter {
 		JsonWrite.printJSON("data/Customers.json", customers, "Customer");
 		JsonWrite.printJSON("data/Invoices.json", invoices, "Invoice");
 		
+		// Testing summary print
+		InvoiceSummary.printInvoice(invoices);
+		
 	}
 
 }

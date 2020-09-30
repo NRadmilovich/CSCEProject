@@ -3,7 +3,7 @@ package com.bc;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Products {
+public abstract class Products {
 	
 	protected String productCode;
 	protected String productType;
@@ -50,6 +50,17 @@ public class Products {
 		}
 		return map;
 	}
+	
+	// Product Calculations
+	public abstract double getSubtotal(double workValue);
+	public abstract double getDiscounts();
+	public abstract double getFees();
+	public abstract double getTaxes();
+	public abstract double getTotal();
+
+		
+	
+	
 	
 	
 	
