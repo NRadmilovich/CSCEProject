@@ -58,7 +58,7 @@ public class Person  {
 		super();
 		String[] names = Name.split(",");
 		this.personCode = personCode;
-		this.Address = Address.stringToAddress(address);
+		this.Address = com.bc.Address.stringToAddress(address);
 		this.lastName = names[0];
 		this.firstName = names[1];
 		this.Email = email.split(",");
@@ -81,7 +81,7 @@ public class Person  {
 		this.personCode = personCode;
 		this.lastName = names[0];
 		this.firstName = names[1];
-		this.Address = Address.stringToAddress(address);
+		this.Address = com.bc.Address.stringToAddress(address);
 		
 	}
 	//Constructor for Address class address, and no email.

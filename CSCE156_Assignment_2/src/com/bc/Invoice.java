@@ -1,12 +1,18 @@
 package com.bc;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
-public class Invoice <T extends Products> {
+public class Invoice {
 
 	private String invoiceCode;
 	private Person owner;
 	private Customer customerData;
-	private ArrayList<T> productList;
+	private ArrayList<Products> productList;
+	private HashMap<String,Number> workValue;
+	
 	
 	public String getInvoiceCode() {
 		return invoiceCode;
@@ -17,19 +23,50 @@ public class Invoice <T extends Products> {
 	public Customer getCustomerData() {
 		return customerData;
 	}
-	public ArrayList<T> getProductList() {
+	public ArrayList<? extends Products> getProductList() {
 		return productList;
 	}
+	public HashMap<String,Number> getWorkValue(){
+		return workValue;
+	}
 	
-	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<T> productList) {
+	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<Products> productList, HashMap<String,Number> workValues) {
 		super();
 		this.invoiceCode = invoiceCode;
 		this.owner = owner;
 		this.customerData = customerData;
 		this.productList = productList;
+		this.workValue = workValues;
 	}
 	
-	
-	
-	
+	public static ArrayList<Invoice> importInvoice(String filename, HashMap<String,Person> personMap, HashMap<String,Customer> customerMap, HashMap<String,Products> productMap) {
+		ArrayList<Invoice> Invoices = new ArrayList<Invoice>();
+		Scanner scanner = null;
+		String fileString = "data/" + filename;
+		File file = new File(fileString);
+		try {
+		scanner = new Scanner(file);
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		scanner.nextLine();
+		while(scanner.hasNext()) {
+			String Token = scanner.nextLine();
+			String[] splitToken = Token.split(";");
+			String invoiceCode = splitToken[0];
+			Person owner = personMap.get(splitToken[1]);
+			Customer customer = customerMap.get(splitToken[2]);
+			HashMap<String,Number> workValues = new HashMap<String,Number>();
+			ArrayList<Products> productList = new ArrayList<Products>();
+			String[] splitProducts = splitToken[3].split(",");
+			for(String prod: splitProducts) {
+				String[] values = prod.split(":");
+				productList.add(productMap.get(values[0]));
+				workValues.put(values[0], Integer.parseInt(values[1]));
+			}
+			Invoices.add(new Invoice(invoiceCode, owner, customer, productList, workValues));
+		}
+		scanner.close();
+		return Invoices;
+	}
 }

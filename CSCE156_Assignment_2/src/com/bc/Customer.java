@@ -111,4 +111,14 @@ public class Customer {
 		}
 		return map;
 	}
+	public static Customer stringToCustomer(String input) {
+		Customer out = null;
+		//Breaks string apart into token.
+		String[] splitToken = input.split(";");
+		// Checks for email address, and creates person to add based on result.
+		Person primaryContact = Person.stringToPerson(splitToken[3]);
+		Address address = Address.stringToAddress(splitToken[4]);
+		out = new Customer(splitToken[0], splitToken[1],splitToken[2],primaryContact, address);
+		return out;
+	}
 }

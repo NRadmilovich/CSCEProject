@@ -63,14 +63,21 @@ public class DataConverter {
 			System.err.print("File not Found");
 			e.printStackTrace();
 		}
+		// Testing invoice creator and product hashmap
+		HashMap<String,Products> productMap = Products.productMap(products);
+		HashMap<String,Customer> customerMap = Customer.customerMap(customers);
+		ArrayList<Invoice> invoices = Invoice.importInvoice("Invoices.dat", personMap, customerMap, productMap);
+		
 		//Print xml to file
 		XMLPrint.printXML("data/Persons.xml", people, "Person");
 		XMLPrint.printXML("data/Customers.xml", customers, "Customer");
 		XMLPrint.printXML("data/Products.xml", products, "Products");
+		XMLPrint.printXML("data/Invoices.xml", invoices, "Invoice");
 		// Print json to file
 		JsonWrite.printJSON("data/Products.json", products, "Products");
 		JsonWrite.printJSON("data/Persons.json", people, "Person");
 		JsonWrite.printJSON("data/Customers.json", customers, "Customer");
+		JsonWrite.printJSON("data/Invoices.json", invoices, "Invoice");
 		
 	}
 

@@ -1,5 +1,8 @@
 package com.bc;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Products {
 	
 	protected String productCode;
@@ -39,7 +42,14 @@ public class Products {
 		this.productLabel = productLabel;
 	}
 	
-	
+	// Added a hashmap conversion for invoices.
+	public static HashMap<String,Products> productMap(ArrayList<Products> list){
+		HashMap<String,Products> map = new HashMap<String,Products>();
+		for(Products p: list) {
+			map.put(p.getProductCode(),p);
+		}
+		return map;
+	}
 	
 	
 	
