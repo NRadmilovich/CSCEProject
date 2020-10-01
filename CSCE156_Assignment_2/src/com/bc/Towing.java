@@ -19,34 +19,26 @@ public class Towing extends Products{
 		this.costPerMile = costPerMile;
 	}
 
+	// Price Calculations
 	@Override
 	public double getSubtotal(double milesTowed) {
 		
-		return getCostPerMile() * milesTowed;
-	}
-
-	@Override
-	public double getDiscounts() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getFees() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTaxes() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.costPerMile * milesTowed;
 	}
 
 	@Override
 	public double getTotal() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public double getDiscounts(int freeFlag) {
+		if (freeFlag >= 3) {
+			return -getSubtotal(3);
+		} else {
+			return 0;
+		}
 	}
 	
 	

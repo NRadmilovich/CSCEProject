@@ -121,4 +121,39 @@ public class Customer {
 		out = new Customer(splitToken[0], splitToken[1],splitToken[2],primaryContact, address);
 		return out;
 	}
+	
+	public double getLoyalDiscount(double totalAfterTax) {
+		// How can I see if customer has 2 or more email addresses?
+		for (int i=0; i<this.primaryContact.getEmail().length; i++) {
+			if(this.primaryContact.getEmail()[i].equals(",")) {
+				return (-.05 * totalAfterTax);
+			}
+		}
+		return 0;
+	}
+
+	public double getFees() {
+		
+		// Determine fee based on Customer Type
+		if (this.customerType.equals("B")) {
+			return 75.50;
+			
+		}else if (this.customerType.equals("P")) {
+			return 0;
+		}
+		return 0;
+	}
+
+	public double getTaxes(double totalBeforeTax) {
+		
+		// Determine Taxes based on Customer Type
+		if (this.customerType.equals("B")) {
+			return .0425 * totalBeforeTax;
+			
+		}else if (this.customerType.equals("P")) {
+			return .08 * totalBeforeTax;
+		}
+		return 0;
+		
+	}
 }

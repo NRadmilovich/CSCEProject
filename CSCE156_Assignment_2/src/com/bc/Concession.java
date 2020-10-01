@@ -19,32 +19,22 @@ public class Concession extends Products {
 		this.unitCost = unitCost;
 	}
 
+	// Price Calculations
 	@Override
 	public double getSubtotal(double unitQuantity) {
-		return getUnitCost() * unitQuantity;
-	}
-
-	@Override
-	public double getDiscounts() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getFees() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTaxes() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.unitCost * unitQuantity;
 	}
 
 	@Override
 	public double getTotal() {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getDiscounts(int freeFlag) {
+		// How can I check if a concession has an associated repair?
+		
 		return 0;
 	}
 	

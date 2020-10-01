@@ -53,9 +53,7 @@ public abstract class Products {
 	
 	// Product Calculations
 	public abstract double getSubtotal(double workValue);
-	public abstract double getDiscounts();
-	public abstract double getFees();
-	public abstract double getTaxes();
+	public abstract double getDiscounts(int freeFlag);
 	public abstract double getTotal();
 
 		

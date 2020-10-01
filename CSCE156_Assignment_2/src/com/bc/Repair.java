@@ -30,31 +30,20 @@ public class Repair extends Products{
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
 
+	// Price Calculations
 	@Override
 	public double getSubtotal(double hoursWorked) {
-		return getPartsCost() + (getHourlyLaborCost() * hoursWorked);
-	}
-
-	@Override
-	public double getDiscounts() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getFees() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTaxes() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.partsCost + (this.hourlyLaborCost * hoursWorked);
 	}
 
 	@Override
 	public double getTotal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getDiscounts(int freeFlag) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

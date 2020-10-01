@@ -40,32 +40,20 @@ public class Rental extends Products{
 		this.cleaningFee = cleaningFee;
 	}
 
+	// Price Calculations
 	@Override
 	public double getSubtotal(double daysRented) {
-		return (getDailyCost() * daysRented) + getDeposit();
-	}
-
-	@Override
-	public double getDiscounts() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getFees() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTaxes() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (this.dailyCost * daysRented) + this.deposit;
 	}
 
 	@Override
 	public double getTotal() {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getDiscounts(int freeFlag) {
 		return 0;
 	}
 	
