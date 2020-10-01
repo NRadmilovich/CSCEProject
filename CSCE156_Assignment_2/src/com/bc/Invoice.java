@@ -12,6 +12,7 @@ public class Invoice {
 	private Customer customerData;
 	private ArrayList<Products> productList;
 	private HashMap<String,Number> workValue;
+	private Boolean associatedRepair;
 	
 	
 	public String getInvoiceCode() {
@@ -30,13 +31,14 @@ public class Invoice {
 		return workValue;
 	}
 	
-	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<Products> productList, HashMap<String,Number> workValues) {
+	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<Products> productList, HashMap<String,Number> workValues, Boolean associatedRepair) {
 		super();
 		this.invoiceCode = invoiceCode;
 		this.owner = owner;
 		this.customerData = customerData;
 		this.productList = productList;
 		this.workValue = workValues;
+		this.associatedRepair = associatedRepair;
 	}
 	
 	public static ArrayList<Invoice> importInvoice(String filename, HashMap<String,Person> personMap, HashMap<String,Customer> customerMap, HashMap<String,Products> productMap) {
@@ -59,12 +61,16 @@ public class Invoice {
 			HashMap<String,Number> workValues = new HashMap<String,Number>();
 			ArrayList<Products> productList = new ArrayList<Products>();
 			String[] splitProducts = splitToken[3].split(",");
+			Boolean associatedRepair = false;
 			for(String prod: splitProducts) {
 				String[] values = prod.split(":");
 				productList.add(productMap.get(values[0]));
 				workValues.put(values[0], Integer.parseInt(values[1]));
+				if(values.length > 2) {
+					associatedRepair = true;
+				}
 			}
-			Invoices.add(new Invoice(invoiceCode, owner, customer, productList, workValues));
+			Invoices.add(new Invoice(invoiceCode, owner, customer, productList, workValues, associatedRepair));
 		}
 		scanner.close();
 		return Invoices;

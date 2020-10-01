@@ -34,7 +34,7 @@ public class Concession extends Products {
 	@Override
 	public double getDiscounts(int freeFlag) {
 		// How can I check if a concession has an associated repair?
-		
+		// I just fixed associated repair.  Its a boolean, but can be switched to a string if youd rather have that.
 		return 0;
 	}
 	

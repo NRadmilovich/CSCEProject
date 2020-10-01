@@ -78,7 +78,8 @@
       "ugis43": 15,
       "kvnjgbf5": 3,
       "b4z1ng4": 2
-    }
+    },
+    "associatedRepair": true
   },
   {
     "invoiceCode": "INV002",
@@ -150,7 +151,8 @@
       "sievub": 6,
       "k04l4": 10,
       "t0m03": 1
-    }
+    },
+    "associatedRepair": false
   },
   {
     "invoiceCode": "INV003",
@@ -207,7 +209,8 @@
     ],
     "workValue": {
       "kvnjgbf5": 12
-    }
+    },
+    "associatedRepair": false
   },
   {
     "invoiceCode": "INV004",
@@ -274,6 +277,7 @@
     "workValue": {
       "yuasi": 14,
       "k04l4": 20
-    }
+    },
+    "associatedRepair": false
   }
 ]}
