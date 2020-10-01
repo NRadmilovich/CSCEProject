@@ -123,11 +123,13 @@ public class Customer {
 	
 	public double getLoyalDiscount(double totalAfterTax) {
 		
-		// Check if primary contact has more than 1 email
-		String[] emailCheck = this.primaryContact.getEmail();
-		if (emailCheck.length > 1) {
-			return (-.05 * totalAfterTax);
-		} 
+		if (this.customerType.equals("P")) {	
+			// Check if primary contact has more than 1 email
+			String[] emailCheck = this.primaryContact.getEmail();
+			if (emailCheck.length > 1) {
+				return (-.05 * totalAfterTax);
+			}		
+		}
 		return 0;
 	}
 
