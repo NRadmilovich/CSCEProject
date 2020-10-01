@@ -32,8 +32,8 @@ public class Repair extends Products{
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(double hoursWorked) {
-		return this.partsCost + (this.hourlyLaborCost * hoursWorked);
+	public double getSubtotal(Number hoursWorked) {
+		return this.partsCost + (this.hourlyLaborCost * hoursWorked.doubleValue());
 	}
 
 	@Override
@@ -44,7 +44,6 @@ public class Repair extends Products{
 
 	@Override
 	public double getDiscounts(int freeFlag) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	

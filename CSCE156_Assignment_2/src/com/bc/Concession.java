@@ -21,8 +21,8 @@ public class Concession extends Products {
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(double unitQuantity) {
-		return this.unitCost * unitQuantity;
+	public double getSubtotal(Number unitQuantity) {
+		return this.unitCost * unitQuantity.doubleValue();
 	}
 
 	@Override

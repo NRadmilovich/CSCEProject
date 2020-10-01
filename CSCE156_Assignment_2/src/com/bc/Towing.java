@@ -21,9 +21,9 @@ public class Towing extends Products{
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(double milesTowed) {
+	public double getSubtotal(Number milesTowed) {
 		
-		return this.costPerMile * milesTowed;
+		return this.costPerMile * milesTowed.doubleValue();
 	}
 
 	@Override

@@ -42,8 +42,10 @@ public class Rental extends Products{
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(double daysRented) {
-		return (this.dailyCost * daysRented) + this.deposit;
+	public double getSubtotal(Number daysRented) {
+		// System.out.printf("%nWorkValue:%.2f DailyCost: %.2f%n", daysRented.doubleValue(), this.dailyCost);
+		return (this.dailyCost * daysRented.doubleValue()) - this.deposit + this.cleaningFee;
+
 	}
 
 	@Override

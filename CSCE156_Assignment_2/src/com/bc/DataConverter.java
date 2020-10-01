@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.HashMap;
 /*
- * Assignment 2
+ * CSCE Project
  * Authors:
  * Nick Radmilovich
  * Caden J Kirby
