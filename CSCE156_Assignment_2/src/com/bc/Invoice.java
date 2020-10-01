@@ -2,6 +2,7 @@ package com.bc;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -75,4 +76,80 @@ public class Invoice {
 		scanner.close();
 		return Invoices;
 	}
+	
+	// Testing method in invoice class
+	public static void printSummary(Collection <Invoice> invoiceList) {
+
+		// Print top of table
+		System.out.println("Executive Summary Report:");
+		System.out.printf("%n%-10s %-25s %-30s %-10s %-10s  %-10s  %-10s  %-10s %n", "Code", "Owner", "Customer Account", "Subtotal", "Discounts", "Fees", "Taxes", "Total");
+		System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+		
+		double totalInvoiceSubtotal = 0;
+		double totalInvoiceDiscounts = 0;
+		double totalInvoiceFees = 0;
+		double totalInvoiceTaxes = 0;
+		double totalInvoiceTotal = 0;
+		
+		// Loop through collection of invoices
+		for (Invoice invoice: invoiceList) {
+			
+			HashMap<String,Number> workValueMap = invoice.getWorkValue();
+			double invoiceSubtotal = 0;
+			double invoiceDiscounts = 0;
+			double invoiceFees = 0;
+			double invoiceTaxes = 0;
+			double invoiceTotal = 0;
+			int freeFlag = 0; 
+			
+			// Checking if Towing is free
+			for (Products p: invoice.getProductList()) {			
+				if (p instanceof Rental) {
+					freeFlag += 1;
+				} else if (p instanceof Repair) {
+					freeFlag += 1;
+				} else if (p instanceof Towing) {
+					freeFlag += 1;
+				}
+			}
+			
+			// Calculating totals of 1 invoice
+			for (Products p: invoice.getProductList()) {
+				
+				Number workValue = workValueMap.get(p.productCode);
+				double productSubtotal = p.getSubtotal(workValue);
+				double productDiscounts = p.getDiscounts(freeFlag, invoice.associatedRepair, workValue);
+				double productTaxes = invoice.getCustomerData().getTaxes(productSubtotal + productDiscounts);
+				invoiceSubtotal += productSubtotal;
+				invoiceDiscounts += productDiscounts;
+				invoiceTaxes += productTaxes;
+				
+				// Can use this line for Detailed
+				// System.out.printf("%n%.2f %.2f %.2f%n", productSubtotal, productDiscounts, productTaxes);
+			}
+			
+			// Apply entire invoice fees and discounts
+			double businessAccountFee = invoice.getCustomerData().getFees();
+			double loyalDiscount =  invoice.getCustomerData().getLoyalDiscount(invoiceSubtotal + invoiceTaxes);
+			invoiceFees += businessAccountFee;
+			invoiceDiscounts += loyalDiscount;
+			invoiceTotal = invoiceSubtotal + invoiceDiscounts + invoiceFees + invoiceTaxes;
+			
+			// Print one invoice  
+			System.out.printf("%n%-10s %-25s %-30s $%-10.2f $%-10.2f  $%-10.2f  $%-10.2f $%-10.2f%n", invoice.getInvoiceCode(), invoice.getOwner(), invoice.getCustomerData().getName(), invoiceSubtotal, invoiceDiscounts, invoiceFees, invoiceTaxes, invoiceTotal);
+				
+			// Calculating totals of all invoices
+			totalInvoiceSubtotal += invoiceSubtotal;
+			totalInvoiceDiscounts += invoiceDiscounts;
+			totalInvoiceFees += invoiceFees;
+			totalInvoiceTaxes += invoiceTaxes;
+			totalInvoiceTotal += invoiceTotal;
+		
+		}
+		
+		System.out.println("============================================================================================================================");
+		System.out.printf("%-67s $%-10.2f $%-10.2f  $%-10.2f  $%-10.2f $%-10.2f%n", "TOTALS", totalInvoiceSubtotal, totalInvoiceDiscounts, totalInvoiceFees, totalInvoiceTaxes, totalInvoiceTotal);
+
+	}
+
 }

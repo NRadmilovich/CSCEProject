@@ -123,12 +123,13 @@ public class Customer {
 	}
 	
 	public double getLoyalDiscount(double totalAfterTax) {
-		// How can I see if customer has 2 or more email addresses?
-		for (int i=0; i<this.primaryContact.getEmail().length; i++) {
-			if(this.primaryContact.getEmail()[i].equals(",")) {
-				return (-.05 * totalAfterTax);
-			}
-		}
+		
+		// Check if primary contact has more than 1 email
+		// System.out.println(this.primaryContact.getEmail().length);
+		if (this.primaryContact.getEmail().length > 1) {
+			return (-.05 * totalAfterTax);
+		} 
+		
 		return 0;
 	}
 

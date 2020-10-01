@@ -27,14 +27,15 @@ public class Concession extends Products {
 
 	@Override
 	public double getTotal() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag) {
-		// How can I check if a concession has an associated repair?
-		// I just fixed associated repair.  Its a boolean, but can be switched to a string if youd rather have that.
+	public double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue) {
+		// Check if a concession has an associated repair
+		if (associatedRepair) {
+			return -.1 * getSubtotal(workValue);
+		}
 		return 0;
 	}
 	

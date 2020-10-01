@@ -33,9 +33,9 @@ public class Towing extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag) {
+	public double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue) {
 		if (freeFlag >= 3) {
-			return -getSubtotal(3);
+			return -getSubtotal(workValue);
 		} else {
 			return 0;
 		}

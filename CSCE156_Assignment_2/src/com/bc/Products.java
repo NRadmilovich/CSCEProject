@@ -53,7 +53,7 @@ public abstract class Products {
 	
 	// Product Calculations
 	public abstract double getSubtotal(Number workValue);
-	public abstract double getDiscounts(int freeFlag);
+	public abstract double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue);
 	public abstract double getTotal();
 
 		

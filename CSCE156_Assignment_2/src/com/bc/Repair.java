@@ -43,7 +43,7 @@ public class Repair extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag) {
+	public double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue) {
 		return 0;
 	}
 	
