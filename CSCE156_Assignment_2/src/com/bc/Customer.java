@@ -115,7 +115,6 @@ public class Customer {
 		Customer out = null;
 		//Breaks string apart into token.
 		String[] splitToken = input.split(";");
-		// Checks for email address, and creates person to add based on result.
 		Person primaryContact = Person.stringToPerson(splitToken[3]);
 		Address address = Address.stringToAddress(splitToken[4]);
 		out = new Customer(splitToken[0], splitToken[1],splitToken[2],primaryContact, address);
@@ -125,12 +124,18 @@ public class Customer {
 	public double getLoyalDiscount(double totalAfterTax) {
 		
 		// Check if primary contact has more than 1 email
-		// System.out.println(this.primaryContact.getEmail().length);
-		if (this.primaryContact.getEmail().length > 1) {
+		String[] emailCheck = this.primaryContact.getEmail();
+		if (emailCheck.length > 1) {
 			return (-.05 * totalAfterTax);
 		} 
-		
 		return 0;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Customer [customerCode=" + customerCode + ", customerType=" + customerType + ", name=" + name
+				+ ", primaryContact=" + primaryContact + ", address=" + address + "]";
 	}
 
 	public double getFees() {
