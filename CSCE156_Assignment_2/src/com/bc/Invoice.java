@@ -5,6 +5,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
+/**
+ * Assignment 3
+ * 
+ * CSCE 156
+ * 
+ * Authors:
+ * Caden Kirby
+ * Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * The invoice class compiles data from Person, Products, and Customer, in order to structure invoice data for Bumpr Cars.
+ */
 
 public class Invoice {
 
@@ -77,7 +90,7 @@ public class Invoice {
 		return Invoices;
 	}
 	
-	// Testing method in invoice class
+	// Print Methods for invoice reports
 	public static void printSummary(Collection <Invoice> invoiceList) {
 
 		// Print top of table
@@ -152,4 +165,7 @@ public class Invoice {
 
 	}
 
+	public static void printDetailed(Collection <Invoice> invoiceList) {
+		
+	}
 }

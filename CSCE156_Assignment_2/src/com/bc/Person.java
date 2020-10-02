@@ -1,7 +1,6 @@
 package com.bc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -53,48 +52,15 @@ public class Person  {
 	public Person(Object[] args) {
 		
 	}
-	//Constructor for String Address input, with email.
-	public Person(String personCode, String Name, String address, String email) {
+	//Constructor
+	public Person(String personCode, String lastName,String firstName, Address address, String[] email) {
 		super();
-		String[] names = Name.split(",");
 		this.personCode = personCode;
-		this.Address = com.bc.Address.stringToAddress(address);
-		this.lastName = names[0];
-		this.firstName = names[1];
-		this.Email = email.split(",");
-	}	
-	//Constructor for Address class address, with email.
-	public Person(String personCode, String Name, Address address, String Email) {
-		super();
-		String[] names = Name.split(",");
-		this.personCode = personCode;
-		this.lastName = names[0];
-		this.firstName = names[1];
 		this.Address = address;
-		this.Email = Email.split(",");
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.Email = email;
 	}	
-	//Constructor for String Address, and no email.	
-	public Person(String personCode, String Name, String address) {
-		super();
-		String[] names = Name.split(",");
-		this.Email = null;
-		this.personCode = personCode;
-		this.lastName = names[0];
-		this.firstName = names[1];
-		this.Address = com.bc.Address.stringToAddress(address);
-		
-	}
-	//Constructor for Address class address, and no email.
-	public Person(String personCode, String Name, Address Address) {
-		super();
-		String[] names = Name.split(",");
-		this.Email[0] = "";
-		this.personCode = personCode;
-		this.lastName = names[0];
-		this.firstName = names[1];
-		this.Address = Address;
-		
-	}
 	
 	//Methods
 	//Converts string to Person, while calling appropriate constructor.
@@ -102,12 +68,14 @@ public class Person  {
 		Person out = null;
 		//Breaks string apart into token.
 		String[] splitToken = input.split(";");
-		// Checks for email address, and creates person to add based on result.
-		if(splitToken[3].contains("@"))
-			out = new Person(splitToken[0], splitToken[1], splitToken[2], splitToken[3]);
-		else {
-			out = new Person(splitToken[0], splitToken[1], splitToken[2]);
+		String[] emails = null;
+		if(splitToken.length > 3) {
+		emails = splitToken[3].split(",");
 		}
+		String[] names = splitToken[1].split(",");
+		Address address = com.bc.Address.stringToAddress(splitToken[2]);
+		// Checks for email address, and creates person to add based on result.
+		out = new Person(splitToken[0], names[0], names[1], address, emails);
 		return out;
 	}
 	//Imports a file, and converts it into an ArrayList of class Person
@@ -124,14 +92,7 @@ public class Person  {
 		scanner.nextLine();
 		while(scanner.hasNext()) {
 			String Token = scanner.nextLine();
-			String[] splitToken = Token.split(";");
-			// Checks for the optional email address input, and creates a Person based on result.
-			if(splitToken.length > 3)
-				people.add(new Person(splitToken[0], splitToken[1], splitToken[2], splitToken[3]));
-			else {
-				people.add(new Person(splitToken[0], splitToken[1], splitToken[2]));
-			}
-			
+			people.add(stringToPerson(Token));	
 		}
 		scanner.close();
 		return people;
