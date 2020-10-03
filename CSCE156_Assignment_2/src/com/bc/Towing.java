@@ -1,13 +1,23 @@
 package com.bc;
 
+import java.util.ArrayList;
+
 public class Towing extends Products{
 
 	private Double costPerMile;
 	
 	// Constructor
-	public Towing(String productCode, String productType, String productLabel, Double costPerMile) {
-		super(productCode, productType, productLabel);
+	public Towing(String productCode, String productType, String productLabel, double workVal, Double costPerMile) {
+		super(productCode, productType, productLabel, workVal);
 		this.setCostPerMile(costPerMile);
+	}
+	public Towing(Towing old, double workVal) {
+		super();
+		this.productCode = old.getProductCode();
+		this.productType = old.getProductType();
+		this.productLabel = old.productLabel;
+		this.workValue = workVal;
+		this.costPerMile = old.costPerMile;
 	}
 
 	// Setters and Getters
@@ -21,9 +31,9 @@ public class Towing extends Products{
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(Number milesTowed) {
+	public double getSubtotal() {
 		
-		return this.costPerMile * milesTowed.doubleValue();
+		return this.costPerMile * this.workValue;
 	}
 
 	@Override
@@ -33,22 +43,22 @@ public class Towing extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Number workValue) {
+	public double getDiscounts(int freeFlag) {
 		if (freeFlag >= 3) {
-			return -getSubtotal(workValue);
+			return -this.getSubtotal();
 		} else {
 			return 0;
 		}
 	}
 	
-	public String costPrint(Number val) {
-		String out = " ("+ val.floatValue() + " miles @ $" + this.getCostPerMile() + "/mile)";
+	public String costPrint() {
+		String out = " ("+ this.workValue + " miles @ $" + this.getCostPerMile() + "/mile)";
 		return out;
 	}
 	public String feePrint() {
 		return null;
 	}
-	public void associatedRepairCheck(Products prod, String repairVal) {
+	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
 		
 	}	
 

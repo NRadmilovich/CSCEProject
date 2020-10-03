@@ -29,7 +29,6 @@ public class Invoice {
 	private Person owner;
 	private Customer customerData;
 	private ArrayList<Products> productList;
-	private HashMap<String, Number> workValue;
 
 	public String getInvoiceCode() {
 		return invoiceCode;
@@ -47,18 +46,12 @@ public class Invoice {
 		return productList;
 	}
 
-	public HashMap<String, Number> getWorkValue() {
-		return workValue;
-	}
-
-	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<Products> productList,
-			HashMap<String, Number> workValues) {
+	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<Products> productList) {
 		super();
 		this.invoiceCode = invoiceCode;
 		this.owner = owner;
 		this.customerData = customerData;
 		this.productList = productList;
-		this.workValue = workValues;
 	}
 
 	public static ArrayList<Invoice> importInvoice(String filename, HashMap<String, Person> personMap,
@@ -73,34 +66,30 @@ public class Invoice {
 			e.printStackTrace();
 		}
 		scanner.nextLine();
-		Products repairCheck = new Repair();
 		while (scanner.hasNext()) {
 			String Token = scanner.nextLine();
 			String[] splitToken = Token.split(";");
 			String invoiceCode = splitToken[0];
 			Person owner = personMap.get(splitToken[1]);
 			Customer customer = customerMap.get(splitToken[2]);
-			HashMap<String, Number> workValues = new HashMap<String, Number>();
 			ArrayList<Products> productList = new ArrayList<Products>();
+			ArrayList<Products> potentialAssociations = new ArrayList<Products>();
+			String associatedCode = null;
 			String[] splitProducts = splitToken[3].split(",");
-			String repairVal = " ";
-			repairCheck = new Repair();
 			for (String prod : splitProducts) {
 				String[] values = prod.split(":");
-				if(productMap.get(values[0]) instanceof Repair) {
-					repairCheck = productMap.get(values[0]);
-				}
-				productList.add(productMap.get(values[0]));
-				workValues.put(values[0], Double.parseDouble(values[1]));
-				if (values.length > 2) {
-					repairVal = values[2];
-				}
+				Products newProd = null;
+				double workVal = Double.parseDouble(values[1]);
+				newProd = Products.deepCopy(productMap.get(values[0]), workVal);
+				productList.add(newProd);
+				if(values.length > 2) {
+					associatedCode = values[2]; 
+					potentialAssociations.add(newProd);
+				}}
+			if(associatedCode != null) {
+				Concession.associatedRepairCheck(potentialAssociations, productList, associatedCode);
 			}
-			for(Products prod: productList) {
-				if(repairCheck.getProductCode() != null)
-					prod.associatedRepairCheck(repairCheck,repairVal);
-			}
-			Invoices.add(new Invoice(invoiceCode, owner, customer, productList, workValues));
+			Invoices.add(new Invoice(invoiceCode, owner, customer, productList));
 		}
 		scanner.close();
 		return Invoices;
@@ -125,7 +114,6 @@ public class Invoice {
 		// Loop through collection of invoices
 		for (Invoice invoice : invoiceList) {
 
-			HashMap<String, Number> workValueMap = invoice.getWorkValue();
 			double invoiceSubtotal = 0;
 			double invoiceDiscounts = 0;
 			double invoiceFees = 0;
@@ -146,10 +134,8 @@ public class Invoice {
 
 			// Calculating totals of 1 invoice
 			for (Products p : invoice.getProductList()) {
-
-				Number workValue = workValueMap.get(p.productCode);
-				double productSubtotal = p.getSubtotal(workValue);
-				double productDiscounts = p.getDiscounts(freeFlag, workValue);
+				double productSubtotal = p.getSubtotal();
+				double productDiscounts = p.getDiscounts(freeFlag);
 				double productTaxes = invoice.getCustomerData().getTaxes(productSubtotal + productDiscounts);
 				invoiceSubtotal += productSubtotal;
 				invoiceDiscounts += productDiscounts;
@@ -183,15 +169,13 @@ public class Invoice {
 
 		System.out.println(
 				"============================================================================================================================");
-		System.out.printf("%-67s $%-10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", "TOTALS", totalInvoiceSubtotal,
+		System.out.printf("%-67s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", "TOTALS", totalInvoiceSubtotal,
 				totalInvoiceDiscounts, totalInvoiceFees, totalInvoiceTaxes, totalInvoiceTotal);
 
 	}
 
 	public static void printDetailed(Collection<Invoice> invoiceList) {
 		System.out.println("Invoice Details:");
-		int freeFlag = 0;
-		
 		for (Invoice invoice : invoiceList) {
 			//Initializing var
 			double invoiceSubTotal = 0;double invoiceDiscounts = 0;double invoiceTaxes = 0;double invoiceTotal = 0;
@@ -221,11 +205,12 @@ public class Invoice {
 			System.out.printf("  %s %18s %67s %12s %9s %12s \n","Code","Description","Subtotal","Discount","Taxes","Total");
 			System.out.println("  ------------------------------------------------------------------------------------------------------------------------------------");
 			ArrayList<? extends Products> productList = invoice.getProductList();
+			int freeFlag = 0;
 			for(Products prod: productList) {
 				// Computes product calculations and creates strings for printing.
 				String extraVal = null;
-				Number workval = invoice.getWorkValue().get(prod.getProductCode());
-				String description = prod.getProductLabel() + prod.costPrint(workval);
+
+				String description = prod.getProductLabel() + prod.costPrint();
 				
 				// Counts freeflag for calculations
 				if (prod instanceof Rental) {
@@ -237,15 +222,15 @@ public class Invoice {
 				}
 				
 				// Cost Calculations
-				double productSubtotal = prod.getSubtotal(workval);
-				double productDiscounts = prod.getDiscounts(freeFlag, workval);
+				double productSubtotal = prod.getSubtotal();
+				double productDiscounts = prod.getDiscounts(freeFlag);
 				double productTaxes = invoice.getCustomerData().getTaxes(productSubtotal + productDiscounts);
 				double productTotal = productSubtotal + productDiscounts + productTaxes;
 				invoiceSubTotal += productSubtotal;
 				invoiceDiscounts += productDiscounts;
 				invoiceTaxes += productTaxes;
 				invoiceTotal += productTotal;
-			System.out.printf("  %-11s %-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n",prod.getProductCode(), description, prod.getSubtotal(workval),productDiscounts,productTaxes,productTotal);
+			System.out.printf("  %-12s%-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n",prod.getProductCode(), description, productSubtotal,productDiscounts,productTaxes,productTotal);
 			extraVal = prod.feePrint();
 			if(extraVal != null) {
 				System.out.printf("\t      %s\n",extraVal);
@@ -253,7 +238,7 @@ public class Invoice {
 			}
 			System.out.println("======================================================================================================================================");
 			System.out.printf("%-83s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n","ITEM TOTALS:",invoiceSubTotal, invoiceDiscounts, invoiceTaxes, invoiceTotal);
-			loyalDiscount = customer.getLoyalDiscount(invoiceSubTotal + invoiceTaxes);
+			loyalDiscount = customer.getLoyalDiscount(invoiceTotal);
 			if(loyalDiscount != 0 && customer.getCustomerType().contains("P")) {
 				System.out.printf("LOYAL CUSTOMER DISCOUT (5 OFF) %93s %9.2f \n", "$", loyalDiscount);
 			}else if(extraFee != 0 && customer.getCustomerType().contains("B")) {
@@ -263,7 +248,6 @@ public class Invoice {
 			System.out.printf("%-122s $ %9.2f \n","GRAND TOTAL:",grandTotal);
 			// Print closer
 			System.out.printf("\n\n\t\t THANK YOU FOR YOUR BUSINESS WITH US! \n\n\n\n");
-			freeFlag = 0;
 		}
 	}
 }

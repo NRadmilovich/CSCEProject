@@ -51,35 +51,33 @@
         "cleaningFee": 25.39,
         "productCode": "qwertyuiop",
         "productType": "R",
-        "productLabel": "2007 Ford Crown Victoria"
+        "productLabel": "2007 Ford Crown Victoria",
+        "workValue": 4.0
       },
       {
         "partsCost": 100.0,
         "hourlyLaborCost": 75.0,
         "productCode": "b4z1ng4",
         "productType": "F",
-        "productLabel": "Bumper Replacement"
+        "productLabel": "Bumper Replacement",
+        "workValue": 2.0
       },
       {
         "costPerMile": 4.0,
         "productCode": "ugis43",
         "productType": "T",
-        "productLabel": "Tow \u003e 10 miles"
+        "productLabel": "Tow \u003e 10 miles",
+        "workValue": 15.0
       },
       {
         "unitCost": 10.0,
         "associatedRepair": true,
         "productCode": "kvnjgbf5",
         "productType": "C",
-        "productLabel": "Large \"Homemade\" Raisin Cookie"
+        "productLabel": "Large \"Homemade\" Raisin Cookie",
+        "workValue": 3.0
       }
-    ],
-    "workValue": {
-      "qwertyuiop": 4.0,
-      "ugis43": 15.0,
-      "kvnjgbf5": 3.0,
-      "b4z1ng4": 2.0
-    }
+    ]
   },
   {
     "invoiceCode": "INV002",
@@ -132,27 +130,25 @@
         "hourlyLaborCost": 25.0,
         "productCode": "t0m03",
         "productType": "F",
-        "productLabel": "Full Wheel Replacement"
+        "productLabel": "Full Wheel Replacement",
+        "workValue": 1.0
       },
       {
         "unitCost": 4.75,
         "associatedRepair": false,
         "productCode": "k04l4",
         "productType": "C",
-        "productLabel": "12-oz Coffee"
+        "productLabel": "12-oz Coffee",
+        "workValue": 10.0
       },
       {
         "costPerMile": 6.0,
         "productCode": "sievub",
         "productType": "T",
-        "productLabel": "Tow \u003c 10 Miles"
+        "productLabel": "Tow \u003c 10 Miles",
+        "workValue": 6.0
       }
-    ],
-    "workValue": {
-      "sievub": 6.0,
-      "k04l4": 10.0,
-      "t0m03": 1.0
-    }
+    ]
   },
   {
     "invoiceCode": "INV003",
@@ -202,15 +198,13 @@
     "productList": [
       {
         "unitCost": 10.0,
-        "associatedRepair": true,
+        "associatedRepair": false,
         "productCode": "kvnjgbf5",
         "productType": "C",
-        "productLabel": "Large \"Homemade\" Raisin Cookie"
+        "productLabel": "Large \"Homemade\" Raisin Cookie",
+        "workValue": 12.0
       }
-    ],
-    "workValue": {
-      "kvnjgbf5": 12.0
-    }
+    ]
   },
   {
     "invoiceCode": "INV004",
@@ -265,19 +259,17 @@
         "cleaningFee": 50.0,
         "productCode": "yuasi",
         "productType": "R",
-        "productLabel": "Tesla Cybertruck"
+        "productLabel": "Tesla Cybertruck",
+        "workValue": 14.0
       },
       {
         "unitCost": 4.75,
         "associatedRepair": false,
         "productCode": "k04l4",
         "productType": "C",
-        "productLabel": "12-oz Coffee"
+        "productLabel": "12-oz Coffee",
+        "workValue": 20.0
       }
-    ],
-    "workValue": {
-      "yuasi": 14.0,
-      "k04l4": 20.0
-    }
+    ]
   }
 ]}
