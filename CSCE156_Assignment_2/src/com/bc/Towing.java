@@ -33,7 +33,7 @@ public class Towing extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue) {
+	public double getDiscounts(int freeFlag, Number workValue) {
 		if (freeFlag >= 3) {
 			return -getSubtotal(workValue);
 		} else {
@@ -41,7 +41,16 @@ public class Towing extends Products{
 		}
 	}
 	
-	
+	public String costPrint(Number val) {
+		String out = " ("+ val.floatValue() + " miles @ $" + this.getCostPerMile() + "/mile)";
+		return out;
+	}
+	public String feePrint() {
+		return null;
+	}
+	public void associatedRepairCheck(Products prod, String repairVal) {
+		
+	}	
 
 
 }

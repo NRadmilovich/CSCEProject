@@ -33,6 +33,7 @@ public class InvoiceReport {
 		ArrayList<Invoice> invoices = Invoice.importInvoice("Invoices.dat", personMap, customerMap, productMap);
 		// Prints Invoices
 		Invoice.printSummary(invoices);
+		System.out.printf("\n\n\n");
 		Invoice.printDetailed(invoices);
 	}
 

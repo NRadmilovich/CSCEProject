@@ -37,11 +37,12 @@
   <lastName>Dolan</lastName>
   <Address>
     <Street>23450 Cabo San Lucas</Street>
-    <City> Los Cabos</City>
-    <State> BCS</State>
+    <City>Los Cabos</City>
+    <State>BCS</State>
     <Zip></Zip>
-    <Country> Mexico</Country>
+    <Country>Mexico</Country>
   </Address>
+  <Email/>
 </person>
 <person>
   <personCode>j3bdl5</personCode>
@@ -100,6 +101,7 @@
     <Zip>10012</Zip>
     <Country>USA</Country>
   </Address>
+  <Email/>
 </person>
 <person>
   <personCode>SKVUZH</personCode>
@@ -107,7 +109,7 @@
   <lastName>Hicks</lastName>
   <Address>
     <Street>142 Drive</Street>
-    <City> Shanghai</City>
+    <City>Shanghai</City>
     <State></State>
     <Zip>200012</Zip>
     <Country>China</Country>
@@ -122,10 +124,10 @@
   <lastName>Battle</lastName>
   <Address>
     <Street>1 Blue Jays Way</Street>
-    <City> Toronto</City>
-    <State> ON</State>
-    <Zip> M5V 1J1</Zip>
-    <Country> Canada</Country>
+    <City>Toronto</City>
+    <State>ON</State>
+    <Zip>M5V 1J1</Zip>
+    <Country>Canada</Country>
   </Address>
   <Email>
     <string>danextpm@canada.gov</string>
@@ -137,10 +139,11 @@
   <lastName>Burns</lastName>
   <Address>
     <Street>1017 BlueJay Way</Street>
-    <City> London</City>
-    <State> DA</State>
-    <Zip> 070708</Zip>
-    <Country> England</Country>
+    <City>London</City>
+    <State>DA</State>
+    <Zip>070708</Zip>
+    <Country>England</Country>
   </Address>
+  <Email/>
 </person>
 </Person>

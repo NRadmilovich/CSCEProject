@@ -56,6 +56,9 @@ public class Address {
 	public static Address stringToAddress(String Address) {
 		Address out = new Address();
 		String[] Tokens = Address.split(",");
+		for(int i=0; i < Tokens.length; i++) {
+			Tokens[i] = Tokens[i].trim();
+		}
 		out.Street = Tokens[0];
 		out.City = Tokens[1];
 		out.State = Tokens[2];
@@ -64,6 +67,11 @@ public class Address {
 			out.Zip = Tokens[3];
 		}
 		return out;
+	}
+	@Override
+	public String toString() {
+		return Street + "\n\t" + City + ", " + State + ", " + Zip + ", "
+				+ Country;
 	}
 	
 	

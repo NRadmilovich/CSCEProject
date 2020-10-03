@@ -37,11 +37,12 @@
     "lastName": "Dolan",
     "Address": {
       "Street": "23450 Cabo San Lucas",
-      "City": " Los Cabos",
-      "State": " BCS",
+      "City": "Los Cabos",
+      "State": "BCS",
       "Zip": "",
-      "Country": " Mexico"
-    }
+      "Country": "Mexico"
+    },
+    "Email": []
   },
   {
     "personCode": "j3bdl5",
@@ -99,7 +100,8 @@
       "State": "NY",
       "Zip": "10012",
       "Country": "USA"
-    }
+    },
+    "Email": []
   },
   {
     "personCode": "SKVUZH",
@@ -107,7 +109,7 @@
     "lastName": "Hicks",
     "Address": {
       "Street": "142 Drive",
-      "City": " Shanghai",
+      "City": "Shanghai",
       "State": "",
       "Zip": "200012",
       "Country": "China"
@@ -122,10 +124,10 @@
     "lastName": "Battle",
     "Address": {
       "Street": "1 Blue Jays Way",
-      "City": " Toronto",
-      "State": " ON",
-      "Zip": " M5V 1J1",
-      "Country": " Canada"
+      "City": "Toronto",
+      "State": "ON",
+      "Zip": "M5V 1J1",
+      "Country": "Canada"
     },
     "Email": [
       "danextpm@canada.gov"
@@ -137,10 +139,11 @@
     "lastName": "Burns",
     "Address": {
       "Street": "1017 BlueJay Way",
-      "City": " London",
-      "State": " DA",
-      "Zip": " 070708",
-      "Country": " England"
-    }
+      "City": "London",
+      "State": "DA",
+      "Zip": "070708",
+      "Country": "England"
+    },
+    "Email": []
   }
 ]}

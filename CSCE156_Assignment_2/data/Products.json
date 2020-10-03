@@ -17,6 +17,7 @@
   },
   {
     "unitCost": 4.75,
+    "associatedRepair": false,
     "productCode": "k04l4",
     "productType": "C",
     "productLabel": "12-oz Coffee"
@@ -44,6 +45,7 @@
   },
   {
     "unitCost": 10.0,
+    "associatedRepair": true,
     "productCode": "kvnjgbf5",
     "productType": "C",
     "productLabel": "Large \"Homemade\" Raisin Cookie"

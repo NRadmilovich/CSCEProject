@@ -19,6 +19,9 @@ public abstract class Products {
 		this.productType = productType;
 		this.productLabel = productLabel;
 	}
+	public Products() {
+		super();
+	}
 
 	// Getters and Setters
 	public String getProductCode() {
@@ -100,8 +103,11 @@ public abstract class Products {
 	
 	// Product Calculations
 	public abstract double getSubtotal(Number workValue);
-	public abstract double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue);
+	public abstract double getDiscounts(int freeFlag, Number workValue);
 	public abstract double getTotal();
+	public abstract String costPrint(Number num);
+	public abstract String feePrint();
+	public abstract void associatedRepairCheck(Products repairCheck, String string);
 
 		
 	

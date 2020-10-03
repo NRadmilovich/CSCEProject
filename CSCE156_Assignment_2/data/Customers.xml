@@ -10,10 +10,10 @@
     <lastName>Battle</lastName>
     <Address>
       <Street>1 Blue Jays Way</Street>
-      <City> Toronto</City>
-      <State> ON</State>
-      <Zip> M5V 1J1</Zip>
-      <Country> Canada</Country>
+      <City>Toronto</City>
+      <State>ON</State>
+      <Zip>M5V 1J1</Zip>
+      <Country>Canada</Country>
     </Address>
     <Email>
       <string>danextpm@canada.gov</string>
@@ -37,16 +37,17 @@
     <lastName>Dolan</lastName>
     <Address>
       <Street>23450 Cabo San Lucas</Street>
-      <City> Los Cabos</City>
-      <State> BCS</State>
+      <City>Los Cabos</City>
+      <State>BCS</State>
       <Zip></Zip>
-      <Country> Mexico</Country>
+      <Country>Mexico</Country>
     </Address>
+    <Email/>
   </primaryContact>
   <address>
     <Street>123 Madison Avenue</Street>
-    <City> Bodega</City>
-    <State> NL</State>
+    <City>Bodega</City>
+    <State>NL</State>
     <Zip></Zip>
     <Country>CUBA</Country>
   </address>
@@ -73,8 +74,8 @@
   </primaryContact>
   <address>
     <Street>126-01 Roosevelt Ave</Street>
-    <City> Flushing</City>
-    <State> NY</State>
+    <City>Flushing</City>
+    <State>NY</State>
     <Zip>11368</Zip>
     <Country>USA</Country>
   </address>
@@ -127,8 +128,8 @@
   </primaryContact>
   <address>
     <Street>1 MetLife Stadium Dr</Street>
-    <City> East Rutherford</City>
-    <State> NJ</State>
+    <City>East Rutherford</City>
+    <State>NJ</State>
     <Zip>07073</Zip>
     <Country>USA</Country>
   </address>

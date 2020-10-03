@@ -105,8 +105,8 @@ public class Customer {
 		
 		if (this.customerType.equals("P")) {	
 			// Check if primary contact has more than 1 email
-			String[] emailCheck = this.primaryContact.getEmail();
-			if (emailCheck.length > 1) {
+			ArrayList<String> emailCheck = this.primaryContact.getEmail();
+			if (emailCheck.size() > 1) {
 				return (-.05 * totalAfterTax);
 			}		
 		}

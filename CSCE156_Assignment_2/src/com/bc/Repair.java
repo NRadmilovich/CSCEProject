@@ -12,6 +12,9 @@ public class Repair extends Products{
 		this.partsCost = partsCost;
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
+	public Repair() {
+		super();
+	}
 
 	// Getters and Setters
 	public Double getPartsCost() {
@@ -43,14 +46,18 @@ public class Repair extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue) {
+	public double getDiscounts(int freeFlag, Number workValue) {
 		return 0;
 	}
-	
-	
-	
-	
-
-	
-
+	public String costPrint(Number val) {	
+		String out = " ("+ val.floatValue() + " hours of labor @ $" + this.getHourlyLaborCost() + "/hour)";
+		return out;
+	}
+	public String feePrint() {
+		String fees = "(+ $" + this.getPartsCost() + " for parts)";
+		return fees;
+	}
+	public void associatedRepairCheck(Products prod,String repairVal) {
+		
+	}
 }

@@ -8,10 +8,10 @@
       "lastName": "Battle",
       "Address": {
         "Street": "1 Blue Jays Way",
-        "City": " Toronto",
-        "State": " ON",
-        "Zip": " M5V 1J1",
-        "Country": " Canada"
+        "City": "Toronto",
+        "State": "ON",
+        "Zip": "M5V 1J1",
+        "Country": "Canada"
       },
       "Email": [
         "danextpm@canada.gov"
@@ -27,10 +27,10 @@
         "lastName": "Battle",
         "Address": {
           "Street": "1 Blue Jays Way",
-          "City": " Toronto",
-          "State": " ON",
-          "Zip": " M5V 1J1",
-          "Country": " Canada"
+          "City": "Toronto",
+          "State": "ON",
+          "Zip": "M5V 1J1",
+          "Country": "Canada"
         },
         "Email": [
           "danextpm@canada.gov"
@@ -68,18 +68,18 @@
       },
       {
         "unitCost": 10.0,
+        "associatedRepair": true,
         "productCode": "kvnjgbf5",
         "productType": "C",
         "productLabel": "Large \"Homemade\" Raisin Cookie"
       }
     ],
     "workValue": {
-      "qwertyuiop": 4,
-      "ugis43": 15,
-      "kvnjgbf5": 3,
-      "b4z1ng4": 2
-    },
-    "associatedRepair": true
+      "qwertyuiop": 4.0,
+      "ugis43": 15.0,
+      "kvnjgbf5": 3.0,
+      "b4z1ng4": 2.0
+    }
   },
   {
     "invoiceCode": "INV002",
@@ -136,6 +136,7 @@
       },
       {
         "unitCost": 4.75,
+        "associatedRepair": false,
         "productCode": "k04l4",
         "productType": "C",
         "productLabel": "12-oz Coffee"
@@ -148,11 +149,10 @@
       }
     ],
     "workValue": {
-      "sievub": 6,
-      "k04l4": 10,
-      "t0m03": 1
-    },
-    "associatedRepair": false
+      "sievub": 6.0,
+      "k04l4": 10.0,
+      "t0m03": 1.0
+    }
   },
   {
     "invoiceCode": "INV003",
@@ -162,10 +162,10 @@
       "lastName": "Battle",
       "Address": {
         "Street": "1 Blue Jays Way",
-        "City": " Toronto",
-        "State": " ON",
-        "Zip": " M5V 1J1",
-        "Country": " Canada"
+        "City": "Toronto",
+        "State": "ON",
+        "Zip": "M5V 1J1",
+        "Country": "Canada"
       },
       "Email": [
         "danextpm@canada.gov"
@@ -202,15 +202,15 @@
     "productList": [
       {
         "unitCost": 10.0,
+        "associatedRepair": true,
         "productCode": "kvnjgbf5",
         "productType": "C",
         "productLabel": "Large \"Homemade\" Raisin Cookie"
       }
     ],
     "workValue": {
-      "kvnjgbf5": 12
-    },
-    "associatedRepair": false
+      "kvnjgbf5": 12.0
+    }
   },
   {
     "invoiceCode": "INV004",
@@ -252,8 +252,8 @@
       },
       "address": {
         "Street": "126-01 Roosevelt Ave",
-        "City": " Flushing",
-        "State": " NY",
+        "City": "Flushing",
+        "State": "NY",
         "Zip": "11368",
         "Country": "USA"
       }
@@ -269,15 +269,15 @@
       },
       {
         "unitCost": 4.75,
+        "associatedRepair": false,
         "productCode": "k04l4",
         "productType": "C",
         "productLabel": "12-oz Coffee"
       }
     ],
     "workValue": {
-      "yuasi": 14,
-      "k04l4": 20
-    },
-    "associatedRepair": false
+      "yuasi": 14.0,
+      "k04l4": 20.0
+    }
   }
 ]}

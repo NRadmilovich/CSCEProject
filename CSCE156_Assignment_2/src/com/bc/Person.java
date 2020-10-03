@@ -1,10 +1,13 @@
 package com.bc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.List;
 /**
  * 
  * @author nradm
@@ -16,7 +19,7 @@ public class Person  {
 	private String firstName;
 	private String lastName;
 	private Address Address;
-	private String[] Email;
+	private ArrayList<String> Email;
 	
 	// Getters/ Setters
 	public String getPersonCode() {
@@ -35,7 +38,7 @@ public class Person  {
 		return Address;
 	}
 
-	public String[] getEmail() {
+	public ArrayList<String> getEmail() {
 		return Email;
 	}
 	// One setter kept, in order to assign an empty person to the customer class.  This allows the customers person code
@@ -53,7 +56,7 @@ public class Person  {
 		
 	}
 	//Constructor
-	public Person(String personCode, String lastName,String firstName, Address address, String[] email) {
+	public Person(String personCode, String lastName,String firstName, Address address, ArrayList<String> email) {
 		super();
 		this.personCode = personCode;
 		this.Address = address;
@@ -68,9 +71,12 @@ public class Person  {
 		Person out = null;
 		//Breaks string apart into token.
 		String[] splitToken = input.split(";");
-		String[] emails = null;
+		String[] emailStrings = null;
+		ArrayList<String> emails = new ArrayList<String>();
 		if(splitToken.length > 3) {
-		emails = splitToken[3].split(",");
+			emailStrings = splitToken[3].split(",");
+			List<String> convert = Arrays.asList(emailStrings);
+			emails.addAll(convert);
 		}
 		String[] names = splitToken[1].split(",");
 		Address address = com.bc.Address.stringToAddress(splitToken[2]);

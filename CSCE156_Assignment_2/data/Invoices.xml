@@ -8,10 +8,10 @@
     <lastName>Battle</lastName>
     <Address>
       <Street>1 Blue Jays Way</Street>
-      <City> Toronto</City>
-      <State> ON</State>
-      <Zip> M5V 1J1</Zip>
-      <Country> Canada</Country>
+      <City>Toronto</City>
+      <State>ON</State>
+      <Zip>M5V 1J1</Zip>
+      <Country>Canada</Country>
     </Address>
     <Email>
       <string>danextpm@canada.gov</string>
@@ -57,27 +57,27 @@
       <productType>C</productType>
       <productLabel>Large &quot;Homemade&quot; Raisin Cookie</productLabel>
       <unitCost>10.0</unitCost>
+      <associatedRepair>true</associatedRepair>
     </com.bc.Concession>
   </productList>
   <workValue>
     <entry>
       <string>qwertyuiop</string>
-      <int>4</int>
+      <double>4.0</double>
     </entry>
     <entry>
       <string>ugis43</string>
-      <int>15</int>
+      <double>15.0</double>
     </entry>
     <entry>
       <string>kvnjgbf5</string>
-      <int>3</int>
+      <double>3.0</double>
     </entry>
     <entry>
       <string>b4z1ng4</string>
-      <int>2</int>
+      <double>2.0</double>
     </entry>
   </workValue>
-  <associatedRepair>true</associatedRepair>
 </invoice>
 <invoice>
   <invoiceCode>INV002</invoiceCode>
@@ -137,6 +137,7 @@
       <productType>C</productType>
       <productLabel>12-oz Coffee</productLabel>
       <unitCost>4.75</unitCost>
+      <associatedRepair>false</associatedRepair>
     </com.bc.Concession>
     <com.bc.Towing>
       <productCode>sievub</productCode>
@@ -148,18 +149,17 @@
   <workValue>
     <entry>
       <string>sievub</string>
-      <int>6</int>
+      <double>6.0</double>
     </entry>
     <entry>
       <string>k04l4</string>
-      <int>10</int>
+      <double>10.0</double>
     </entry>
     <entry>
       <string>t0m03</string>
-      <int>1</int>
+      <double>1.0</double>
     </entry>
   </workValue>
-  <associatedRepair>false</associatedRepair>
 </invoice>
 <invoice>
   <invoiceCode>INV003</invoiceCode>
@@ -169,10 +169,10 @@
     <lastName>Battle</lastName>
     <Address>
       <Street>1 Blue Jays Way</Street>
-      <City> Toronto</City>
-      <State> ON</State>
-      <Zip> M5V 1J1</Zip>
-      <Country> Canada</Country>
+      <City>Toronto</City>
+      <State>ON</State>
+      <Zip>M5V 1J1</Zip>
+      <Country>Canada</Country>
     </Address>
     <Email>
       <string>danextpm@canada.gov</string>
@@ -212,15 +212,15 @@
       <productType>C</productType>
       <productLabel>Large &quot;Homemade&quot; Raisin Cookie</productLabel>
       <unitCost>10.0</unitCost>
+      <associatedRepair>true</associatedRepair>
     </com.bc.Concession>
   </productList>
   <workValue>
     <entry>
       <string>kvnjgbf5</string>
-      <int>12</int>
+      <double>12.0</double>
     </entry>
   </workValue>
-  <associatedRepair>false</associatedRepair>
 </invoice>
 <invoice>
   <invoiceCode>INV004</invoiceCode>
@@ -262,8 +262,8 @@
     </primaryContact>
     <address>
       <Street>126-01 Roosevelt Ave</Street>
-      <City> Flushing</City>
-      <State> NY</State>
+      <City>Flushing</City>
+      <State>NY</State>
       <Zip>11368</Zip>
       <Country>USA</Country>
     </address>
@@ -282,18 +282,18 @@
       <productType>C</productType>
       <productLabel>12-oz Coffee</productLabel>
       <unitCost>4.75</unitCost>
+      <associatedRepair>false</associatedRepair>
     </com.bc.Concession>
   </productList>
   <workValue>
     <entry>
       <string>yuasi</string>
-      <int>14</int>
+      <double>14.0</double>
     </entry>
     <entry>
       <string>k04l4</string>
-      <int>20</int>
+      <double>20.0</double>
     </entry>
   </workValue>
-  <associatedRepair>false</associatedRepair>
 </invoice>
 </Invoice>

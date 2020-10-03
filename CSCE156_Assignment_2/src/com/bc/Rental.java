@@ -55,14 +55,18 @@ public class Rental extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Boolean associatedRepair, Number workValue) {
+	public double getDiscounts(int freeFlag, Number workValue) {
 		return 0;
 	}
-	
-	
-	
-	
-	
-	
-
+	public String costPrint(Number val) {
+		String out = " ("+ val.floatValue() + " days @ $" + this.getDailyCost() + "/day)";
+		return out;
+	}
+	public String feePrint() {
+		String fees = "(+ $" + this.cleaningFee + " cleaning fee, -$" + this.getDeposit() + " deposit refund)";
+		return fees;
+	}
+	public void associatedRepairCheck(Products prod,String repairVal) {
+		
+	}
 }

@@ -10,10 +10,10 @@
       "lastName": "Battle",
       "Address": {
         "Street": "1 Blue Jays Way",
-        "City": " Toronto",
-        "State": " ON",
-        "Zip": " M5V 1J1",
-        "Country": " Canada"
+        "City": "Toronto",
+        "State": "ON",
+        "Zip": "M5V 1J1",
+        "Country": "Canada"
       },
       "Email": [
         "danextpm@canada.gov"
@@ -37,16 +37,17 @@
       "lastName": "Dolan",
       "Address": {
         "Street": "23450 Cabo San Lucas",
-        "City": " Los Cabos",
-        "State": " BCS",
+        "City": "Los Cabos",
+        "State": "BCS",
         "Zip": "",
-        "Country": " Mexico"
-      }
+        "Country": "Mexico"
+      },
+      "Email": []
     },
     "address": {
       "Street": "123 Madison Avenue",
-      "City": " Bodega",
-      "State": " NL",
+      "City": "Bodega",
+      "State": "NL",
       "Zip": "",
       "Country": "CUBA"
     }
@@ -73,8 +74,8 @@
     },
     "address": {
       "Street": "126-01 Roosevelt Ave",
-      "City": " Flushing",
-      "State": " NY",
+      "City": "Flushing",
+      "State": "NY",
       "Zip": "11368",
       "Country": "USA"
     }
@@ -127,8 +128,8 @@
     },
     "address": {
       "Street": "1 MetLife Stadium Dr",
-      "City": " East Rutherford",
-      "State": " NJ",
+      "City": "East Rutherford",
+      "State": "NJ",
       "Zip": "07073",
       "Country": "USA"
     }

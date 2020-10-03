@@ -20,6 +20,7 @@
   <productType>C</productType>
   <productLabel>12-oz Coffee</productLabel>
   <unitCost>4.75</unitCost>
+  <associatedRepair>false</associatedRepair>
 </com.bc.Concession>
 <com.bc.Towing>
   <productCode>sievub</productCode>
@@ -47,6 +48,7 @@
   <productType>C</productType>
   <productLabel>Large &quot;Homemade&quot; Raisin Cookie</productLabel>
   <unitCost>10.0</unitCost>
+  <associatedRepair>true</associatedRepair>
 </com.bc.Concession>
 <com.bc.Towing>
   <productCode>ugis43</productCode>
