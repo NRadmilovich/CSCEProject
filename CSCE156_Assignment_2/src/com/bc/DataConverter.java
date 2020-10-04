@@ -32,6 +32,9 @@ public class DataConverter {
 		JsonWrite.printJSON("data/Persons.json", people, "Person");
 		JsonWrite.printJSON("data/Customers.json", customers, "Customer");
 		JsonWrite.printJSON("data/Invoices.json", invoices, "Invoice");
+		//Print invoices
+		Invoice.printSummary(invoices);
+		Invoice.printDetailed(invoices);
 	}
 
 }

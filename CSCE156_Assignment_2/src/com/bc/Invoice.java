@@ -83,13 +83,18 @@ public class Invoice {
 			HashMap<String, Number> workValues = new HashMap<String, Number>();
 			ArrayList<Products> productList = new ArrayList<Products>();
 			String[] splitProducts = splitToken[3].split(",");
+			
+			// Lets talk through this process
+			// Why a space?
 			String repairVal = " ";
 			repairCheck = new Repair();
 			for (String prod : splitProducts) {
 				String[] values = prod.split(":");
+				
 				if(productMap.get(values[0]) instanceof Repair) {
 					repairCheck = productMap.get(values[0]);
 				}
+				
 				productList.add(productMap.get(values[0]));
 				workValues.put(values[0], Double.parseDouble(values[1]));
 				if (values.length > 2) {
@@ -116,21 +121,15 @@ public class Invoice {
 		System.out.println(
 				"----------------------------------------------------------------------------------------------------------------------------");
 
-		double totalInvoiceSubtotal = 0;
-		double totalInvoiceDiscounts = 0;
-		double totalInvoiceFees = 0;
-		double totalInvoiceTaxes = 0;
-		double totalInvoiceTotal = 0;
+		double totalInvoiceSubtotal = 0;double totalInvoiceDiscounts = 0;double totalInvoiceFees = 0;
+		double totalInvoiceTaxes = 0;double totalInvoiceTotal = 0;
 
 		// Loop through collection of invoices
 		for (Invoice invoice : invoiceList) {
 
 			HashMap<String, Number> workValueMap = invoice.getWorkValue();
-			double invoiceSubtotal = 0;
-			double invoiceDiscounts = 0;
-			double invoiceFees = 0;
-			double invoiceTaxes = 0;
-			double invoiceTotal = 0;
+			double invoiceSubtotal = 0;double invoiceDiscounts = 0;double invoiceFees = 0;
+			double invoiceTaxes = 0;double invoiceTotal = 0;
 			int freeFlag = 0;
 
 			// Checking if Towing is free
@@ -155,9 +154,6 @@ public class Invoice {
 				invoiceDiscounts += productDiscounts;
 				invoiceTaxes += productTaxes;
 
-				// Can use this line for Detailed
-				// System.out.printf("%n%.2f %.2f %.2f%n", productSubtotal, productDiscounts,
-				// productTaxes);
 			}
 
 			// Apply entire invoice fees and discounts
@@ -245,25 +241,31 @@ public class Invoice {
 				invoiceDiscounts += productDiscounts;
 				invoiceTaxes += productTaxes;
 				invoiceTotal += productTotal;
-			System.out.printf("  %-11s %-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n",prod.getProductCode(), description, prod.getSubtotal(workval),productDiscounts,productTaxes,productTotal);
+				
+			System.out.printf("  %-11s %-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n"
+					,prod.getProductCode(), description, prod.getSubtotal(workval),productDiscounts,productTaxes,productTotal);
 			extraVal = prod.feePrint();
 			if(extraVal != null) {
 				System.out.printf("\t      %s\n",extraVal);
 			}
 			}
 			System.out.println("======================================================================================================================================");
-			System.out.printf("%-83s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n","ITEM TOTALS:",invoiceSubTotal, invoiceDiscounts, invoiceTaxes, invoiceTotal);
-			loyalDiscount = customer.getLoyalDiscount(invoiceSubTotal + invoiceTaxes);
+			System.out.printf("%-83s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n","ITEM TOTALS:"
+					,invoiceSubTotal, invoiceDiscounts, invoiceTaxes, invoiceTotal);
+			
+			loyalDiscount = customer.getLoyalDiscount(invoiceSubTotal + invoiceTaxes);		
 			if(loyalDiscount != 0 && customer.getCustomerType().contains("P")) {
 				System.out.printf("LOYAL CUSTOMER DISCOUT (5 OFF) %93s %9.2f \n", "$", loyalDiscount);
 			}else if(extraFee != 0 && customer.getCustomerType().contains("B")) {
 				System.out.printf("BUSINESS ACCOUNT FEE: %102s %9.2f\n", "$",extraFee);
 			}
+			
 			double grandTotal = invoiceTotal + loyalDiscount + extraFee;
 			System.out.printf("%-122s $ %9.2f \n","GRAND TOTAL:",grandTotal);
 			// Print closer
 			System.out.printf("\n\n\t\t THANK YOU FOR YOUR BUSINESS WITH US! \n\n\n\n");
 			freeFlag = 0;
+			
 		}
 	}
 }
