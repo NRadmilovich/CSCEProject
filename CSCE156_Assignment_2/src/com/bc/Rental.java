@@ -1,5 +1,7 @@
 package com.bc;
 
+import java.util.ArrayList;
+
 public class Rental extends Products{
 
 	private Double dailyCost;
@@ -7,14 +9,24 @@ public class Rental extends Products{
 	private Double cleaningFee;
 	
 	// Constructor
-	public Rental(String productCode, String productType, String productLabel, Double dailyCost, Double deposit,
+	public Rental(String productCode, String productType, String productLabel, double workVal, Double dailyCost, Double deposit,
 			Double cleaningFee) {
-		super(productCode, productType, productLabel);
+		super(productCode, productType, productLabel, workVal);
 		this.dailyCost = dailyCost;
 		this.deposit = deposit;
 		this.cleaningFee = cleaningFee;
 	}
-
+	// Copy Constructor
+	public Rental(Rental old, double workVal) {
+		super();
+		this.productCode = old.getProductCode();
+		this.productType = old.getProductType();
+		this.productLabel = old.productLabel;
+		this.workValue = workVal;
+		this.dailyCost = old.getDailyCost();
+		this.deposit = old.getDeposit();
+		this.cleaningFee = old.getCleaningFee();
+	}
 	// Getters and Setters
 	public Double getDailyCost() {
 		return dailyCost;
@@ -42,9 +54,9 @@ public class Rental extends Products{
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(Number daysRented) {
+	public double getSubtotal() {
 		// System.out.printf("%nWorkValue:%.2f DailyCost: %.2f%n", daysRented.doubleValue(), this.dailyCost);
-		return (this.dailyCost * daysRented.doubleValue()) - this.deposit + this.cleaningFee;
+		return (this.dailyCost * this.workValue) - this.deposit + this.cleaningFee;
 
 	}
 
@@ -55,18 +67,18 @@ public class Rental extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Number workValue) {
+	public double getDiscounts(int freeFlag) {
 		return 0;
 	}
-	public String costPrint(Number val) {
-		String out = " ("+ val.floatValue() + " days @ $" + this.getDailyCost() + "/day)";
+	public String costPrint() {
+		String out = " ("+ this.workValue + " days @ $" + this.getDailyCost() + "/day)";
 		return out;
 	}
 	public String feePrint() {
 		String fees = "(+ $" + this.cleaningFee + " cleaning fee, -$" + this.getDeposit() + " deposit refund)";
 		return fees;
 	}
-	public void associatedRepairCheck(Products prod,String repairVal) {
+	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
 		
 	}
 }

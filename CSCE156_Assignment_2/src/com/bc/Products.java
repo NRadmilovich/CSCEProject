@@ -11,13 +11,16 @@ public abstract class Products {
 	protected String productCode;
 	protected String productType;
 	protected String productLabel;
+	protected double workValue;
 	
 	// Constructor
-	public Products(String productCode, String productType, String productLabel) {
+	public Products(String productCode, String productType, String productLabel, double workValue) {
 		super();
 		this.productCode = productCode;
 		this.productType = productType;
 		this.productLabel = productLabel;
+		this.workValue = workValue;
+		
 	}
 	public Products() {
 		super();
@@ -44,8 +47,8 @@ public abstract class Products {
 		return productLabel;
 	}
 
-	public void setProductLabel(String productLabel) {
-		this.productLabel = productLabel;
+	public double getWorkValue() {
+		return workValue;
 	}
 	
 	// Added a hashmap conversion for invoices.
@@ -71,22 +74,22 @@ public abstract class Products {
 			
 			if (tokens[1].compareTo("R") == 0) {
 				Rental r = null;
-				r = new Rental(tokens[0], tokens[1], tokens[2], Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]), Double.parseDouble(tokens[5]));		
+				r = new Rental(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]), Double.parseDouble(tokens[5]));		
 				products.add(r);
 				
 			} else if (tokens[1].compareTo("F") == 0) {
 				Repair f = null;
-				f = new Repair(tokens[0], tokens[1], tokens[2], Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]));		
+				f = new Repair(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]));		
 				products.add(f);
 				
 			} else if (tokens[1].compareTo("C") == 0) {
 				Concession c = null;
-				c = new Concession(tokens[0], tokens[1], tokens[2], Double.parseDouble(tokens[3]));		
+				c = new Concession(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]));		
 				products.add(c);
 				
 			} else if (tokens[1].compareTo("T") == 0) {
 				Towing t = null;
-				t = new Towing(tokens[0], tokens[1], tokens[2], Double.parseDouble(tokens[3]));		
+				t = new Towing(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]));		
 				products.add(t);
 				
 			}
@@ -102,17 +105,29 @@ public abstract class Products {
 	}
 	
 	// Product Calculations
-	public abstract double getSubtotal(Number workValue);
-	public abstract double getDiscounts(int freeFlag, Number workValue);
+	public abstract double getSubtotal();
+	public abstract double getDiscounts(int freeFlag);
 	public abstract double getTotal();
-	public abstract String costPrint(Number num);
+	public abstract String costPrint();
 	public abstract String feePrint();
-	public abstract void associatedRepairCheck(Products repairCheck, String string);
-
+	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
 		
+	}
 	
-	
-	
-	
-	
-}
+	public static Products deepCopy(Products oldProd, double workVal) {
+		Products newProd = null;
+		if(oldProd instanceof Rental) {
+			Rental old = (Rental) oldProd;
+			newProd = new Rental(old, workVal);
+		}else if(oldProd instanceof Towing) {
+			Towing old = (Towing) oldProd;
+			newProd = new Towing(old, workVal);
+		}else if(oldProd instanceof Repair) {
+			Repair old = (Repair) oldProd;
+			newProd = new Repair(old,workVal);
+		}else {
+			Concession old = (Concession) oldProd;
+			newProd = new Concession(old,workVal);
+		}return newProd;
+	}
+	}

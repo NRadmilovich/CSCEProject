@@ -1,19 +1,31 @@
 package com.bc;
 
+import java.util.ArrayList;
+
 public class Repair extends Products{
 	
 	private Double partsCost;
 	private Double hourlyLaborCost;
 	
 	// Constructor
-	public Repair(String productCode, String productType, String productLabel, Double partsCost,
+	public Repair(String productCode, String productType, String productLabel, double workVal,Double partsCost,
 			Double hourlyLaborCost) {
-		super(productCode, productType, productLabel);
+		super(productCode, productType, productLabel, workVal);
 		this.partsCost = partsCost;
 		this.hourlyLaborCost = hourlyLaborCost;
 	}
 	public Repair() {
 		super();
+	}
+	// Copy Constructor
+	public Repair(Repair old, double workVal) {
+		super();
+		this.productCode = old.getProductCode();
+		this.productType = old.getProductType();
+		this.productLabel = old.productLabel;
+		this.workValue = workVal;
+		this.partsCost = old.partsCost;
+		this.hourlyLaborCost = old.hourlyLaborCost;
 	}
 
 	// Getters and Setters
@@ -35,8 +47,8 @@ public class Repair extends Products{
 
 	// Price Calculations
 	@Override
-	public double getSubtotal(Number hoursWorked) {
-		return this.partsCost + (this.hourlyLaborCost * hoursWorked.doubleValue());
+	public double getSubtotal() {
+		return this.partsCost + (this.hourlyLaborCost * this.workValue);
 	}
 
 	@Override
@@ -46,18 +58,18 @@ public class Repair extends Products{
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Number workValue) {
+	public double getDiscounts(int freeFlag) {
 		return 0;
 	}
-	public String costPrint(Number val) {	
-		String out = " ("+ val.floatValue() + " hours of labor @ $" + this.getHourlyLaborCost() + "/hour)";
+	public String costPrint() {	
+		String out = " ("+ this.workValue + " hours of labor @ $" + this.getHourlyLaborCost() + "/hour)";
 		return out;
 	}
 	public String feePrint() {
 		String fees = "(+ $" + this.getPartsCost() + " for parts)";
 		return fees;
 	}
-	public void associatedRepairCheck(Products prod,String repairVal) {
+	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
 		
 	}
 }

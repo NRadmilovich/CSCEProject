@@ -7,24 +7,30 @@ public class Concession extends Products {
 	private Boolean associatedRepair;
 
 	// Constructor
-	public Concession(String productCode, String productType, String productLabel, Double unitCost) {
-		super(productCode, productType, productLabel);
-		this.setUnitCost(unitCost);
+	public Concession(String productCode, String productType, String productLabel, Double workVal, Double unitCost) {
+		super(productCode, productType, productLabel, workVal);
+		this.unitCost = unitCost;
 		this.associatedRepair = false;
+	}
+	// Copy Constructor
+	public Concession(Concession old, double workVal) {
+		super();
+		this.productCode = old.getProductCode();
+		this.productType = old.getProductType();
+		this.productLabel = old.productLabel;
+		this.workValue = workVal;
+		this.unitCost = old.unitCost;
+		this.associatedRepair = old.associatedRepair;
 	}
 	// Getters and Setters
 	public Double getUnitCost() {
 		return unitCost;
 	}
 
-	public void setUnitCost(Double unitCost) {
-		this.unitCost = unitCost;
-	}
-
 	// Price Calculations
 	@Override
-	public double getSubtotal(Number unitQuantity) {
-		return this.unitCost * unitQuantity.doubleValue();
+	public double getSubtotal() {
+		return this.unitCost * this.workValue;
 	}
 
 	@Override
@@ -33,25 +39,29 @@ public class Concession extends Products {
 	}
 
 	@Override
-	public double getDiscounts(int freeFlag, Number workValue) {
+	public double getDiscounts(int freeFlag) {
 		// Check if a concession has an associated repair
 		if (this.associatedRepair) {
-			return -.1 * getSubtotal(workValue);
+			return -.1 * this.getSubtotal();
 		}
 		return 0;
 	}
-	public String costPrint(Number val) {
-		String out = " ("+ val.intValue() + " units @ $" + this.getUnitCost() + "/unit)";
+	public String costPrint() {
+		String out = " ("+ this.workValue + " units @ $" + this.getUnitCost() + "/unit)";
 		return out;
 	}
 	public String feePrint() {
 		return null;
 	}
-	public void associatedRepairCheck(Products repair, String repairVal) {
-			if(repair.getProductCode().contentEquals(repairVal)) {
-				this.associatedRepair = true;
-			}else {
-				this.associatedRepair = false;
-			}
+	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
+		for(Products prod: potentials) {
+			if(prod instanceof Concession) {
+				Concession test = (Concession) prod;
+				for(Products prodList: products) {
+					if(prodList.getProductCode().contentEquals(repairVal) && prodList instanceof Repair) {
+						test.associatedRepair = true;
+				}
+			}}
+		}
 		}
 	}
