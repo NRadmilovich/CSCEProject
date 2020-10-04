@@ -198,13 +198,9 @@ public class Invoice {
 			System.out.println("  ------------------------------------------------------------------------------------------------------------------------------------");
 			ArrayList<? extends Products> productList = invoice.getProductList();
 			int freeFlag = 0;
-			for(Products prod: productList) {
-				// Computes product calculations and creates strings for printing.
-				String extraVal = null;
-
-				String description = prod.getProductLabel() + prod.costPrint();
-				
-				// Counts freeflag for calculations
+			
+			// Counts freeflag for calculations
+			for (Products prod : productList) {
 				if (prod instanceof Rental) {
 					freeFlag += 1;
 				} else if (prod instanceof Repair) {
@@ -212,6 +208,12 @@ public class Invoice {
 				} else if (prod instanceof Towing) {
 					freeFlag += 1;
 				}
+			}
+			for(Products prod: productList) {
+				// Computes product calculations and creates strings for printing.
+				String extraVal = null;
+
+				String description = prod.getProductLabel() + prod.costPrint();
 				
 				// Cost Calculations
 				double productSubtotal = prod.getSubtotal();
