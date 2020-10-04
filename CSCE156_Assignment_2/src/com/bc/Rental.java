@@ -1,7 +1,15 @@
 package com.bc;
 
 import java.util.ArrayList;
-
+/**
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Rental class is a subclass of Products, and stores rental data for BumprCars.
+ */
 public class Rental extends Products{
 
 	private Double dailyCost;
@@ -69,11 +77,13 @@ public class Rental extends Products{
 	@Override
 	public double getDiscounts(int freeFlag) {
 		return 0;
-	}
+	}	
+	// Makes a string, with cost info, for the detailed print.
 	public String costPrint() {
 		String out = " ("+ this.workValue + " days @ $" + this.getDailyCost() + "/day)";
 		return out;
 	}
+	// Makes a string, with fee info, for the detailed print.
 	public String feePrint() {
 		String fees = "(+ $" + this.cleaningFee + " cleaning fee, -$" + this.getDeposit() + " deposit refund)";
 		return fees;

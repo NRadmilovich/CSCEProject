@@ -1,5 +1,13 @@
 package com.bc;
-
+/**
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: This class takes in an ArrayList and a class name, and writes them into a json file.
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

@@ -1,164 +1,47 @@
 <?xml version="1.0"?>
 <Customer>
 <customer>
-  <customerCode>lsvntk</customerCode>
+  <customerCode>lkjjdbbn</customerCode>
   <customerType>B</customerType>
-  <name>State of Nebraska</name>
+  <name>Dark Side of the Moon</name>
   <primaryContact>
-    <personCode>123a</personCode>
-    <firstName> Petra</firstName>
-    <lastName>Battle</lastName>
-    <Address>
-      <Street>1 Blue Jays Way</Street>
-      <City>Toronto</City>
-      <State>ON</State>
-      <Zip>M5V 1J1</Zip>
-      <Country>Canada</Country>
-    </Address>
-    <Email>
-      <string>danextpm@canada.gov</string>
-    </Email>
+    <personCode>klakk</personCode>
   </primaryContact>
   <address>
-    <Street>100 W Fake Street</Street>
-    <City>Albaquerque</City>
-    <State>NM</State>
-    <Zip>80706</Zip>
+    <Street>690 N Shady St</Street>
+    <City>Moon</City>
+    <State>EA</State>
+    <Zip>80902</Zip>
     <Country>USA</Country>
   </address>
 </customer>
 <customer>
-  <customerCode>dvkh</customerCode>
+  <customerCode>uebgmk</customerCode>
   <customerType>P</customerType>
-  <name>Wacky Wally&apos;s Used Cars</name>
+  <name>Big Al</name>
   <primaryContact>
     <personCode>zyx321</personCode>
-    <firstName> Ayaana</firstName>
-    <lastName>Dolan</lastName>
-    <Address>
-      <Street>23450 Cabo San Lucas</Street>
-      <City>Los Cabos</City>
-      <State>BCS</State>
-      <Zip></Zip>
-      <Country>Mexico</Country>
-    </Address>
-    <Email/>
   </primaryContact>
   <address>
-    <Street>123 Madison Avenue</Street>
-    <City>Bodega</City>
-    <State>NL</State>
-    <Zip></Zip>
-    <Country>CUBA</Country>
+    <Street>123 1st st</Street>
+    <City>South Park</City>
+    <State>CO</State>
+    <Zip>68918</Zip>
+    <Country>USA</Country>
   </address>
 </customer>
 <customer>
-  <customerCode>l0000000000ngc0d3</customerCode>
+  <customerCode>99999ndkf90</customerCode>
   <customerType>B</customerType>
-  <name>Demolition Derby</name>
+  <name>Tesla</name>
   <primaryContact>
     <personCode>lejnr4</personCode>
-    <firstName> Kenan</firstName>
-    <lastName>Spooner</lastName>
-    <Address>
-      <Street>123 N 1st Street</Street>
-      <City>Compton</City>
-      <State>CA</State>
-      <Zip>90210</Zip>
-      <Country>USA</Country>
-    </Address>
-    <Email>
-      <string>kspoons@emailservice.domain</string>
-      <string>thespoonman@soundgarden.com</string>
-    </Email>
   </primaryContact>
   <address>
-    <Street>126-01 Roosevelt Ave</Street>
-    <City>Flushing</City>
-    <State>NY</State>
-    <Zip>11368</Zip>
-    <Country>USA</Country>
-  </address>
-</customer>
-<customer>
-  <customerCode>asdf419</customerCode>
-  <customerType>P</customerType>
-  <name>Fenton Industries</name>
-  <primaryContact>
-    <personCode>biz45</personCode>
-    <firstName> Fenton</firstName>
-    <lastName>Hart</lastName>
-    <Address>
-      <Street>1 Wall Street</Street>
-      <City>New York</City>
-      <State>NY</State>
-      <Zip>10005-0012</Zip>
-      <Country>USA</Country>
-    </Address>
-    <Email>
-      <string>fentony@windstream.net</string>
-    </Email>
-  </primaryContact>
-  <address>
-    <Street>1060 West Addison Street</Street>
-    <City>Chicago</City>
-    <State>IL</State>
-    <Zip>60613</Zip>
-    <Country>USA</Country>
-  </address>
-</customer>
-<customer>
-  <customerCode>421asdf</customerCode>
-  <customerType>B</customerType>
-  <name>Foundation for the Arts</name>
-  <primaryContact>
-    <personCode>biz45</personCode>
-    <firstName> Fenton</firstName>
-    <lastName>Hart</lastName>
-    <Address>
-      <Street>1 Wall Street</Street>
-      <City>New York</City>
-      <State>NY</State>
-      <Zip>10005-0012</Zip>
-      <Country>USA</Country>
-    </Address>
-    <Email>
-      <string>fentony@windstream.net</string>
-    </Email>
-  </primaryContact>
-  <address>
-    <Street>1 MetLife Stadium Dr</Street>
-    <City>East Rutherford</City>
-    <State>NJ</State>
-    <Zip>07073</Zip>
-    <Country>USA</Country>
-  </address>
-</customer>
-<customer>
-  <customerCode>avnkbkjds</customerCode>
-  <customerType>P</customerType>
-  <name>Juno Stephenson</name>
-  <primaryContact>
-    <personCode>lejnr4</personCode>
-    <firstName> Kenan</firstName>
-    <lastName>Spooner</lastName>
-    <Address>
-      <Street>123 N 1st Street</Street>
-      <City>Compton</City>
-      <State>CA</State>
-      <Zip>90210</Zip>
-      <Country>USA</Country>
-    </Address>
-    <Email>
-      <string>kspoons@emailservice.domain</string>
-      <string>thespoonman@soundgarden.com</string>
-    </Email>
-  </primaryContact>
-  <address>
-    <Street>123 N 1st Street</Street>
-    <City>Compton</City>
+    <Street></Street>
+    <City>Silicon</City>
     <State>CA</State>
-    <Zip>90210</Zip>
+    <Zip>11366</Zip>
     <Country>USA</Country>
   </address>
 </customer>

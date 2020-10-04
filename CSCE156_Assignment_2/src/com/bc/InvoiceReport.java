@@ -3,8 +3,6 @@ package com.bc;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Assignment 3
- * 
  * CSCE 156
  * 
  * Authors:

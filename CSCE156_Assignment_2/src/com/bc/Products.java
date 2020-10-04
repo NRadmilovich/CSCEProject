@@ -5,7 +5,16 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
+/**
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Products class is a superclass to Rental, Repair, Towing, and Concessions.  It is used by the invoice class
+ * to store information about the products offered by BumprCars.
+ */
 public abstract class Products {
 	
 	protected String productCode;
@@ -31,17 +40,10 @@ public abstract class Products {
 		return productCode;
 	}
 
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
-	}
-
 	public String getProductType() {
 		return productType;
 	}
 
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
 
 	public String getProductLabel() {
 		return productLabel;
@@ -59,6 +61,7 @@ public abstract class Products {
 		}
 		return map;
 	}
+	// Creates an arraylist of Products based on input file.
 	public static ArrayList<Products> importProducts(String filename){
 	ArrayList<Products> products  = new ArrayList<Products>();
 	
@@ -104,16 +107,7 @@ public abstract class Products {
 	return products;
 	}
 	
-	// Product Calculations
-	public abstract double getSubtotal();
-	public abstract double getDiscounts(int freeFlag);
-	public abstract double getTotal();
-	public abstract String costPrint();
-	public abstract String feePrint();
-	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
-		
-	}
-	
+	// Creates a deep copy of a Products, based on the input type
 	public static Products deepCopy(Products oldProd, double workVal) {
 		Products newProd = null;
 		if(oldProd instanceof Rental) {
@@ -130,4 +124,16 @@ public abstract class Products {
 			newProd = new Concession(old,workVal);
 		}return newProd;
 	}
+	
+	// Product Calculations
+	public abstract double getSubtotal();
+	public abstract double getDiscounts(int freeFlag);
+	public abstract double getTotal();
+	public abstract String costPrint();
+	public abstract String feePrint();
+	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
+		
+	}
+	
+
 	}

@@ -1,7 +1,15 @@
 package com.bc;
 
 import java.util.ArrayList;
-
+/**
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Towing class is a subclass of Products, and stores towing information for BumprCars.
+ */
 public class Towing extends Products{
 
 	private Double costPerMile;
@@ -50,7 +58,7 @@ public class Towing extends Products{
 			return 0;
 		}
 	}
-	
+	// Makes a string, with cost info, for the detailed print.
 	public String costPrint() {
 		String out = " ("+ this.workValue + " miles @ $" + this.getCostPerMile() + "/mile)";
 		return out;

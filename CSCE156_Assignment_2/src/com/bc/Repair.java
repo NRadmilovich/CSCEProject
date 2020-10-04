@@ -1,7 +1,15 @@
 package com.bc;
 
 import java.util.ArrayList;
-
+/**
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Repair class is a subclass of Products, and stores repair data for BumprCars.
+ */
 public class Repair extends Products{
 	
 	private Double partsCost;
@@ -61,10 +69,12 @@ public class Repair extends Products{
 	public double getDiscounts(int freeFlag) {
 		return 0;
 	}
+	// Makes a string, with cost info, for the detailed print.
 	public String costPrint() {	
 		String out = " ("+ this.workValue + " hours of labor @ $" + this.getHourlyLaborCost() + "/hour)";
 		return out;
 	}
+	// Makes a string, with fee info, for the detailed print.
 	public String feePrint() {
 		String fees = "(+ $" + this.getPartsCost() + " for parts)";
 		return fees;

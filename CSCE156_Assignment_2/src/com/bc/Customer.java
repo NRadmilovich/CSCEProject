@@ -1,8 +1,13 @@
 package com.bc;
 
 /**
- * @author nradm
+ * CSCE 156
  * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Customer class stores data about BumprCars customers.  It uses the Person class and Address class to accomplish this.
  */
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -17,7 +22,7 @@ public class Customer {
 	private Person primaryContact;
 	private Address address;
 
-	// Getters and setters for Customer class.
+	// Getters for Customer class.
 	public String getCustomerCode() {
 		return customerCode;
 	}
@@ -91,6 +96,7 @@ public class Customer {
 		}
 		return map;
 	}
+	// Takes a string and breaks it into a customer.
 	public static Customer stringToCustomer(String input) {
 		Customer out = null;
 		//Breaks string apart into token.
@@ -106,7 +112,7 @@ public class Customer {
 		if (this.customerType.equals("P")) {	
 			// Check if primary contact has more than 1 email
 			ArrayList<String> emailCheck = this.primaryContact.getEmail();
-			if (emailCheck.size() > 1) {
+			if (emailCheck != null && emailCheck.size() > 1) {
 				return (-.05 * totalAfterTax);
 			}		
 		}

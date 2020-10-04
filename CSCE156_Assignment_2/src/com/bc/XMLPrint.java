@@ -6,7 +6,17 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-
+/**
+ * Assignment 3
+ * 
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The XMLPrint class will take a filename, class name, and ArrayList to write them to a XML file.
+ */
 public class XMLPrint {
 
 	public static <P> void printXML(String filepath, ArrayList<P> list, String className) {

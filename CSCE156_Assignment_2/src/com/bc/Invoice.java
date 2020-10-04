@@ -11,16 +11,14 @@ import java.util.Scanner;
 import javax.print.attribute.standard.NumberUpSupported;
 
 /**
- * Assignment 3
- * 
  * CSCE 156
  * 
  * Authors: Caden Kirby Nick Radmilovich
  * 
  * 10/1/2020
  * 
- * The invoice class compiles data from Person, Products, and Customer, in order
- * to structure invoice data for Bumpr Cars.
+ * Description: The invoice class compiles data from Person, Products, and
+ * Customer, in order to structure invoice data for BumprCars.
  */
 
 public class Invoice {
@@ -56,6 +54,7 @@ public class Invoice {
 
 	public static ArrayList<Invoice> importInvoice(String filename, HashMap<String, Person> personMap,
 			HashMap<String, Customer> customerMap, HashMap<String, Products> productMap) {
+		// Initializes variables and scanner concats filename with filepath.
 		ArrayList<Invoice> Invoices = new ArrayList<Invoice>();
 		Scanner scanner = null;
 		String fileString = "data/" + filename;
@@ -65,29 +64,40 @@ public class Invoice {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		// Skips line with number of entries.
 		scanner.nextLine();
+		
+		// Loops through lines of the flat file and converts to invoice class.
 		while (scanner.hasNext()) {
 			String Token = scanner.nextLine();
+			
+			// Splits token and appropriately assigns strings to variables.
 			String[] splitToken = Token.split(";");
 			String invoiceCode = splitToken[0];
 			Person owner = personMap.get(splitToken[1]);
 			Customer customer = customerMap.get(splitToken[2]);
+			// Initializes array lists for products in an invoice, and potential associated Repairs.
 			ArrayList<Products> productList = new ArrayList<Products>();
 			ArrayList<Products> potentialAssociations = new ArrayList<Products>();
 			String associatedCode = null;
 			String[] splitProducts = splitToken[3].split(",");
-
+			// Loops through the array of product codes, and matches to the given hashmap of products.
 			for (String prod : splitProducts) {
 				String[] values = prod.split(":");
 				Products newProd = null;
 				double workVal = Double.parseDouble(values[1]);
+				// Deep copies the product, to assign accurate work values to every individual product.
 				newProd = Products.deepCopy(productMap.get(values[0]), workVal);
 				productList.add(newProd);
-				if(values.length > 2) {
-					associatedCode = values[2]; 
+				// Checks for an associated repair, and stores the value.  Also stores the potential concessions to make sure
+				// discount is only applied to the appropriate concessions.
+				if (values.length > 2) {
+					associatedCode = values[2];
 					potentialAssociations.add(newProd);
-				}}
-			if(associatedCode != null) {
+				}
+			}
+			// If an associated repair is found, checks to make sure the repair is in the invoice, and is actually a repair.
+			if (associatedCode != null) {
 				Concession.associatedRepairCheck(potentialAssociations, productList, associatedCode);
 			}
 			Invoices.add(new Invoice(invoiceCode, owner, customer, productList));
@@ -106,14 +116,20 @@ public class Invoice {
 		System.out.println(
 				"----------------------------------------------------------------------------------------------------------------------------");
 
-		double totalInvoiceSubtotal = 0;double totalInvoiceDiscounts = 0;double totalInvoiceFees = 0;
-		double totalInvoiceTaxes = 0;double totalInvoiceTotal = 0;
+		double totalInvoiceSubtotal = 0;
+		double totalInvoiceDiscounts = 0;
+		double totalInvoiceFees = 0;
+		double totalInvoiceTaxes = 0;
+		double totalInvoiceTotal = 0;
 
 		// Loop through collection of invoices
 		for (Invoice invoice : invoiceList) {
 
-			double invoiceSubtotal = 0;double invoiceDiscounts = 0;double invoiceFees = 0;
-			double invoiceTaxes = 0;double invoiceTotal = 0;
+			double invoiceSubtotal = 0;
+			double invoiceDiscounts = 0;
+			double invoiceFees = 0;
+			double invoiceTaxes = 0;
+			double invoiceTotal = 0;
 			int freeFlag = 0;
 
 			// Checking if Towing is free
@@ -146,9 +162,9 @@ public class Invoice {
 			invoiceTotal = invoiceSubtotal + invoiceDiscounts + invoiceFees + invoiceTaxes;
 
 			// Print one invoice
-			System.out.printf("%-10s %-25s %-30s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n",
-					invoice.getInvoiceCode(), invoice.getOwner(), invoice.getCustomerData().getName(), invoiceSubtotal,
-					invoiceDiscounts, invoiceFees, invoiceTaxes, invoiceTotal);
+			System.out.printf("%-10s %-25s %-30s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", invoice.getInvoiceCode(),
+					invoice.getOwner(), invoice.getCustomerData().getName(), invoiceSubtotal, invoiceDiscounts,
+					invoiceFees, invoiceTaxes, invoiceTotal);
 
 			// Calculating totals of all invoices
 			totalInvoiceSubtotal += invoiceSubtotal;
@@ -169,9 +185,13 @@ public class Invoice {
 	public static void printDetailed(Collection<Invoice> invoiceList) {
 		System.out.println("Invoice Details:");
 		for (Invoice invoice : invoiceList) {
-			//Initializing var
-			double invoiceSubTotal = 0;double invoiceDiscounts = 0;double invoiceTaxes = 0;double invoiceTotal = 0;
 			
+			// Initializing vars
+			double invoiceSubTotal = 0;
+			double invoiceDiscounts = 0;
+			double invoiceTaxes = 0;
+			double invoiceTotal = 0;
+
 			// Prints Header
 			System.out.println(
 					"=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
@@ -192,13 +212,16 @@ public class Invoice {
 			double loyalDiscount = 0;
 			System.out.println("Customer:");
 			System.out.printf("\t%s %s \n\t%s \n", customer.getName(), acctType, customerAddress.toString());
+			
 			// Print product info
 			System.out.println("Product:");
-			System.out.printf("  %s %18s %67s %12s %9s %12s \n","Code","Description","Subtotal","Discount","Taxes","Total");
-			System.out.println("  ------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.printf("  %s %18s %67s %12s %9s %12s \n", "Code", "Description", "Subtotal", "Discount", "Taxes",
+					"Total");
+			System.out.println(
+					"  ------------------------------------------------------------------------------------------------------------------------------------");
 			ArrayList<? extends Products> productList = invoice.getProductList();
 			int freeFlag = 0;
-			
+
 			// Counts freeflag for calculations
 			for (Products prod : productList) {
 				if (prod instanceof Rental) {
@@ -209,12 +232,12 @@ public class Invoice {
 					freeFlag += 1;
 				}
 			}
-			for(Products prod: productList) {
+			for (Products prod : productList) {
+				
 				// Computes product calculations and creates strings for printing.
 				String extraVal = null;
-
 				String description = prod.getProductLabel() + prod.costPrint();
-				
+
 				// Cost Calculations
 				double productSubtotal = prod.getSubtotal();
 				double productDiscounts = prod.getDiscounts(freeFlag);
@@ -225,30 +248,38 @@ public class Invoice {
 				invoiceTaxes += productTaxes;
 				invoiceTotal += productTotal;
 
-			System.out.printf("  %-12s%-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n",prod.getProductCode(), description, productSubtotal,productDiscounts,productTaxes,productTotal);
-			extraVal = prod.feePrint();
-			if(extraVal != null) {
-				System.out.printf("\t      %s\n",extraVal);
+				System.out.printf("  %-12s%-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n", prod.getProductCode(),
+						description, productSubtotal, productDiscounts, productTaxes, productTotal);
+				
+				// Checks for fees to print under detailed description.
+				extraVal = prod.feePrint();
+				if (extraVal != null) {
+					System.out.printf("\t      %s\n", extraVal);
+				}
 			}
-			}
-			System.out.println("======================================================================================================================================");
+			System.out.println(
+					"======================================================================================================================================");
 
-			System.out.printf("%-83s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n","ITEM TOTALS:",invoiceSubTotal, invoiceDiscounts, invoiceTaxes, invoiceTotal);
+			System.out.printf("%-83s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n", "ITEM TOTALS:", invoiceSubTotal,
+					invoiceDiscounts, invoiceTaxes, invoiceTotal);
+			
+			// Calculated loyalty discount, and prints value for loyalty discount or business fee, if applicable.
 			loyalDiscount = customer.getLoyalDiscount(invoiceTotal);
-
-			if(loyalDiscount != 0 && customer.getCustomerType().contains("P")) {
-				System.out.printf("LOYAL CUSTOMER DISCOUT (5 OFF) %93s %9.2f \n", "$", loyalDiscount);
-			}else if(extraFee != 0 && customer.getCustomerType().contains("B")) {
-				System.out.printf("BUSINESS ACCOUNT FEE: %102s %9.2f\n", "$",extraFee);
+			if (loyalDiscount != 0 && customer.getCustomerType().contains("P")) {
+				System.out.printf("LOYAL CUSTOMER DISCOUT (5%% OFF) %93s %9.2f \n", "$", loyalDiscount);
+			} else if (extraFee != 0 && customer.getCustomerType().contains("B")) {
+				System.out.printf("BUSINESS ACCOUNT FEE: %102s %9.2f\n", "$", extraFee);
 			}
 			
+			// Prints grand total.
 			double grandTotal = invoiceTotal + loyalDiscount + extraFee;
-			System.out.printf("%-122s $ %9.2f \n","GRAND TOTAL:",grandTotal);
+			System.out.printf("%-122s $ %9.2f \n", "GRAND TOTAL:", grandTotal);
+			
 			// Print closer
 			System.out.printf("\n\n\t\t THANK YOU FOR YOUR BUSINESS WITH US! \n\n\n\n");
 
 			freeFlag = 0;
-			
+
 		}
 	}
 }

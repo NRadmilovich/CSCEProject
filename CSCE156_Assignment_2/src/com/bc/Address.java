@@ -1,5 +1,13 @@
 package com.bc;
-
+/**
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Address class stores address information, which is passed to the Person class.
+ */
 
 public class Address {
 	private String Street;
@@ -12,34 +20,18 @@ public class Address {
 	public String getStreet() {
 		return Street;
 	}
-	public void setStreet(String street) {
-		this.Street = street;
-	}
 	public String getCity() {
 		return City;
-	}
-	public void setCity(String city) {
-		this.City = city;
 	}
 	public String getState() {
 		return State;
 	}
-	public void setState(String state) {
-		this.State = state;
-	}
 	public String getZip() {
 		return Zip;
-	}
-	public void setZip(String zip) {
-		this.Zip = zip;
 	}
 	public String getCountry() {
 		return Country;
 	}
-	public void setCountry(String country) {
-		Country = country;
-	}
-	
 	// Constructor
 	public Address(String street, String city, String state, String zip, String country) {
 		super();

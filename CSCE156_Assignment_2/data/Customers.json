@@ -1,164 +1,47 @@
 {
 "Customer":[
   {
-    "customerCode": "lsvntk",
+    "customerCode": "lkjjdbbn",
     "customerType": "B",
-    "name": "State of Nebraska",
+    "name": "Dark Side of the Moon",
     "primaryContact": {
-      "personCode": "123a",
-      "firstName": " Petra",
-      "lastName": "Battle",
-      "Address": {
-        "Street": "1 Blue Jays Way",
-        "City": "Toronto",
-        "State": "ON",
-        "Zip": "M5V 1J1",
-        "Country": "Canada"
-      },
-      "Email": [
-        "danextpm@canada.gov"
-      ]
+      "personCode": "klakk"
     },
     "address": {
-      "Street": "100 W Fake Street",
-      "City": "Albaquerque",
-      "State": "NM",
-      "Zip": "80706",
+      "Street": "690 N Shady St",
+      "City": "Moon",
+      "State": "EA",
+      "Zip": "80902",
       "Country": "USA"
     }
   },
   {
-    "customerCode": "dvkh",
+    "customerCode": "uebgmk",
     "customerType": "P",
-    "name": "Wacky Wally\u0027s Used Cars",
+    "name": "Big Al",
     "primaryContact": {
-      "personCode": "zyx321",
-      "firstName": " Ayaana",
-      "lastName": "Dolan",
-      "Address": {
-        "Street": "23450 Cabo San Lucas",
-        "City": "Los Cabos",
-        "State": "BCS",
-        "Zip": "",
-        "Country": "Mexico"
-      },
-      "Email": []
+      "personCode": "zyx321"
     },
     "address": {
-      "Street": "123 Madison Avenue",
-      "City": "Bodega",
-      "State": "NL",
-      "Zip": "",
-      "Country": "CUBA"
+      "Street": "123 1st st",
+      "City": "South Park",
+      "State": "CO",
+      "Zip": "68918",
+      "Country": "USA"
     }
   },
   {
-    "customerCode": "l0000000000ngc0d3",
+    "customerCode": "99999ndkf90",
     "customerType": "B",
-    "name": "Demolition Derby",
+    "name": "Tesla",
     "primaryContact": {
-      "personCode": "lejnr4",
-      "firstName": " Kenan",
-      "lastName": "Spooner",
-      "Address": {
-        "Street": "123 N 1st Street",
-        "City": "Compton",
-        "State": "CA",
-        "Zip": "90210",
-        "Country": "USA"
-      },
-      "Email": [
-        "kspoons@emailservice.domain",
-        "thespoonman@soundgarden.com"
-      ]
+      "personCode": "lejnr4"
     },
     "address": {
-      "Street": "126-01 Roosevelt Ave",
-      "City": "Flushing",
-      "State": "NY",
-      "Zip": "11368",
-      "Country": "USA"
-    }
-  },
-  {
-    "customerCode": "asdf419",
-    "customerType": "P",
-    "name": "Fenton Industries",
-    "primaryContact": {
-      "personCode": "biz45",
-      "firstName": " Fenton",
-      "lastName": "Hart",
-      "Address": {
-        "Street": "1 Wall Street",
-        "City": "New York",
-        "State": "NY",
-        "Zip": "10005-0012",
-        "Country": "USA"
-      },
-      "Email": [
-        "fentony@windstream.net"
-      ]
-    },
-    "address": {
-      "Street": "1060 West Addison Street",
-      "City": "Chicago",
-      "State": "IL",
-      "Zip": "60613",
-      "Country": "USA"
-    }
-  },
-  {
-    "customerCode": "421asdf",
-    "customerType": "B",
-    "name": "Foundation for the Arts",
-    "primaryContact": {
-      "personCode": "biz45",
-      "firstName": " Fenton",
-      "lastName": "Hart",
-      "Address": {
-        "Street": "1 Wall Street",
-        "City": "New York",
-        "State": "NY",
-        "Zip": "10005-0012",
-        "Country": "USA"
-      },
-      "Email": [
-        "fentony@windstream.net"
-      ]
-    },
-    "address": {
-      "Street": "1 MetLife Stadium Dr",
-      "City": "East Rutherford",
-      "State": "NJ",
-      "Zip": "07073",
-      "Country": "USA"
-    }
-  },
-  {
-    "customerCode": "avnkbkjds",
-    "customerType": "P",
-    "name": "Juno Stephenson",
-    "primaryContact": {
-      "personCode": "lejnr4",
-      "firstName": " Kenan",
-      "lastName": "Spooner",
-      "Address": {
-        "Street": "123 N 1st Street",
-        "City": "Compton",
-        "State": "CA",
-        "Zip": "90210",
-        "Country": "USA"
-      },
-      "Email": [
-        "kspoons@emailservice.domain",
-        "thespoonman@soundgarden.com"
-      ]
-    },
-    "address": {
-      "Street": "123 N 1st Street",
-      "City": "Compton",
+      "Street": "",
+      "City": "Silicon",
       "State": "CA",
-      "Zip": "90210",
+      "Zip": "11366",
       "Country": "USA"
     }
   }

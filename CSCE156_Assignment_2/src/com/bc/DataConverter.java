@@ -3,11 +3,17 @@ package com.bc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-/*
- * CSCE Project
- * Authors:
- * Nick Radmilovich
- * Caden J Kirby
+/**
+ * Assignment 3
+ * 
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The DataConverter class uses methods from Invoice, Products, Person, and Customer classes to convert 
+ * BumprCars flat files into JSON and XML files.
  */
 public class DataConverter {
 

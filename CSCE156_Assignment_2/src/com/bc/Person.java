@@ -9,9 +9,15 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.List;
 /**
+ * Assignment 3
  * 
- * @author nradm
- * Person Class, which includes file input, and HashMap conversion for use in Customer.
+ * CSCE 156
+ * 
+ * Authors: Caden Kirby Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Description: The Person class stores primary contact information for BumprCars.  It can be passed to an Invoice or Customer class.
  */
 
 public class Person  {
