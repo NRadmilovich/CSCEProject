@@ -266,7 +266,7 @@ public class Invoice {
 			// Calculated loyalty discount, and prints value for loyalty discount or business fee, if applicable.
 			loyalDiscount = customer.getLoyalDiscount(invoiceTotal);
 			if (loyalDiscount != 0 && customer.getCustomerType().contains("P")) {
-				System.out.printf("LOYAL CUSTOMER DISCOUT (5%% OFF) %93s %9.2f \n", "$", loyalDiscount);
+				System.out.printf("LOYAL CUSTOMER DISCOUT (5%% OFF) %92s %9.2f \n", "$", loyalDiscount);
 			} else if (extraFee != 0 && customer.getCustomerType().contains("B")) {
 				System.out.printf("BUSINESS ACCOUNT FEE: %102s %9.2f\n", "$", extraFee);
 			}
