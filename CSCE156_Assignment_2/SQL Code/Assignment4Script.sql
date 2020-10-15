@@ -102,3 +102,12 @@ foreign key (invoiceId) references Invoice(invoiceId),
 productId int not null,
 foreign key (productId) references Product(productId));
 
+-- Inserting Products
+insert into Product (productCode, productType, productLabel, dailyCost, deposit, cleaningFee)
+	values ('qeuriopt', 'R', '1964 Chevy Impala', 89.29, 400, 25.69);
+insert into Product (productCode, productType, productLabel, partsCost, hourlyLaborCost)
+	values ('nfein2929','F','Light Replacement',233,2);
+insert into Product (productCode, productType, productLabel, unitCost)
+	values ('aldkjflaksjdfh','C','Hot Doggo',89898.23);
+insert into Product (productCode, productType, productLabel, costPerMile)
+	values ('utieow39','T','Tow 20 Miles',6.45);
