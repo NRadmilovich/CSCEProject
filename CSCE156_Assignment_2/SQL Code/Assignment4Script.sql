@@ -9,14 +9,24 @@ drop table if exists PersonEmail;
 drop table if exists Person;
 drop table if exists Email;
 drop table if exists Address;
+drop table if exists State;
+drop table if exists Country;
+
+create table State(
+stateId int not null primary key auto_increment,
+stateName varchar(40));
+
+create table Country(
+countryId int not null primary key auto_increment,
+countryName varchar(40));
 
 Create table Address(
 addressId int not null primary key auto_increment,
 street varchar(250) not null,
 city varchar(50) not null,
-State varchar(15),
+State int,
 zip int,
-Country varchar(255) not null);
+Country int not null);
 
 create table Email(
 emailId int not null primary key auto_increment,
@@ -24,12 +34,11 @@ email varchar(255) not null);
 
 create table Person (
 personId int not null primary key auto_increment,
-personCode varchar(20) not null,
+personCode varchar(20) not null unique,
 firstName varchar(30) not null,
 lastName varchar(30) not null,
 address int not null,
-foreign key(address) references Address(addressId),
-unique (personId));
+foreign key(address) references Address(addressId));
 
 create table PersonEmail(
 personEmailId int not null primary key auto_increment,
@@ -47,14 +56,13 @@ foreign key (addressId) references Address(addressId));
 
 create table Customer(
 customerId int not null primary key auto_increment,
-customerCode varchar(30) not null,
+customerCode varchar(30) not null unique,
 customerType varchar(1) not null,
 customerName varchar(250) not null,
 primaryContact int not null,
 address int not null,
 foreign key (primaryContact) references Person(personId),
-foreign key (address) references Address(addressId),
-unique (customerId));
+foreign key (address) references Address(addressId));
 
 create table Product (
 -- All Products
@@ -77,12 +85,11 @@ associatedRepair boolean default false);
 
 create table Invoice(
 invoiceId int not null primary key auto_increment,
-invoiceCode varchar(30) not null,
+invoiceCode varchar(30) not null unique,
 owner int not null,
 customer int not null,
 foreign key (owner) references Person(personId),
-foreign key (customer) references Customer(customerId),
-unique (invoiceCode));
+foreign key (customer) references Customer(customerId));
 
 create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
@@ -93,3 +100,4 @@ foreign key (invoiceId) references Invoice(invoiceId),
     
 productId int not null,
 foreign key (productId) references Product(productId));
+
