@@ -94,6 +94,7 @@ foreign key (customer) references Customer(customerId));
 create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
 workValue double not null,
+productCode double not null,
 
 invoiceId int not null,
 foreign key (invoiceId) references Invoice(invoiceId),
