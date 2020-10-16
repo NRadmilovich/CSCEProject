@@ -1,3 +1,4 @@
+use nradmilo;
 
 drop table if exists InvoiceProduct;
 drop table if exists Invoice;
@@ -89,7 +90,7 @@ foreign key (customer) references Customer(customerId));
 create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
 workValue double not null,
-productCode double not null,
+-- productCode double not null,
 
 invoiceId int not null,
 foreign key (invoiceId) references Invoice(invoiceId),
@@ -135,6 +136,14 @@ insert into Customer(customerCode, customerType, customerName, primaryContact,ad
 values ('lkjjdbbn','B','Dark Side of the Moon',2, 2);
 -- Invoice 1
 insert into Invoice(invoiceCode,owner,customer) values ('INV001',1,1);
+-- InvoiceProduct 1
+insert into InvoiceProduct(invoiceId, productId, workValue) values (1,1,5.0);
+-- InvoiceProduct 2
+insert into InvoiceProduct(invoiceId, productId, workValue) values (1,2,12.0);
+-- InvoiceProduct 3
+insert into InvoiceProduct(invoiceId, productId, workValue) values (1,3,2.0);
+-- InvoiceProduct 4
+insert into InvoiceProduct(invoiceId, productId, workValue) values (1,4,22.0);
 
 -- Test Case 2 INV002
 -- State 3
@@ -151,6 +160,11 @@ values ('99999ndkf90','B','Tesla',3,3);
 -- Invoice 2
 insert into Invoice(invoiceCode, owner, customer) 
 values ('INV002', 3, 2);
+-- InvoiceProduct 5
+insert into InvoiceProduct(invoiceId, productId, workValue) values (2,4,12.0);
+-- Invoice Product 6
+insert into InvoiceProduct(invoiceId, productId, workValue) values (2,3,3.0);
+
 
 -- Test Case 3 INV003
 -- State 4
@@ -172,4 +186,6 @@ values('uebgmk','P','Big Al',5,5);
 -- Invoice 3
 insert into Invoice(invoiceCode, owner, customer)
 values ('INV003',4,3);
+-- InvoiceProduct 7
+insert into InvoiceProduct(invoiceId, productId, workValue) values (2,3,20);
 
