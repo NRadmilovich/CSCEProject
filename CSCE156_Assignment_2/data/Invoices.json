@@ -3,271 +3,158 @@
   {
     "invoiceCode": "INV001",
     "owner": {
-      "personCode": "123a",
-      "firstName": " Petra",
-      "lastName": "Battle",
+      "personCode": "jaoiejf",
+      "firstName": " Neil",
+      "lastName": "Armstrong",
       "Address": {
-        "Street": "1 Blue Jays Way",
-        "City": "Toronto",
-        "State": "ON",
-        "Zip": "M5V 1J1",
-        "Country": "Canada"
+        "Street": "Moon.",
+        "City": "Moon",
+        "State": "MN",
+        "Zip": "60613",
+        "Country": "USA"
       },
       "Email": [
-        "danextpm@canada.gov"
+        "neilA@gmail.com",
+        "pinkfloyd@yahoo.com"
       ]
     },
     "customerData": {
-      "customerCode": "lsvntk",
+      "customerCode": "lkjjdbbn",
       "customerType": "B",
-      "name": "State of Nebraska",
+      "name": "Dark Side of the Moon",
       "primaryContact": {
-        "personCode": "123a",
-        "firstName": " Petra",
-        "lastName": "Battle",
-        "Address": {
-          "Street": "1 Blue Jays Way",
-          "City": "Toronto",
-          "State": "ON",
-          "Zip": "M5V 1J1",
-          "Country": "Canada"
-        },
-        "Email": [
-          "danextpm@canada.gov"
-        ]
+        "personCode": "klakk"
       },
       "address": {
-        "Street": "100 W Fake Street",
-        "City": "Albaquerque",
-        "State": "NM",
-        "Zip": "80706",
+        "Street": "690 N Shady St",
+        "City": "Moon",
+        "State": "EA",
+        "Zip": "80902",
         "Country": "USA"
       }
     },
     "productList": [
       {
-        "dailyCost": 50.75,
-        "deposit": 200.0,
-        "cleaningFee": 25.39,
-        "productCode": "qwertyuiop",
+        "dailyCost": 89.29,
+        "deposit": 400.0,
+        "cleaningFee": 25.69,
+        "productCode": "qeuriopt",
         "productType": "R",
-        "productLabel": "2007 Ford Crown Victoria",
-        "workValue": 4.0
+        "productLabel": "1964 Chevy Impala",
+        "workValue": 5.0
       },
       {
-        "partsCost": 100.0,
-        "hourlyLaborCost": 75.0,
-        "productCode": "b4z1ng4",
+        "partsCost": 233.0,
+        "hourlyLaborCost": 12.0,
+        "productCode": "nfein2929",
         "productType": "F",
-        "productLabel": "Bumper Replacement",
+        "productLabel": "Light Replacement",
+        "workValue": 12.0
+      },
+      {
+        "unitCost": 89898.23,
+        "associatedRepair": true,
+        "productCode": "aldkjflaksjdfh",
+        "productType": "C",
+        "productLabel": "Hot Doggo",
         "workValue": 2.0
       },
       {
-        "costPerMile": 4.0,
-        "productCode": "ugis43",
+        "costPerMile": 6.45,
+        "productCode": "utieow39",
         "productType": "T",
-        "productLabel": "Tow \u003e 10 miles",
-        "workValue": 15.0
-      },
-      {
-        "unitCost": 10.0,
-        "associatedRepair": true,
-        "productCode": "kvnjgbf5",
-        "productType": "C",
-        "productLabel": "Large \"Homemade\" Raisin Cookie",
-        "workValue": 3.0
+        "productLabel": "Tow 20 Miles",
+        "workValue": 22.0
       }
     ]
   },
   {
     "invoiceCode": "INV002",
     "owner": {
-      "personCode": "lejnr4",
-      "firstName": " Kenan",
-      "lastName": "Spooner",
+      "personCode": "nvnoee",
+      "firstName": " Kyrie",
+      "lastName": "Irving",
       "Address": {
-        "Street": "123 N 1st Street",
-        "City": "Compton",
-        "State": "CA",
-        "Zip": "90210",
+        "Street": "2 Broadway St",
+        "City": "New York",
+        "State": "NY",
+        "Zip": "68117",
         "Country": "USA"
       },
-      "Email": [
-        "kspoons@emailservice.domain",
-        "thespoonman@soundgarden.com"
-      ]
+      "Email": []
     },
     "customerData": {
-      "customerCode": "asdf419",
-      "customerType": "P",
-      "name": "Fenton Industries",
+      "customerCode": "99999ndkf90",
+      "customerType": "B",
+      "name": "Tesla",
       "primaryContact": {
-        "personCode": "biz45",
-        "firstName": " Fenton",
-        "lastName": "Hart",
-        "Address": {
-          "Street": "1 Wall Street",
-          "City": "New York",
-          "State": "NY",
-          "Zip": "10005-0012",
-          "Country": "USA"
-        },
-        "Email": [
-          "fentony@windstream.net"
-        ]
+        "personCode": "lejnr4"
       },
       "address": {
-        "Street": "1060 West Addison Street",
-        "City": "Chicago",
-        "State": "IL",
-        "Zip": "60613",
+        "Street": "",
+        "City": "Silicon",
+        "State": "CA",
+        "Zip": "11366",
         "Country": "USA"
       }
     },
     "productList": [
       {
-        "partsCost": 800.0,
-        "hourlyLaborCost": 25.0,
-        "productCode": "t0m03",
-        "productType": "F",
-        "productLabel": "Full Wheel Replacement",
-        "workValue": 1.0
-      },
-      {
-        "unitCost": 4.75,
-        "associatedRepair": false,
-        "productCode": "k04l4",
-        "productType": "C",
-        "productLabel": "12-oz Coffee",
-        "workValue": 10.0
-      },
-      {
-        "costPerMile": 6.0,
-        "productCode": "sievub",
+        "costPerMile": 6.45,
+        "productCode": "utieow39",
         "productType": "T",
-        "productLabel": "Tow \u003c 10 Miles",
-        "workValue": 6.0
+        "productLabel": "Tow 20 Miles",
+        "workValue": 12.0
+      },
+      {
+        "unitCost": 89898.23,
+        "associatedRepair": false,
+        "productCode": "aldkjflaksjdfh",
+        "productType": "C",
+        "productLabel": "Hot Doggo",
+        "workValue": 3.0
       }
     ]
   },
   {
     "invoiceCode": "INV003",
     "owner": {
-      "personCode": "123a",
-      "firstName": " Petra",
-      "lastName": "Battle",
+      "personCode": "oiasudem",
+      "firstName": " Eric",
+      "lastName": "Cartman",
       "Address": {
-        "Street": "1 Blue Jays Way",
-        "City": "Toronto",
-        "State": "ON",
-        "Zip": "M5V 1J1",
-        "Country": "Canada"
+        "Street": "23450 1st st",
+        "City": "South Park",
+        "State": "CO",
+        "Zip": "",
+        "Country": "USA"
       },
       "Email": [
-        "danextpm@canada.gov"
+        "cartman@cc.com"
       ]
     },
     "customerData": {
-      "customerCode": "avnkbkjds",
+      "customerCode": "uebgmk",
       "customerType": "P",
-      "name": "Juno Stephenson",
+      "name": "Big Al",
       "primaryContact": {
-        "personCode": "lejnr4",
-        "firstName": " Kenan",
-        "lastName": "Spooner",
-        "Address": {
-          "Street": "123 N 1st Street",
-          "City": "Compton",
-          "State": "CA",
-          "Zip": "90210",
-          "Country": "USA"
-        },
-        "Email": [
-          "kspoons@emailservice.domain",
-          "thespoonman@soundgarden.com"
-        ]
+        "personCode": "zyx321"
       },
       "address": {
-        "Street": "123 N 1st Street",
-        "City": "Compton",
-        "State": "CA",
-        "Zip": "90210",
+        "Street": "123 1st st",
+        "City": "South Park",
+        "State": "CO",
+        "Zip": "68918",
         "Country": "USA"
       }
     },
     "productList": [
       {
-        "unitCost": 10.0,
+        "unitCost": 89898.23,
         "associatedRepair": false,
-        "productCode": "kvnjgbf5",
+        "productCode": "aldkjflaksjdfh",
         "productType": "C",
-        "productLabel": "Large \"Homemade\" Raisin Cookie",
-        "workValue": 12.0
-      }
-    ]
-  },
-  {
-    "invoiceCode": "INV004",
-    "owner": {
-      "personCode": "abc2",
-      "firstName": " Wiktoria",
-      "lastName": "Medrano",
-      "Address": {
-        "Street": "1025 S Street st.",
-        "City": "Chichago",
-        "State": "IL",
-        "Zip": "60613",
-        "Country": "USA"
-      },
-      "Email": [
-        "therealwiki@gmail.com",
-        "wiktoria.m@yahoo.com"
-      ]
-    },
-    "customerData": {
-      "customerCode": "l0000000000ngc0d3",
-      "customerType": "B",
-      "name": "Demolition Derby",
-      "primaryContact": {
-        "personCode": "lejnr4",
-        "firstName": " Kenan",
-        "lastName": "Spooner",
-        "Address": {
-          "Street": "123 N 1st Street",
-          "City": "Compton",
-          "State": "CA",
-          "Zip": "90210",
-          "Country": "USA"
-        },
-        "Email": [
-          "kspoons@emailservice.domain",
-          "thespoonman@soundgarden.com"
-        ]
-      },
-      "address": {
-        "Street": "126-01 Roosevelt Ave",
-        "City": "Flushing",
-        "State": "NY",
-        "Zip": "11368",
-        "Country": "USA"
-      }
-    },
-    "productList": [
-      {
-        "dailyCost": 1000.0,
-        "deposit": 5000.0,
-        "cleaningFee": 50.0,
-        "productCode": "yuasi",
-        "productType": "R",
-        "productLabel": "Tesla Cybertruck",
-        "workValue": 14.0
-      },
-      {
-        "unitCost": 4.75,
-        "associatedRepair": false,
-        "productCode": "k04l4",
-        "productType": "C",
-        "productLabel": "12-oz Coffee",
+        "productLabel": "Hot Doggo",
         "workValue": 20.0
       }
     ]
