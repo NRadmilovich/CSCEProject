@@ -1,3 +1,8 @@
+-- Assignment 4 Tables/Data
+-- Authors: Caden Kirby and Nick Radmilovich
+-- CSCE 156 Section 150
+-- 10/17/2020
+
 use nradmilo;
 
 drop table if exists InvoiceProduct;
@@ -87,8 +92,7 @@ invoiceCode varchar(30) not null unique,
 owner int not null,
 customer int not null,
 foreign key (owner) references Person(personId),
-foreign key (customer) references Customer(customerId),
-unique (invoiceCode));
+foreign key (customer) references Customer(customerId));
 
 create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
@@ -191,43 +195,3 @@ insert into Invoice(invoiceCode, owner, customer)
 values ('INV003',4,3);
 -- InvoiceProduct 7
 insert into InvoiceProduct(invoiceId, productId, workValue) values (3,3,20);
-
-
--- 7
-select p.productCode from Invoice i 
-	join InvoiceProduct ip on ip.invoiceId = i.invoiceId
-    join Product p on p.productId = ip.productId
-    where (i.invoiceId = 2);
-
--- 8
-select * from Person where (personId = 1);
-
--- 9
-select invoiceCode from Invoice where (customer = 1);
-
--- 10
-insert into InvoiceProduct(invoiceId, productId, workValue) values (3,3,20);
-
--- 11
-select sum(unitCost) totalUnitCost from Product;
-
--- 12 Not finished
-select c.customerName, count(i.customer) from Customer c
-	join Invoice i on c.customerId = i.customer
-    having count(i.customer) > 1;
- 
--- 13
-select count(*) from Invoice i 
-	join InvoiceProduct ip on ip.invoiceId = i.invoiceId
-	join Product p on p.productId = ip.productId
-    where (p.partsCost is not null);
-    
--- 14 
-select sum(p.costPerMile * ip.workValue) totalRevenue from Product p
-	join InvoiceProduct ip on p.productId = ip.productId;
-    
--- 15 not finished
-select i.invoiceCode, count(ip.productId) from Invoice i
-	join InvoiceProduct ip on ip.invoiceId = i.invoiceId
-    where (ip.partsCost is not null);
-
