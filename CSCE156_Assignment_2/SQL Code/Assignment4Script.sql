@@ -77,7 +77,9 @@ hourlyLaborCost double default null,
 costPerMile double default null,
 -- Concession
 unitCost double default null,
-associatedRepair boolean default false);
+associatedRepair boolean default false,
+
+unique (productCode));
 
 create table Invoice(
 invoiceId int not null primary key auto_increment,
@@ -85,7 +87,8 @@ invoiceCode varchar(30) not null unique,
 owner int not null,
 customer int not null,
 foreign key (owner) references Person(personId),
-foreign key (customer) references Customer(customerId));
+foreign key (customer) references Customer(customerId),
+unique (invoiceCode));
 
 create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
