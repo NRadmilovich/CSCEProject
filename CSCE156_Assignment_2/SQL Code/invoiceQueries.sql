@@ -3,32 +3,36 @@
 -- CSCE 156 Section 150
 -- 10/17/2020
 
--- 1
+-- 1 returns all major fields for every person
 Select Person.personCode, Person.lastName, Person.firstName, Address.street, Address.city, State.stateName, Country.countryName, Email.email from Person
 left join Address on Address.addressId = Person.address
 left join State on State.stateId = Address.state
 left join Country on Country.countryId = Address.country
 left join PersonEmail on Person.personId = PersonEmail.personId
 left join Email on PersonEmail.emailId = Email.emailId;
--- 2
+-- 2 returns all emails for a specific person
 select Email.email from Person
 inner join PersonEmail on Person.personId = PersonEmail.personId
 inner join Email on PersonEmail.emailId = Email.emailId
 and Person.personId = 1;
--- 3
+-- 3 adds an email for a specific person
 insert into Email(email) values ('thisisanEmail@yahoo.com');
 insert into PersonEmail(personId, emailId) values (3,3);
 -- 4
 update Email set email = 'thisisanotheremail@email.email' where Email.emailId = 1;
 -- 5
--- Delete email associations if the exist
-delete from PersonEmail where PersonEmail.personId = 4;
--- Update owner on record 
-update Invoice set owner = 3 where owner = 4;
--- delete old person info
-delete from Person where Person.personId = 4;
--- 6
 
+-- 6 Inserts a full person record
+-- Address 
+insert into Address(street, city, state, zip, country) values ('Moon','Moon',1,60613,1);
+-- Person 
+insert into Person(personCode, firstName, lastName,address) values ('jaoiejf','Neil','Armstrong',1);
+-- Email 1 and 2
+insert into Email(email) values ('neilA@gmail.com');
+insert into Email(email) values ('pinkfloyd@yahoo.com');
+-- PersonEmail for email addresses
+insert into PersonEmail(personId,emailId) values (1,2);
+insert into PersonEmail(personId,emailId) values (1,3);
 -- 7
 select p.productCode from Invoice i 
 	join InvoiceProduct ip on ip.invoiceId = i.invoiceId
