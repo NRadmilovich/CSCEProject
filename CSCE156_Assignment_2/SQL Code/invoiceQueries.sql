@@ -20,19 +20,24 @@ insert into Email(email) values ('thisisanEmail@yahoo.com');
 insert into PersonEmail(personId, emailId) values (3,3);
 -- 4
 update Email set email = 'thisisanotheremail@email.email' where Email.emailId = 1;
--- 5
-
+-- 5 Deletes a person, their address, and their emails
+delete from PersonEmail where PersonEmail.personId = 1;
+delete from Email where Email.emailId = 1;
+delete from Email where Email.emailId = 2;
+update Invoice set owner = 3 where owner = 1;
+delete from Person where Person.personId = 1;
+delete from Address where Address.addressId = 6;
 -- 6 Inserts a full person record
 -- Address 
-insert into Address(street, city, state, zip, country) values ('Moon','Moon',1,60613,1);
+insert into Address(street, city, state, zip, country) values ('23 Added person house','Moon',1,60613,1);
 -- Person 
-insert into Person(personCode, firstName, lastName,address) values ('jaoiejf','Neil','Armstrong',1);
+insert into Person(personCode, firstName, lastName,address) values ('newPerson','Neil','Armstrong',1);
 -- Email 1 and 2
-insert into Email(email) values ('neilA@gmail.com');
-insert into Email(email) values ('pinkfloyd@yahoo.com');
+insert into Email(email) values ('Email1@gmail.com');
+insert into Email(email) values ('email2@yahoo.com');
 -- PersonEmail for email addresses
-insert into PersonEmail(personId,emailId) values (1,2);
-insert into PersonEmail(personId,emailId) values (1,3);
+insert into PersonEmail(personId,emailId) values (6,4);
+insert into PersonEmail(personId,emailId) values (6,5);
 -- 7
 select p.productCode from Invoice i 
 	join InvoiceProduct ip on ip.invoiceId = i.invoiceId
@@ -43,7 +48,7 @@ select p.productCode from Invoice i
 select * from Person where (personId = 1);
 
 -- 9
-select invoiceCode from Invoice where (customer = 1);
+select invoiceCode from Invoice where (owner = 3);
 
 -- 10
 insert into InvoiceProduct(invoiceId, productId, workValue) values (3,3,15);
@@ -51,9 +56,10 @@ insert into InvoiceProduct(invoiceId, productId, workValue) values (3,3,15);
 -- 11
 select sum(unitCost) totalUnitCost from Product;
 
--- 12 Not finished
+-- 12 
 select c.customerName, count(i.customer) from Customer c
 	join Invoice i on c.customerId = i.customer
+	group by c.customerName
     having count(i.customer) > 1;
  
 -- 13
@@ -66,7 +72,7 @@ select count(*) from Invoice i
 select sum(p.costPerMile * ip.workValue) totalRevenue from Product p
 	join InvoiceProduct ip on p.productId = ip.productId;
     
--- 15 not finished
+-- 15 
 select Invoice.invoiceCode, count(Product.productType)from Invoice
 	left join InvoiceProduct on InvoiceProduct.invoiceId = Invoice.invoiceId
     left join Product on Product.productId = InvoiceProduct.productId

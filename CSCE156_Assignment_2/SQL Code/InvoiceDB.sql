@@ -3,8 +3,6 @@
 -- CSCE 156 Section 150
 -- 10/17/2020
 
-use nradmilo;
-
 drop table if exists InvoiceProduct;
 drop table if exists Invoice;
 drop table if exists Product;
