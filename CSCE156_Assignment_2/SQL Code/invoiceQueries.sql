@@ -59,7 +59,7 @@ select sum(unitCost) totalUnitCost from Product;
 -- 12 
 select c.customerName, count(i.customer) from Customer c
 	join Invoice i on c.customerId = i.customer
-	group by c.customerName
+    group by c.customerName, i.customer
     having count(i.customer) > 1;
  
 -- 13
