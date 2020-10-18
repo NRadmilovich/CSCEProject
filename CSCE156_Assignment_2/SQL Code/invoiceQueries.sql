@@ -10,16 +10,20 @@ left join State on State.stateId = Address.state
 left join Country on Country.countryId = Address.country
 left join PersonEmail on Person.personId = PersonEmail.personId
 left join Email on PersonEmail.emailId = Email.emailId;
+
 -- 2 returns all emails for a specific person
 select Email.email from Person
 inner join PersonEmail on Person.personId = PersonEmail.personId
 inner join Email on PersonEmail.emailId = Email.emailId
 and Person.personId = 1;
+
 -- 3 adds an email for a specific person
 insert into Email(email) values ('thisisanEmail@yahoo.com');
 insert into PersonEmail(personId, emailId) values (3,3);
+
 -- 4
 update Email set email = 'thisisanotheremail@email.email' where Email.emailId = 1;
+
 -- 5 Deletes a person, their address, and their emails
 delete from PersonEmail where PersonEmail.personId = 1;
 delete from Email where Email.emailId = 1;
@@ -27,6 +31,7 @@ delete from Email where Email.emailId = 2;
 update Invoice set owner = 3 where owner = 1;
 delete from Person where Person.personId = 1;
 delete from Address where Address.addressId = 6;
+
 -- 6 Inserts a full person record
 -- Address 
 insert into Address(street, city, state, zip, country) values ('23 Added person house','Moon',1,60613,1);
@@ -38,6 +43,7 @@ insert into Email(email) values ('email2@yahoo.com');
 -- PersonEmail for email addresses
 insert into PersonEmail(personId,emailId) values (6,4);
 insert into PersonEmail(personId,emailId) values (6,5);
+
 -- 7
 select p.productCode from Invoice i 
 	join InvoiceProduct ip on ip.invoiceId = i.invoiceId
