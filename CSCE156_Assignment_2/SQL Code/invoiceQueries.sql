@@ -51,7 +51,10 @@ select p.productCode from Invoice i
     where (i.invoiceId = 2);
 
 -- 8
-select * from Person where (personId = 1);
+select Invoice.owner as Person, Product.productCode from Invoice
+	inner join InvoiceProduct on InvoiceProduct.invoiceId = Invoice.invoiceId
+    inner join Product on Product.productId = InvoiceProduct.productId
+    where (Invoice.owner = 3);
 
 -- 9
 select invoiceCode from Invoice where (owner = 3);
