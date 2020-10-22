@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
- /* DO NOT change or remove the import statements beneath this.
+import com.bc.DatabaseConnection;
+/* DO NOT change or remove the import statements beneath this.
  * They are required for the webgrader to run this phase of the project.
  * These lines may be giving you an error; this is fine. 
  * These are webgrader code imports, you do not need to have these packages.
@@ -106,6 +107,27 @@ public class InvoiceData {
 	 */
 	public static void addConcession(String productCode, String productLabel, double unitCost) {
 		/* TODO*/
+		String query = "insert into Product (productCode, productType, productLabel, unitCost) values (?,'C',?,?);";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, productCode);
+			pre.setString(2, productLabel);
+			pre.setDouble(3, unitCost);
+			rs = pre.executeQuery();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
+
 	}
 
 	/**

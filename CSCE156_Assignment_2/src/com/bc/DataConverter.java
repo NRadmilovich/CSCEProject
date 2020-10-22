@@ -22,7 +22,7 @@ public class DataConverter {
 		ArrayList<Person> people = Person.importPerson("Persons.dat");
 		HashMap<String,Person> personMap = Person.personMap(people);
 		ArrayList<Customer> customers = Customer.importCustomer("Customers.dat", personMap);
-		ArrayList<Products> products = Products.importProducts("Products.dat");
+		ArrayList<Products> products = Products.importProducts();
 		// Creates Product and Customer Hashmaps
 		HashMap<String,Products> productMap = Products.productMap(products);
 		HashMap<String,Customer> customerMap = Customer.customerMap(customers);
