@@ -1,4 +1,4 @@
-package com.bc.ext;
+package com.sf.ext;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,6 +27,8 @@ import com.bc.model.Repair;
  * 16 methods in total, add more if required.
  * Do not change any method signatures or the package name.
  * 
+ * Nick - 1,2,3,4,5,11,12,15
+ * 
  * Adapted from Dr. Hasan's original version of this file
  * @author Chloe
  *
@@ -35,6 +37,9 @@ public class InvoiceData {
 
 	/**
 	 * 1. Method that removes every person record from the database
+	 *  Delete person and address
+	 *  Do they want the customer contact null, or
+	 *  to keep the person code on file?
 	 */
 	public static void removeAllPersons() {
 		/* TODO*/
@@ -69,6 +74,7 @@ public class InvoiceData {
 
 	/**
 	 * 4. Method that removes every customer record from the database
+	 * Do they want customer Id saved in invoices, or null?
 	 */
 	public static void removeAllCusomters() {
 		/* TODO*/
@@ -76,6 +82,8 @@ public class InvoiceData {
 	
 	/**
 	 * 5. Method to add a customer record to the database with the provided data
+	 * 
+	 * If customer exists, do they want us to update info or throw error?
 	 * 
 	 * @param customerCode
 	 * @param customerType
@@ -111,7 +119,6 @@ public class InvoiceData {
 		PreparedStatement pre = null;
 		ResultSet rs = null;
 		Connection conn = DatabaseConnection.connectionBuilder();
-
 		try {
 			pre = conn.prepareStatement(query);
 			pre.setString(1, productCode);
@@ -119,15 +126,12 @@ public class InvoiceData {
 			pre.setDouble(3, unitCost);
 			rs = pre.executeQuery();
 			
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		DatabaseConnection.close(conn);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(rs);
-
 	}
 
 	/**
@@ -167,6 +171,8 @@ public class InvoiceData {
 	}
 
 	/**
+	 * Drop tables?
+	 * 
 	 * 11. Removes all invoice records from the database
 	 */
 	public static void removeAllInvoices() {
@@ -215,6 +221,9 @@ public class InvoiceData {
       * invoice corresponding to the provided <code>invoiceCode</code> with the given
       * number of quantity.
       * NOTE: repairCode may be null
+      * 
+      * 
+      * Change associated repair from boolean to string
       * 
       * @param invoiceCode
       * @param productCode
