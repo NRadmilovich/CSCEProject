@@ -1,10 +1,13 @@
 package com.bc;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
+
+
 /**
  * CSCE 156
  * 
@@ -62,49 +65,113 @@ public abstract class Products {
 		return map;
 	}
 	// Creates an arraylist of Products based on input file.
-	public static ArrayList<Products> importProducts(String filename){
-	ArrayList<Products> products  = new ArrayList<Products>();
-	
-	Scanner s;
-	String file = "data/" + filename;
-	try {
+//	public static ArrayList<Products> importProducts(String filename){
+//	ArrayList<Products> products  = new ArrayList<Products>();
+//	
+//	Scanner s;
+//	String file = "data/" + filename;
+//	try {
+//		
+//		s = new Scanner(new File(file));
+//		int productNum = Integer.parseInt(s.nextLine());
+//		while (s.hasNext()) {
+//			
+//			String[] tokens = s.nextLine().split(";");
+//			
+//			if (tokens[1].compareTo("R") == 0) {
+//				Rental r = null;
+//				r = new Rental(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]), Double.parseDouble(tokens[5]));		
+//				products.add(r);
+//				
+//			} else if (tokens[1].compareTo("F") == 0) {
+//				Repair f = null;
+//				f = new Repair(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]));		
+//				products.add(f);
+//				
+//			} else if (tokens[1].compareTo("C") == 0) {
+//				Concession c = null;
+//				c = new Concession(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]));		
+//				products.add(c);
+//				
+//			} else if (tokens[1].compareTo("T") == 0) {
+//				Towing t = null;
+//				t = new Towing(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]));		
+//				products.add(t);
+//				
+//			}
+//			
+//		}
+//		s.close();
+//		
+//	} catch(FileNotFoundException e) {
+//		System.err.print("File not Found");
+//		e.printStackTrace();
+//	}
+//	return products;
+//	}
+	public static ArrayList<Products> importProducts(){
+		ArrayList<Products> products  = new ArrayList<Products>();
 		
-		s = new Scanner(new File(file));
-		int productNum = Integer.parseInt(s.nextLine());
-		while (s.hasNext()) {
+		// Get connection to database
+		String query = "select * from Product;";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+
+		try {
+			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			while (rs.next()) {
+				
+				String code = rs.getString("productCode");
+				String type = rs.getString("productType");
+				String label = rs.getString("productLabel");
+				
+				if (type.compareTo("R") == 0) {
+					Rental r = null;
+					r = new Rental(code, type, label, 0.0, Double.parseDouble(rs.getString("dailyCost")),
+							Double.parseDouble(rs.getString("deposit")), Double.parseDouble(rs.getString("cleaningFee")));		
+					products.add(r);
+					
+				} else if (type.compareTo("F") == 0) {
+					Repair f = null;
+					f = new Repair(code, type, label, 0.0, Double.parseDouble(rs.getString("partsCost")), 
+							Double.parseDouble(rs.getString("hourlyLaborCost")));		
+					products.add(f);
+					
+				} else if (type.compareTo("C") == 0) {
+					Concession c = null;
+					c = new Concession(code, type, label, 0.0, Double.parseDouble(rs.getString("costPerMile")));		
+					products.add(c);
+					
+				} else if (type.compareTo("T") == 0) {
+					Towing t = null;
+					t = new Towing(code, type, label, 0.0, Double.parseDouble(rs.getString("unitCost")));		
+					products.add(t);
 			
-			String[] tokens = s.nextLine().split(";");
-			
-			if (tokens[1].compareTo("R") == 0) {
-				Rental r = null;
-				r = new Rental(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]), Double.parseDouble(tokens[5]));		
-				products.add(r);
-				
-			} else if (tokens[1].compareTo("F") == 0) {
-				Repair f = null;
-				f = new Repair(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]));		
-				products.add(f);
-				
-			} else if (tokens[1].compareTo("C") == 0) {
-				Concession c = null;
-				c = new Concession(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]));		
-				products.add(c);
-				
-			} else if (tokens[1].compareTo("T") == 0) {
-				Towing t = null;
-				t = new Towing(tokens[0], tokens[1], tokens[2], 0.0, Double.parseDouble(tokens[3]));		
-				products.add(t);
-				
+				}			
 			}
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		s.close();
-		
-	} catch(FileNotFoundException e) {
-		System.err.print("File not Found");
-		e.printStackTrace();
-	}
-	return products;
+
+		try {
+			if (rs != null && !rs.isClosed()) {
+				rs.close();
+			}
+			if (pre != null && !pre.isClosed()) {
+				pre.close();
+			}
+			if (conn != null && !conn.isClosed()) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return products;
+
 	}
 	
 	// Creates a deep copy of a Products, based on the input type
