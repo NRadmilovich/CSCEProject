@@ -114,7 +114,7 @@ public class InvoiceData {
 	 * @param unitCost
 	 */
 	public static void addConcession(String productCode, String productLabel, double unitCost) {
-		/* TODO*/
+	
 		String query = "insert into Product (productCode, productType, productLabel, unitCost) values (?,'C',?,?);";
 		PreparedStatement pre = null;
 		ResultSet rs = null;
@@ -143,7 +143,25 @@ public class InvoiceData {
 	 * @param laborRate
 	 */
 	public static void addRepair(String productCode, String productLabel, double partsCost, double laborRate) {
-		/* TODO*/
+		
+		String query = "insert into Product (productCode, productType, productLabel, partsCost, hourlyLaborCost) values (?,'F',?,?,?);";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, productCode);
+			pre.setString(2, productLabel);
+			pre.setDouble(3, partsCost);
+			pre.setDouble(4, laborRate);
+			rs = pre.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
 	}
 
 	/**
@@ -154,7 +172,24 @@ public class InvoiceData {
 	 * @param costPerMile
 	 */
 	public static void addTowing(String productCode, String productLabel, double costPerMile) {
-        /* TODO*/
+		
+		String query = "insert into Product (productCode, productType, productLabel, costPerMile) values (?,'T',?,?);";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, productCode);
+			pre.setString(2, productLabel);
+			pre.setDouble(3, costPerMile);
+			rs = pre.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
 	}
 
 	/**
@@ -167,7 +202,26 @@ public class InvoiceData {
 	 * @param cleaningFee
 	 */
 	public static void addRental(String productCode, String productLabel, double dailyCost, double deposit, double cleaningFee) {
-        /* TODO*/
+		
+		String query = "insert into Product (productCode, productType, productLabel, dailyCost, deposit, cleaningFee) values (?,'R',?,?,?,?);";
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, productCode);
+			pre.setString(2, productLabel);
+			pre.setDouble(3, dailyCost);
+			pre.setDouble(4, deposit);
+			pre.setDouble(5, cleaningFee);
+			rs = pre.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
 	}
 
 	/**
