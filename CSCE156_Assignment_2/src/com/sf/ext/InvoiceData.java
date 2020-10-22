@@ -117,21 +117,19 @@ public class InvoiceData {
 	
 		String query = "insert into Product (productCode, productType, productLabel, unitCost) values (?,'C',?,?);";
 		PreparedStatement pre = null;
-		ResultSet rs = null;
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
 			pre.setString(1, productCode);
 			pre.setString(2, productLabel);
 			pre.setDouble(3, unitCost);
-			rs = pre.executeQuery();
+			pre.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		DatabaseConnection.close(conn);
 		DatabaseConnection.close(pre);
-		DatabaseConnection.close(rs);
 	}
 
 	/**
@@ -146,7 +144,6 @@ public class InvoiceData {
 		
 		String query = "insert into Product (productCode, productType, productLabel, partsCost, hourlyLaborCost) values (?,'F',?,?,?);";
 		PreparedStatement pre = null;
-		ResultSet rs = null;
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
@@ -154,14 +151,13 @@ public class InvoiceData {
 			pre.setString(2, productLabel);
 			pre.setDouble(3, partsCost);
 			pre.setDouble(4, laborRate);
-			rs = pre.executeQuery();
+			pre.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		DatabaseConnection.close(conn);
 		DatabaseConnection.close(pre);
-		DatabaseConnection.close(rs);
 	}
 
 	/**
@@ -175,21 +171,19 @@ public class InvoiceData {
 		
 		String query = "insert into Product (productCode, productType, productLabel, costPerMile) values (?,'T',?,?);";
 		PreparedStatement pre = null;
-		ResultSet rs = null;
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
 			pre.setString(1, productCode);
 			pre.setString(2, productLabel);
 			pre.setDouble(3, costPerMile);
-			rs = pre.executeQuery();
+			pre.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		DatabaseConnection.close(conn);
 		DatabaseConnection.close(pre);
-		DatabaseConnection.close(rs);
 	}
 
 	/**
@@ -205,7 +199,6 @@ public class InvoiceData {
 		
 		String query = "insert into Product (productCode, productType, productLabel, dailyCost, deposit, cleaningFee) values (?,'R',?,?,?,?);";
 		PreparedStatement pre = null;
-		ResultSet rs = null;
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
@@ -214,14 +207,13 @@ public class InvoiceData {
 			pre.setDouble(3, dailyCost);
 			pre.setDouble(4, deposit);
 			pre.setDouble(5, cleaningFee);
-			rs = pre.executeQuery();
+			pre.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		DatabaseConnection.close(conn);
 		DatabaseConnection.close(pre);
-		DatabaseConnection.close(rs);
 	}
 
 	/**
@@ -253,8 +245,8 @@ public class InvoiceData {
 	 * @param productCode
 	 * @param milesTowed
 	 */
-	public static void addTowingToInvoice(String invoiceCode, String productCode, double milesTowed) {
-		/* TODO*/
+	public static void addTowingToInvoice(String invoiceCode, String productCode, double milesTowed) {	
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, milesTowed);
 	}
 
 	/**
@@ -267,7 +259,7 @@ public class InvoiceData {
 	 * @param hoursWorked
 	 */
 	public static void addRepairToInvoice(String invoiceCode, String productCode, double hoursWorked) {
-		/* TODO*/
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, hoursWorked);
 	}
 
      /**
@@ -298,8 +290,45 @@ public class InvoiceData {
      * @param daysRented
      */
     public static void addRentalToInvoice(String invoiceCode, String productCode, double daysRented) {
-    	/* TODO*/
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, daysRented);
+    }
+    
+    public static void addProductToInvoice(String invoiceCode, String productCode, double workValue) {
+    	String query = "select productId from Product where productCode = ?;";
+		String query2 = "select invoiceId from Invoice where invoiceCode = ?;";
+		int productId = 0, invoiceId = 0;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, productCode);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				productId = rs.getInt("productId");
+			} 	
+			pre = conn.prepareStatement(query2);
+			pre.setString(1, invoiceCode);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				invoiceId = rs.getInt("invoiceId");
+			} 		
+			query = "insert into InvoiceProduct(invoiceId, productId, workValue) values (?,?,?);";
+			pre = conn.prepareStatement(query);
+			pre.setInt(1, invoiceId);
+			pre.setInt(2, productId);
+			pre.setDouble(3, workValue);
+			pre.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
     }
 
+
+    
    
 }
