@@ -327,8 +327,4 @@ public class InvoiceData {
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(rs);
     }
-
-
-    
-   
 }
