@@ -27,7 +27,7 @@ import com.bc.model.Repair;
  * total, add more if required. Do not change any method signatures or the
  * package name.
  * 
- * Nick - 1,2,3,4,5,11,12,15
+ * Nick - 1,2,3,4,5,11,12,
  * 
  * Adapted from Dr. Hasan's original version of this file
  * 
