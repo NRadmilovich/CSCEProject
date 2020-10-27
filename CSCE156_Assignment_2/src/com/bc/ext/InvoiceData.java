@@ -246,7 +246,8 @@ public class InvoiceData {
 	 * @param milesTowed
 	 */
 	public static void addTowingToInvoice(String invoiceCode, String productCode, double milesTowed) {	
-		InvoiceData.addProductToInvoice(invoiceCode, productCode, milesTowed);
+		String repairCode = null;
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, milesTowed, repairCode);
 	}
 
 	/**
@@ -259,7 +260,8 @@ public class InvoiceData {
 	 * @param hoursWorked
 	 */
 	public static void addRepairToInvoice(String invoiceCode, String productCode, double hoursWorked) {
-		InvoiceData.addProductToInvoice(invoiceCode, productCode, hoursWorked);
+		String repairCode = null;
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, hoursWorked, repairCode);
 	}
 
      /**
@@ -277,7 +279,8 @@ public class InvoiceData {
       * @param repairCode
       */
     public static void addConcessionToInvoice(String invoiceCode, String productCode, int quantity, String repairCode) {
-    	/* TODO Change location of associated repair in database to be in InvoiceProduct*/
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, quantity, repairCode);
+
     }
 	
     /**
@@ -290,10 +293,19 @@ public class InvoiceData {
      * @param daysRented
      */
     public static void addRentalToInvoice(String invoiceCode, String productCode, double daysRented) {
-		InvoiceData.addProductToInvoice(invoiceCode, productCode, daysRented);
+    	String repairCode = null;
+		InvoiceData.addProductToInvoice(invoiceCode, productCode, daysRented, repairCode);
     }
     
-    public static void addProductToInvoice(String invoiceCode, String productCode, double workValue) {
+    /**
+     * Extra: generalizes adding a product and
+     * is called by each addToInvoice method for products
+     * 
+     * @param invoiceCode
+     * @param productCode
+     * @param workValue
+     */
+    public static void addProductToInvoice(String invoiceCode, String productCode, double workValue, String repairCode) {
     	String query = "select productId from Product where productCode = ?;";
 		String query2 = "select invoiceId from Invoice where invoiceCode = ?;";
 		int productId = 0, invoiceId = 0;
@@ -307,18 +319,27 @@ public class InvoiceData {
 			if (rs.next()) {
 				productId = rs.getInt("productId");
 			} 	
+			
 			pre = conn.prepareStatement(query2);
 			pre.setString(1, invoiceCode);
 			rs = pre.executeQuery();
 			if (rs.next()) {
 				invoiceId = rs.getInt("invoiceId");
-			} 		
-			query = "insert into InvoiceProduct(invoiceId, productId, workValue) values (?,?,?);";
+			} 	
+			
+			query = "insert into InvoiceProduct(invoiceId, productId, workValue, associatedRepair) values (?,?,?,?);";
 			pre = conn.prepareStatement(query);
 			pre.setInt(1, invoiceId);
 			pre.setInt(2, productId);
 			pre.setDouble(3, workValue);
+			if (repairCode != null) {
+				pre.setBoolean(4, true);
+			} else {
+				pre.setBoolean(4, false);
+			}
 			pre.executeUpdate();
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
