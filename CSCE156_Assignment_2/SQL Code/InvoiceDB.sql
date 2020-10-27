@@ -146,7 +146,7 @@ insert into InvoiceProduct(invoiceId, productId, workValue) values (1,1,5.0);
 -- InvoiceProduct 2
 insert into InvoiceProduct(invoiceId, productId, workValue) values (1,2,12.0);
 -- InvoiceProduct 3
-insert into InvoiceProduct(invoiceId, productId, workValue) values (1,3,2.0);
+insert into InvoiceProduct(invoiceId, productId, workValue, associatedRepair) values (1,3,2.0, true);
 -- InvoiceProduct 4
 insert into InvoiceProduct(invoiceId, productId, workValue) values (1,4,22.0);
 
@@ -168,7 +168,7 @@ values ('INV002', 3, 2);
 -- InvoiceProduct 5
 insert into InvoiceProduct(invoiceId, productId, workValue) values (2,4,12.0);
 -- Invoice Product 6
-insert into InvoiceProduct(invoiceId, productId, workValue) values (2,3,3.0);
+insert into InvoiceProduct(invoiceId, productId, workValue) values (2,3,3.0, false);
 
 
 -- Test Case 3 INV003

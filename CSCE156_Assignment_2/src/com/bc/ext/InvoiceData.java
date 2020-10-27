@@ -105,8 +105,33 @@ public class InvoiceData {
 	 * 6. Removes all product records from the database
 	 */
 	public static void removeAllProducts() {
-		/* TODO */
-
+		
+		String query = "delete from InvoiceProduct";
+		String query2 = "delete from Product";
+		PreparedStatement pre = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.executeUpdate();
+			pre = conn.prepareStatement(query2);
+			pre.executeUpdate();
+//			while(rs.next()) {
+//				int productId = rs.getInt("productId");
+//				
+//				query = "delete from InvoiceProduct where productId = ?";
+//				pre = conn.prepareStatement(query);
+//				pre.setInt(1, productId);
+//				pre.executeUpdate();
+//			}
+//			query = "delete from Product";
+//			pre = conn.prepareStatement(query);
+//			pre.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
 	}
 
 	/**
