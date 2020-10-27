@@ -1,4 +1,4 @@
-package com.sf.ext;
+package com.bc.ext;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -277,7 +277,7 @@ public class InvoiceData {
       * @param repairCode
       */
     public static void addConcessionToInvoice(String invoiceCode, String productCode, int quantity, String repairCode) {
-    	/* TODO*/
+    	/* TODO Change location of associated repair in database to be in InvoiceProduct*/
     }
 	
     /**
