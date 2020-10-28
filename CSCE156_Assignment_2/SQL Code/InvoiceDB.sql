@@ -89,7 +89,6 @@ create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
 workValue double not null,
 associatedRepair boolean default false,
--- productCode double not null,
 
 invoiceId int not null,
 foreign key (invoiceId) references Invoice(invoiceId),
