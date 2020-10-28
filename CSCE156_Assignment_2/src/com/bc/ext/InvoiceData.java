@@ -37,12 +37,12 @@ import com.bc.model.Repair;
 public class InvoiceData {
 
 	/**
-	 * 1. Method that removes every person record from the database Delete person
-	 * and address Do they want the customer contact null, or to keep the person
-	 * code on file?
+	 * 1. Method that removes every person record from the database 
 	 */
 	public static void removeAllPersons() {
-		/* TODO */
+		InvoiceData.removeAllInvoices();
+		InvoiceData.removeAllCusomters();
+		
 	}
 
 	/**
@@ -70,21 +70,69 @@ public class InvoiceData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
-		/* TODO */
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		
+		String query = "select Email.emailId from Email where email like ? ";
+		String emailTest = "%"+email +"%";
+		String personTest = "%"+ personCode +"%";
+		int personId = 0;
+		
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, emailTest);
+			rs = pre.executeQuery();
+			if(!rs.next()) {
+				query = "select Person.personId from Person where personCode like ? ";
+				pre = conn.prepareStatement(query);
+				pre.setString(1, personCode);
+				rs = pre.executeQuery();
+				if(!rs.next()) {
+					throw new SQLException("Person does not exist!");
+				}else {
+					personId = rs.getInt("personId");
+					query = "insert into Email(personId,email) values (?,?)";
+					pre = conn.prepareStatement(query);
+					pre.setInt(1, personId);
+					pre.setString(2,email);
+					pre.executeUpdate();
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 	}
 
 	/**
-	 * 4. Method that removes every customer record from the database Do they want
-	 * customer Id saved in invoices, or null?
+	 * 4. Method that removes every customer record from the database 
 	 */
 	public static void removeAllCusomters() {
-		/* TODO */
+		InvoiceData.removeAllInvoices();
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		
+		String query = null;
+		try {
+			pre = conn.prepareStatement(query);
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 	}
 
 	/**
 	 * 5. Method to add a customer record to the database with the provided data
-	 * 
-	 * If customer exists, do they want us to update info or throw error?
 	 * 
 	 * @param customerCode
 	 * @param customerType
@@ -98,7 +146,7 @@ public class InvoiceData {
 	 */
 	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode,
 			String name, String street, String city, String state, String zip, String country) {
-		/* TODO */
+		
 	}
 
 	/**
@@ -266,12 +314,61 @@ public class InvoiceData {
 	}
 
 	/**
-	 * Drop tables?
 	 * 
 	 * 11. Removes all invoice records from the database
 	 */
 	public static void removeAllInvoices() {
-		/* TODO */
+		// Establish connections
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		// Delete all ProductInvoice entries
+		int iPCount = 0;
+		String query = "select count(InvoiceProduct.invoiceProductId) as count from InvoiceProduct;";
+		try {
+			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			if(rs.next()) {
+				iPCount = rs.getInt("count");
+			}
+			if(iPCount > 0) {
+				query  = "delete from InvoiceProduct where InvoiceProduct.invoiceProductId = ?";
+				while(iPCount > 0) {
+					pre = conn.prepareStatement(query);
+					pre.setInt(1, iPCount);
+					pre.executeUpdate();
+					iPCount--;
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// Delete all invoices.
+		int prodCount = 0;
+		query = "select count(Invoice.invoiceId) as count from Invoice;";
+		try {
+			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			if(rs.next()) {
+				prodCount = rs.getInt("count");
+			}
+			if(prodCount > 0) {
+				query  = "delete from Invoice where Invoice.invoiceId = ?";
+				while(prodCount > 0) {
+					pre = conn.prepareStatement(query);
+					pre.setInt(1, prodCount);
+					pre.executeUpdate();
+					prodCount--;
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 	}
 
 	/**
@@ -348,7 +445,25 @@ public class InvoiceData {
 		String repairCode = null;
 		InvoiceData.addProductToInvoice(invoiceCode, productCode, daysRented, repairCode);
 	}
-
+	
+	/**
+	 * Helper: deletes address at a specific Index
+	 * 
+	 */
+	private static void deleteAddress(int index) {
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		String query  = "delete from Address where Address.addressId = ?";
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setInt(1, index);
+			pre.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+	}
 	/**
 	 * Helper: generalizes adding a product and is called by each addToInvoice
 	 * method for products
@@ -443,6 +558,64 @@ public class InvoiceData {
 		DatabaseConnection.close(rs);
 
 		return invoiceId;
+	}
+	/**
+	 * Helper: gets personId for use in checking for duplication and adding things
+	 * to a person
+	 * 
+	 * @param personCode
+	 * @return
+	 */
+	private static int getPersonId(String personCode) {
+		String query = "select personId from Person where invoiceCode = ?;";
+		int personId = 0;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, personCode);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				personId = rs.getInt("personId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
+
+		return personId;
+	}
+	/**
+	 * Helper: gets customerId for use in checking for duplication and adding things
+	 * to a Customer
+	 * 
+	 * @param productCode
+	 * @return
+	 */
+	private static int getCustomerId(String customerCode) {
+		String query = "select customerId from Customer where customerCode = ?;";
+		int customerId = 0;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, customerCode);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				customerId = rs.getInt("customerId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
+
+		return customerId;
 	}
 
 }

@@ -3,6 +3,8 @@ package com.bc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.bc.ext.InvoiceData;
 /**
  * Assignment 3
  * 
@@ -19,6 +21,7 @@ public class DataConverter {
 
 	public static void main(String[] args) {
 		//Data conversion for Person, Customer, and Products.
+
 		ArrayList<Person> people = Person.importPerson("Persons.dat");
 		HashMap<String,Person> personMap = Person.personMap(people);
 		ArrayList<Customer> customers = Customer.importCustomer("Customers.dat", personMap);
@@ -38,6 +41,7 @@ public class DataConverter {
 		JsonWrite.printJSON("data/Persons.json", people, "Person");
 		JsonWrite.printJSON("data/Customers.json", customers, "Customer");
 		JsonWrite.printJSON("data/Invoices.json", invoices, "Invoice");
+		
 	}
 
 }
