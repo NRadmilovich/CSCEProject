@@ -15,7 +15,7 @@
   <productLabel>Light Replacement</productLabel>
   <workValue>0.0</workValue>
   <partsCost>233.0</partsCost>
-  <hourlyLaborCost>12.0</hourlyLaborCost>
+  <hourlyLaborCost>2.0</hourlyLaborCost>
 </com.bc.Repair>
 <com.bc.Concession>
   <productCode>aldkjflaksjdfh</productCode>
@@ -23,7 +23,6 @@
   <productLabel>Hot Doggo</productLabel>
   <workValue>0.0</workValue>
   <unitCost>89898.23</unitCost>
-  <associatedRepair>false</associatedRepair>
 </com.bc.Concession>
 <com.bc.Towing>
   <productCode>utieow39</productCode>

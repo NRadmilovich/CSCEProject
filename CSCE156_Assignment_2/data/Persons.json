@@ -2,10 +2,10 @@
 "Person":[
   {
     "personCode": "jaoiejf",
-    "firstName": " Neil",
+    "firstName": "Neil",
     "lastName": "Armstrong",
     "Address": {
-      "Street": "Moon.",
+      "Street": "Moon",
       "City": "Moon",
       "State": "MN",
       "Zip": "60613",
@@ -18,7 +18,7 @@
   },
   {
     "personCode": "nvnoee",
-    "firstName": " Kyrie",
+    "firstName": "Kyrie",
     "lastName": "Irving",
     "Address": {
       "Street": "2 Broadway St",
@@ -31,17 +31,14 @@
   },
   {
     "personCode": "oiasudem",
-    "firstName": " Eric",
+    "firstName": "Eric",
     "lastName": "Cartman",
     "Address": {
-      "Street": "23450 1st st",
+      "Street": "23450 1st St",
       "City": "South Park",
       "State": "CO",
-      "Zip": "",
       "Country": "USA"
     },
-    "Email": [
-      "cartman@cc.com"
-    ]
+    "Email": []
   }
 ]}

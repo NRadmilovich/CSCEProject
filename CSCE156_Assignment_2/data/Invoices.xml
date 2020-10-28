@@ -4,10 +4,10 @@
   <invoiceCode>INV001</invoiceCode>
   <owner>
     <personCode>jaoiejf</personCode>
-    <firstName> Neil</firstName>
+    <firstName>Neil</firstName>
     <lastName>Armstrong</lastName>
     <Address>
-      <Street>Moon.</Street>
+      <Street>Moon</Street>
       <City>Moon</City>
       <State>MN</State>
       <Zip>60613</Zip>
@@ -22,9 +22,7 @@
     <customerCode>lkjjdbbn</customerCode>
     <customerType>B</customerType>
     <name>Dark Side of the Moon</name>
-    <primaryContact>
-      <personCode>klakk</personCode>
-    </primaryContact>
+    <primaryContact reference="../../owner"/>
     <address>
       <Street>690 N Shady St</Street>
       <City>Moon</City>
@@ -49,7 +47,7 @@
       <productLabel>Light Replacement</productLabel>
       <workValue>12.0</workValue>
       <partsCost>233.0</partsCost>
-      <hourlyLaborCost>12.0</hourlyLaborCost>
+      <hourlyLaborCost>2.0</hourlyLaborCost>
     </com.bc.Repair>
     <com.bc.Concession>
       <productCode>aldkjflaksjdfh</productCode>
@@ -57,7 +55,7 @@
       <productLabel>Hot Doggo</productLabel>
       <workValue>2.0</workValue>
       <unitCost>89898.23</unitCost>
-      <associatedRepair>true</associatedRepair>
+      <associatedRepair>nfein2929</associatedRepair>
     </com.bc.Concession>
     <com.bc.Towing>
       <productCode>utieow39</productCode>
@@ -72,7 +70,7 @@
   <invoiceCode>INV002</invoiceCode>
   <owner>
     <personCode>nvnoee</personCode>
-    <firstName> Kyrie</firstName>
+    <firstName>Kyrie</firstName>
     <lastName>Irving</lastName>
     <Address>
       <Street>2 Broadway St</Street>
@@ -87,14 +85,12 @@
     <customerCode>99999ndkf90</customerCode>
     <customerType>B</customerType>
     <name>Tesla</name>
-    <primaryContact>
-      <personCode>lejnr4</personCode>
-    </primaryContact>
+    <primaryContact reference="../../owner"/>
     <address>
-      <Street></Street>
-      <City>Silicon</City>
-      <State>CA</State>
-      <Zip>11366</Zip>
+      <Street>2 Broadway St</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>68117</Zip>
       <Country>USA</Country>
     </address>
   </customerData>
@@ -112,7 +108,6 @@
       <productLabel>Hot Doggo</productLabel>
       <workValue>3.0</workValue>
       <unitCost>89898.23</unitCost>
-      <associatedRepair>false</associatedRepair>
     </com.bc.Concession>
   </productList>
 </invoice>
@@ -120,31 +115,25 @@
   <invoiceCode>INV003</invoiceCode>
   <owner>
     <personCode>oiasudem</personCode>
-    <firstName> Eric</firstName>
+    <firstName>Eric</firstName>
     <lastName>Cartman</lastName>
     <Address>
-      <Street>23450 1st st</Street>
+      <Street>23450 1st St</Street>
       <City>South Park</City>
       <State>CO</State>
-      <Zip></Zip>
       <Country>USA</Country>
     </Address>
-    <Email>
-      <string>cartman@cc.com</string>
-    </Email>
+    <Email/>
   </owner>
   <customerData>
     <customerCode>uebgmk</customerCode>
     <customerType>P</customerType>
     <name>Big Al</name>
-    <primaryContact>
-      <personCode>zyx321</personCode>
-    </primaryContact>
+    <primaryContact reference="../../owner"/>
     <address>
-      <Street>123 1st st</Street>
+      <Street>123 1st St</Street>
       <City>South Park</City>
       <State>CO</State>
-      <Zip>68918</Zip>
       <Country>USA</Country>
     </address>
   </customerData>
@@ -155,7 +144,6 @@
       <productLabel>Hot Doggo</productLabel>
       <workValue>20.0</workValue>
       <unitCost>89898.23</unitCost>
-      <associatedRepair>false</associatedRepair>
     </com.bc.Concession>
   </productList>
 </invoice>

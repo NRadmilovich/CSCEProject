@@ -4,10 +4,10 @@
     "invoiceCode": "INV001",
     "owner": {
       "personCode": "jaoiejf",
-      "firstName": " Neil",
+      "firstName": "Neil",
       "lastName": "Armstrong",
       "Address": {
-        "Street": "Moon.",
+        "Street": "Moon",
         "City": "Moon",
         "State": "MN",
         "Zip": "60613",
@@ -23,7 +23,20 @@
       "customerType": "B",
       "name": "Dark Side of the Moon",
       "primaryContact": {
-        "personCode": "klakk"
+        "personCode": "jaoiejf",
+        "firstName": "Neil",
+        "lastName": "Armstrong",
+        "Address": {
+          "Street": "Moon",
+          "City": "Moon",
+          "State": "MN",
+          "Zip": "60613",
+          "Country": "USA"
+        },
+        "Email": [
+          "neilA@gmail.com",
+          "pinkfloyd@yahoo.com"
+        ]
       },
       "address": {
         "Street": "690 N Shady St",
@@ -45,7 +58,7 @@
       },
       {
         "partsCost": 233.0,
-        "hourlyLaborCost": 12.0,
+        "hourlyLaborCost": 2.0,
         "productCode": "nfein2929",
         "productType": "F",
         "productLabel": "Light Replacement",
@@ -53,7 +66,7 @@
       },
       {
         "unitCost": 89898.23,
-        "associatedRepair": true,
+        "associatedRepair": "nfein2929",
         "productCode": "aldkjflaksjdfh",
         "productType": "C",
         "productLabel": "Hot Doggo",
@@ -72,7 +85,7 @@
     "invoiceCode": "INV002",
     "owner": {
       "personCode": "nvnoee",
-      "firstName": " Kyrie",
+      "firstName": "Kyrie",
       "lastName": "Irving",
       "Address": {
         "Street": "2 Broadway St",
@@ -88,13 +101,23 @@
       "customerType": "B",
       "name": "Tesla",
       "primaryContact": {
-        "personCode": "lejnr4"
+        "personCode": "nvnoee",
+        "firstName": "Kyrie",
+        "lastName": "Irving",
+        "Address": {
+          "Street": "2 Broadway St",
+          "City": "New York",
+          "State": "NY",
+          "Zip": "68117",
+          "Country": "USA"
+        },
+        "Email": []
       },
       "address": {
-        "Street": "",
-        "City": "Silicon",
-        "State": "CA",
-        "Zip": "11366",
+        "Street": "2 Broadway St",
+        "City": "New York",
+        "State": "NY",
+        "Zip": "68117",
         "Country": "USA"
       }
     },
@@ -108,7 +131,6 @@
       },
       {
         "unitCost": 89898.23,
-        "associatedRepair": false,
         "productCode": "aldkjflaksjdfh",
         "productType": "C",
         "productLabel": "Hot Doggo",
@@ -120,38 +142,42 @@
     "invoiceCode": "INV003",
     "owner": {
       "personCode": "oiasudem",
-      "firstName": " Eric",
+      "firstName": "Eric",
       "lastName": "Cartman",
       "Address": {
-        "Street": "23450 1st st",
+        "Street": "23450 1st St",
         "City": "South Park",
         "State": "CO",
-        "Zip": "",
         "Country": "USA"
       },
-      "Email": [
-        "cartman@cc.com"
-      ]
+      "Email": []
     },
     "customerData": {
       "customerCode": "uebgmk",
       "customerType": "P",
       "name": "Big Al",
       "primaryContact": {
-        "personCode": "zyx321"
+        "personCode": "oiasudem",
+        "firstName": "Eric",
+        "lastName": "Cartman",
+        "Address": {
+          "Street": "23450 1st St",
+          "City": "South Park",
+          "State": "CO",
+          "Country": "USA"
+        },
+        "Email": []
       },
       "address": {
-        "Street": "123 1st st",
+        "Street": "123 1st St",
         "City": "South Park",
         "State": "CO",
-        "Zip": "68918",
         "Country": "USA"
       }
     },
     "productList": [
       {
         "unitCost": 89898.23,
-        "associatedRepair": false,
         "productCode": "aldkjflaksjdfh",
         "productType": "C",
         "productLabel": "Hot Doggo",

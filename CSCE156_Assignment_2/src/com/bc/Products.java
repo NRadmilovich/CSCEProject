@@ -97,12 +97,12 @@ public abstract class Products {
 					
 				} else if (type.compareTo("C") == 0) {
 					Concession c = null;
-					c = new Concession(code, type, label, 0.0, Double.parseDouble(rs.getString("costPerMile")));		
+					c = new Concession(code, type, label, 0.0, Double.parseDouble(rs.getString("unitCost")));		
 					products.add(c);
 					
 				} else if (type.compareTo("T") == 0) {
 					Towing t = null;
-					t = new Towing(code, type, label, 0.0, Double.parseDouble(rs.getString("unitCost")));		
+					t = new Towing(code, type, label, 0.0, Double.parseDouble(rs.getString("costPerMile")));		
 					products.add(t);		
 				}			
 			}		

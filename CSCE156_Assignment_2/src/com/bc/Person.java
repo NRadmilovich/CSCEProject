@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.List;
+import com.bc.Address;
 /**
  * Assignment 3
  * 
@@ -107,6 +112,54 @@ public class Person  {
 		}
 		scanner.close();
 		return people;
+	}
+	public static ArrayList<Person> importPersonDB(){
+		ArrayList<Person> people = new ArrayList<Person>();
+		// Build connections
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = "Select personId, personCode, lastName, firstName, address from Person";
+		try {
+			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				ArrayList<String> email = Person.getEmailDB(rs.getInt("personId"));
+				Address address = com.bc.Address.getAddressDB(rs.getInt("address"));
+				Person person = new Person(rs.getString("personCode"),rs.getString("lastName"),rs.getString("firstName"),address,email);
+				people.add(person);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+		return people;
+	}
+	private static ArrayList<String> getEmailDB(int personId){
+		ArrayList<String> emails= new ArrayList<String>();
+		// Build Connections
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = "Select email from Email where personId = ?";
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setInt(1, personId);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				emails.add(rs.getString("email"));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+		return emails;
 	}
 	/**Converts an ArrayList input to a HashMap, with the key being the personCode.
 	 * This is for use with the Customer class, to assign primary contact info.

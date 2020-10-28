@@ -12,13 +12,13 @@ import java.util.ArrayList;
 public class Concession extends Products {
 	
 	private Double unitCost;
-	private Boolean associatedRepair;
+	private String associatedRepair;
 
 	// Constructor
 	public Concession(String productCode, String productType, String productLabel, Double workVal, Double unitCost) {
 		super(productCode, productType, productLabel, workVal);
 		this.unitCost = unitCost;
-		this.associatedRepair = false;
+		this.associatedRepair = null;
 	}
 	// Copy Constructor
 	public Concession(Concession old, double workVal) {
@@ -49,7 +49,7 @@ public class Concession extends Products {
 	@Override
 	public double getDiscounts(int freeFlag) {
 		// Check if a concession has an associated repair
-		if (this.associatedRepair) {
+		if (this.associatedRepair != null) {
 			return -.1 * this.getSubtotal();
 		}
 		return 0;
@@ -74,7 +74,7 @@ public class Concession extends Products {
 				for(Products prodList: products) {
 					// Checks against the associated repair code, and ensures it is a Repair.
 					if(prodList.getProductCode().contentEquals(repairVal) && prodList instanceof Repair) {
-						test.associatedRepair = true;
+						test.associatedRepair = repairVal;
 				}
 			}}
 		}

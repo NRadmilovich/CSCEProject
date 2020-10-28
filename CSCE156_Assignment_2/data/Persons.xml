@@ -2,10 +2,10 @@
 <Person>
 <person>
   <personCode>jaoiejf</personCode>
-  <firstName> Neil</firstName>
+  <firstName>Neil</firstName>
   <lastName>Armstrong</lastName>
   <Address>
-    <Street>Moon.</Street>
+    <Street>Moon</Street>
     <City>Moon</City>
     <State>MN</State>
     <Zip>60613</Zip>
@@ -18,7 +18,7 @@
 </person>
 <person>
   <personCode>nvnoee</personCode>
-  <firstName> Kyrie</firstName>
+  <firstName>Kyrie</firstName>
   <lastName>Irving</lastName>
   <Address>
     <Street>2 Broadway St</Street>
@@ -31,17 +31,14 @@
 </person>
 <person>
   <personCode>oiasudem</personCode>
-  <firstName> Eric</firstName>
+  <firstName>Eric</firstName>
   <lastName>Cartman</lastName>
   <Address>
-    <Street>23450 1st st</Street>
+    <Street>23450 1st St</Street>
     <City>South Park</City>
     <State>CO</State>
-    <Zip></Zip>
     <Country>USA</Country>
   </Address>
-  <Email>
-    <string>cartman@cc.com</string>
-  </Email>
+  <Email/>
 </person>
 </Person>

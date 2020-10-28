@@ -10,6 +10,10 @@ package com.bc;
  * Description: The Customer class stores data about BumprCars customers.  It uses the Person class and Address class to accomplish this.
  */
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.io.File;
 import java.util.ArrayList;
@@ -86,6 +90,31 @@ public class Customer {
 			}
 		}
 		s.close();
+		return customers;
+	}
+	public static ArrayList<Customer> importCustomerDB(HashMap<String,Person> personMap){
+		ArrayList<Customer> customers = new ArrayList<Customer>();
+		// Build connections
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = "Select customerCode, customerType, customerName, Person.personCode, Customer.address from Customer\r\n"
+				+ "left join Person on Person.personId = Customer.primaryContact";
+		try {
+			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				Address address = com.bc.Address.getAddressDB(rs.getInt("address"));
+				Customer customer = new Customer(rs.getString("customerCode"),rs.getString("customerType"),rs.getString("customerName"),personMap.get(rs.getString("personCode")),address);
+				customers.add(customer);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 		return customers;
 	}
 	// Creates a HashMap of customers mapped to their customer codes.

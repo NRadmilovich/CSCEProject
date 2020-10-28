@@ -1,4 +1,11 @@
 package com.bc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  * CSCE 156
  * 
@@ -59,6 +66,31 @@ public class Address {
 			out.Zip = Tokens[3];
 		}
 		return out;
+	}
+	public static Address getAddressDB(int addressId){
+		Address address= null;
+		// Build Connections
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = "Select Address.addressId, Address.street, Address.city, Address.zip, State.stateName, Country.countryName from Address\r\n"
+				+ "left join State on State.stateId = Address.state\r\n"
+				+ "left join Country on Country.countryId = Address.country\r\n"
+				+ "having Address.addressId = ?";
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setInt(1, addressId);
+			rs = pre.executeQuery();
+			rs.next();
+			address = new Address(rs.getString("street"),rs.getString("city"), rs.getString("stateName"),rs.getString("zip"),rs.getString("countryName"));
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+		return address;
 	}
 	@Override
 	public String toString() {

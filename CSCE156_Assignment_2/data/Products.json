@@ -11,7 +11,7 @@
   },
   {
     "partsCost": 233.0,
-    "hourlyLaborCost": 12.0,
+    "hourlyLaborCost": 2.0,
     "productCode": "nfein2929",
     "productType": "F",
     "productLabel": "Light Replacement",
@@ -19,7 +19,6 @@
   },
   {
     "unitCost": 89898.23,
-    "associatedRepair": false,
     "productCode": "aldkjflaksjdfh",
     "productType": "C",
     "productLabel": "Hot Doggo",

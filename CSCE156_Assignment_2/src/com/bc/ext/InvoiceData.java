@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import com.bc.DatabaseConnection;
@@ -27,7 +28,7 @@ import com.bc.model.Repair;
  * total, add more if required. Do not change any method signatures or the
  * package name.
  * 
- * Nick - 1,2,3,4,5,11,12,
+ * Nick - 1,2,4,5,12,
  * 
  * Adapted from Dr. Hasan's original version of this file
  * 
@@ -59,8 +60,21 @@ public class InvoiceData {
 	 */
 	public static void addPerson(String personCode, String firstName, String lastName, String street, String city,
 			String state, String zip, String country) {
-		/* TODO */
-	}
+		// Build connections
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = null;
+		// Search for duplicate entries and adds to tables.
+		int personId = InvoiceData.getPersonId(personCode);
+		int stateId = InvoiceData.addState(state);
+		int countryId = InvoiceData.addCountry(country);
+		int addressId = InvoiceData.addAddress(street,city,stateId);
+
+
+
+		}
+		
 
 	/**
 	 * 3. Adds an email record corresponding person record corresponding to the
@@ -445,6 +459,54 @@ public class InvoiceData {
 		String repairCode = null;
 		InvoiceData.addProductToInvoice(invoiceCode, productCode, daysRented, repairCode);
 	}
+	/**
+	 * Checks for duplicates, and adds country.
+	 * @return countryId
+	 * @param country
+	 * 
+	 */
+	public static int addCountry(String country) {
+		int countryId = InvoiceData.getCountryId(country);
+		
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = "insert into Country(countryName) values (?)";
+		try {
+			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			pre.setString(1, country);
+			rs = pre.getGeneratedKeys();
+			rs.next();
+			countryId = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return countryId;
+	}
+	/**
+	 * Checks for duplicates, and adds country.
+	 * @return countryId
+	 * @param country
+	 * 
+	 */
+	public static int addState(String state) {
+		int stateId = InvoiceData.getStateId(state);
+		
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String query = "insert into State(stateName) values (?)";
+		try {
+			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			pre.setString(1, state);
+			rs = pre.getGeneratedKeys();
+			rs.next();
+			stateId = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stateId;
+	}
 	
 	/**
 	 * Helper: deletes address at a specific Index
@@ -589,6 +651,35 @@ public class InvoiceData {
 		return personId;
 	}
 	/**
+	 * Helper: gets countryId for use in checking for duplication and adding things
+	 * to a Country
+	 * 
+	 * @param productCode
+	 * @return
+	 */
+	private static int getCountryId(String countryName) {
+		String query = "select countryId from Country where countryName = ?;";
+		int countryId = 0;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, country);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				countryId = rs.getInt("countryId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
+
+		return countryId;
+	}
+	/**
 	 * Helper: gets customerId for use in checking for duplication and adding things
 	 * to a Customer
 	 * 
@@ -616,6 +707,35 @@ public class InvoiceData {
 		DatabaseConnection.close(rs);
 
 		return customerId;
+	}
+	/**
+	 * Helper: gets customerId for use in checking for duplication and adding things
+	 * to a Customer
+	 * 
+	 * @param productCode
+	 * @return
+	 */
+	private static int getStateId(String stateName) {
+		String query = "select stateId from State where stateName = ?;";
+		int stateId = 0;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, state);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				stateId = rs.getInt("stateId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
+
+		return stateId;
 	}
 
 }

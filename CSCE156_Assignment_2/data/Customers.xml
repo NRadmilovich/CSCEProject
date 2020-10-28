@@ -5,7 +5,20 @@
   <customerType>B</customerType>
   <name>Dark Side of the Moon</name>
   <primaryContact>
-    <personCode>klakk</personCode>
+    <personCode>jaoiejf</personCode>
+    <firstName>Neil</firstName>
+    <lastName>Armstrong</lastName>
+    <Address>
+      <Street>Moon</Street>
+      <City>Moon</City>
+      <State>MN</State>
+      <Zip>60613</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>neilA@gmail.com</string>
+      <string>pinkfloyd@yahoo.com</string>
+    </Email>
   </primaryContact>
   <address>
     <Street>690 N Shady St</Street>
@@ -16,32 +29,50 @@
   </address>
 </customer>
 <customer>
-  <customerCode>uebgmk</customerCode>
-  <customerType>P</customerType>
-  <name>Big Al</name>
-  <primaryContact>
-    <personCode>zyx321</personCode>
-  </primaryContact>
-  <address>
-    <Street>123 1st st</Street>
-    <City>South Park</City>
-    <State>CO</State>
-    <Zip>68918</Zip>
-    <Country>USA</Country>
-  </address>
-</customer>
-<customer>
   <customerCode>99999ndkf90</customerCode>
   <customerType>B</customerType>
   <name>Tesla</name>
   <primaryContact>
-    <personCode>lejnr4</personCode>
+    <personCode>nvnoee</personCode>
+    <firstName>Kyrie</firstName>
+    <lastName>Irving</lastName>
+    <Address>
+      <Street>2 Broadway St</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>68117</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email/>
   </primaryContact>
   <address>
-    <Street></Street>
-    <City>Silicon</City>
-    <State>CA</State>
-    <Zip>11366</Zip>
+    <Street>2 Broadway St</Street>
+    <City>New York</City>
+    <State>NY</State>
+    <Zip>68117</Zip>
+    <Country>USA</Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>uebgmk</customerCode>
+  <customerType>P</customerType>
+  <name>Big Al</name>
+  <primaryContact>
+    <personCode>oiasudem</personCode>
+    <firstName>Eric</firstName>
+    <lastName>Cartman</lastName>
+    <Address>
+      <Street>23450 1st St</Street>
+      <City>South Park</City>
+      <State>CO</State>
+      <Country>USA</Country>
+    </Address>
+    <Email/>
+  </primaryContact>
+  <address>
+    <Street>123 1st St</Street>
+    <City>South Park</City>
+    <State>CO</State>
     <Country>USA</Country>
   </address>
 </customer>

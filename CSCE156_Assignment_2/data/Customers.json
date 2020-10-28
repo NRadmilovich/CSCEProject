@@ -5,7 +5,20 @@
     "customerType": "B",
     "name": "Dark Side of the Moon",
     "primaryContact": {
-      "personCode": "klakk"
+      "personCode": "jaoiejf",
+      "firstName": "Neil",
+      "lastName": "Armstrong",
+      "Address": {
+        "Street": "Moon",
+        "City": "Moon",
+        "State": "MN",
+        "Zip": "60613",
+        "Country": "USA"
+      },
+      "Email": [
+        "neilA@gmail.com",
+        "pinkfloyd@yahoo.com"
+      ]
     },
     "address": {
       "Street": "690 N Shady St",
@@ -16,32 +29,50 @@
     }
   },
   {
-    "customerCode": "uebgmk",
-    "customerType": "P",
-    "name": "Big Al",
-    "primaryContact": {
-      "personCode": "zyx321"
-    },
-    "address": {
-      "Street": "123 1st st",
-      "City": "South Park",
-      "State": "CO",
-      "Zip": "68918",
-      "Country": "USA"
-    }
-  },
-  {
     "customerCode": "99999ndkf90",
     "customerType": "B",
     "name": "Tesla",
     "primaryContact": {
-      "personCode": "lejnr4"
+      "personCode": "nvnoee",
+      "firstName": "Kyrie",
+      "lastName": "Irving",
+      "Address": {
+        "Street": "2 Broadway St",
+        "City": "New York",
+        "State": "NY",
+        "Zip": "68117",
+        "Country": "USA"
+      },
+      "Email": []
     },
     "address": {
-      "Street": "",
-      "City": "Silicon",
-      "State": "CA",
-      "Zip": "11366",
+      "Street": "2 Broadway St",
+      "City": "New York",
+      "State": "NY",
+      "Zip": "68117",
+      "Country": "USA"
+    }
+  },
+  {
+    "customerCode": "uebgmk",
+    "customerType": "P",
+    "name": "Big Al",
+    "primaryContact": {
+      "personCode": "oiasudem",
+      "firstName": "Eric",
+      "lastName": "Cartman",
+      "Address": {
+        "Street": "23450 1st St",
+        "City": "South Park",
+        "State": "CO",
+        "Country": "USA"
+      },
+      "Email": []
+    },
+    "address": {
+      "Street": "123 1st St",
+      "City": "South Park",
+      "State": "CO",
       "Country": "USA"
     }
   }
