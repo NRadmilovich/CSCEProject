@@ -8,24 +8,20 @@ Select Person.personCode, Person.lastName, Person.firstName, Address.street, Add
 left join Address on Address.addressId = Person.address
 left join State on State.stateId = Address.state
 left join Country on Country.countryId = Address.country
-left join PersonEmail on Person.personId = PersonEmail.personId
-left join Email on PersonEmail.emailId = Email.emailId;
+left join Email on Email.personId = Person.personId;
 
 -- 2 returns all emails for a specific person
 select Email.email from Person
-inner join PersonEmail on Person.personId = PersonEmail.personId
-inner join Email on PersonEmail.emailId = Email.emailId
+inner join Email on Email.personId = Person.personId
 and Person.personId = 1;
 
 -- 3 adds an email for a specific person
-insert into Email(email) values ('thisisanEmail@yahoo.com');
-insert into PersonEmail(personId, emailId) values (3,3);
+insert into Email(email,personId) values ('thisisanEmail@yahoo.com',3);
 
 -- 4
 update Email set email = 'thisisanotheremail@email.email' where Email.emailId = 1;
 
 -- 5 Deletes a person, their address, and their emails
-delete from PersonEmail where PersonEmail.personId = 1;
 delete from Email where Email.emailId = 1;
 delete from Email where Email.emailId = 2;
 update Invoice set owner = 3 where owner = 1;
@@ -38,11 +34,8 @@ insert into Address(street, city, state, zip, country) values ('23 Added person 
 -- Person 
 insert into Person(personCode, firstName, lastName,address) values ('newPerson','Neil','Armstrong',1);
 -- Email 1 and 2
-insert into Email(email) values ('Email1@gmail.com');
-insert into Email(email) values ('email2@yahoo.com');
--- PersonEmail for email addresses
-insert into PersonEmail(personId,emailId) values (6,4);
-insert into PersonEmail(personId,emailId) values (6,5);
+insert into Email(email,personId) values ('Email1@gmail.com',4);
+insert into Email(email,personId) values ('email2@yahoo.com',4);
 
 -- 7
 select p.productCode from Invoice i 
@@ -54,10 +47,10 @@ select p.productCode from Invoice i
 select Invoice.owner as Person, Product.productCode from Invoice
 	inner join InvoiceProduct on InvoiceProduct.invoiceId = Invoice.invoiceId
     inner join Product on Product.productId = InvoiceProduct.productId
-    where (Invoice.owner = 3);
+    where (Invoice.owner = 2);
 
 -- 9
-select invoiceCode from Invoice where (owner = 3);
+select invoiceCode from Invoice where (owner = 2);
 
 -- 10
 insert into InvoiceProduct(invoiceId, productId, workValue) values (3,3,15);
@@ -86,4 +79,4 @@ select Invoice.invoiceCode, count(Product.productType)from Invoice
 	left join InvoiceProduct on InvoiceProduct.invoiceId = Invoice.invoiceId
     left join Product on Product.productId = InvoiceProduct.productId
     group by Invoice.invoiceCode, Product.productType
-    having count(Product.productType) > 1;
+    having count(distinct Product.productType) < count(Product.productType);

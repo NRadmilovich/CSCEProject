@@ -7,21 +7,20 @@ drop table if exists InvoiceProduct;
 drop table if exists Invoice;
 drop table if exists Product;
 drop table if exists Customer;
-drop table if exists PersonEmail;
+drop table if exists Email;
 drop table if exists Person;
 drop table if exists Address;
-drop table if exists Email;
 drop table if exists State;
 drop table if exists Country;
 
 
 create table State(
 stateId int not null primary key auto_increment,
-stateName varchar(40));
+stateName varchar(40) unique);
 
 create table Country(
 countryId int not null primary key auto_increment,
-countryName varchar(40));
+countryName varchar(40) unique);
 
 Create table Address(
 addressId int not null primary key auto_increment,
@@ -34,24 +33,19 @@ foreign key (State) references State(stateId),
 foreign key (country) references Country(countryId)
 );
 
-create table Email(
-emailId int not null primary key auto_increment,
-email varchar(255) not null);
-
 create table Person (
 personId int not null primary key auto_increment,
 personCode varchar(20) not null unique,
-firstName varchar(30) ,
-lastName varchar(30) ,
-address int,
+firstName varchar(30) not null,
+lastName varchar(30) not null,
+address int not null,
 foreign key(address) references Address(addressId));
 
-create table PersonEmail(
-personEmailId int not null primary key auto_increment,
+create table Email(
+emailId int not null primary key auto_increment,
 personId int not null,
-emailId int not null,
-foreign key (personId) references Person(personId),
-foreign key (emailId) references Email(emailId));
+email varchar(255) not null,
+foreign key (personId) references Person(personId));
 
 create table Customer(
 customerId int not null primary key auto_increment,
@@ -124,13 +118,8 @@ insert into Address(street, city, state, zip, country) values ('Moon','Moon',1,6
 -- Person 1
 insert into Person(personCode, firstName, lastName,address) values ('jaoiejf','Neil','Armstrong',1);
 -- Email 1 and 2
-insert into Email(email) values ('neilA@gmail.com');
-insert into Email(email) values ('pinkfloyd@yahoo.com');
--- PersonEmail 1 and 2
-insert into PersonEmail(personId,emailId) values (1,1);
-insert into PersonEmail(personId,emailId) values (1,2);
--- Person 2, empty person code
-insert into Person(personCode) values ('klakk');
+insert into Email(email,personId) values ('neilA@gmail.com',1);
+insert into Email(email,personId) values ('pinkfloyd@yahoo.com',1);
 -- State 2
 Insert into State(stateName) values ('EA');
 -- Address 2
@@ -138,7 +127,7 @@ insert into Address(street, city, state, zip, country)
 values ('690 N Shady St','Moon',2,80902,1);
 -- Customer 1
 insert into Customer(customerCode, customerType, customerName, primaryContact,address)
-values ('lkjjdbbn','B','Dark Side of the Moon',2, 2);
+values ('lkjjdbbn','B','Dark Side of the Moon',1, 2);
 -- Invoice 1
 insert into Invoice(invoiceCode,owner,customer) values ('INV001',1,1);
 -- InvoiceProduct 1
@@ -156,15 +145,15 @@ insert into State(stateName) values ('NY');
 -- Address 3
 insert into Address(street, city, state, zip, country)
 values ('2 Broadway St','New York',3,68117,1);
--- Person 3
+-- Person 2
 insert into Person(personCode, firstName, lastName, address)
 values ('nvnoee', 'Kyrie', 'Irving',3);
 -- Customer 2
 insert into Customer(customerCode, customerType, customerName, primaryContact, address)
-values ('99999ndkf90','B','Tesla',3,3);
+values ('99999ndkf90','B','Tesla',2,3);
 -- Invoice 2
 insert into Invoice(invoiceCode, owner, customer) 
-values ('INV002', 3, 2);
+values ('INV002', 2, 2);
 -- InvoiceProduct 5
 insert into InvoiceProduct(invoiceId, productId, workValue) values (2,4,12.0);
 -- Invoice Product 6
@@ -177,19 +166,17 @@ insert into State(stateName) values ('CO');
 -- Address 4
 insert into Address(street, city, state, country)
 values ('23450 1st St','South Park',4,1);
--- Person 4
+-- Person 3
 insert into Person(personCode, firstName, lastName, address)
 values ('oiasudem','Eric','Cartman',4);
--- Person 5
-insert into Person(personCode) values ('zyx321');
 -- Address 5
 insert into Address(street, city, state, country)
 values ('123 1st St','South Park',4,1);
 -- Customer 3
 insert into Customer(customerCode, customerType, customerName, primaryContact, address)
-values('uebgmk','P','Big Al',5,5);
+values('uebgmk','P','Big Al',3,5);
 -- Invoice 3
 insert into Invoice(invoiceCode, owner, customer)
-values ('INV003',4,3);
+values ('INV003',3,3);
 -- InvoiceProduct 7
 insert into InvoiceProduct(invoiceId, productId, workValue) values (3,3,20);
