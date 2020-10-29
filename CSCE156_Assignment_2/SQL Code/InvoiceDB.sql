@@ -88,7 +88,7 @@ foreign key (customer) references Customer(customerId));
 create table InvoiceProduct (
 invoiceProductId int primary key not null auto_increment,
 workValue double not null,
-associatedRepair boolean default false,
+associatedRepair varchar(30) default null,
 
 invoiceId int not null,
 foreign key (invoiceId) references Invoice(invoiceId),
@@ -134,7 +134,7 @@ insert into InvoiceProduct(invoiceId, productId, workValue) values (1,1,5.0);
 -- InvoiceProduct 2
 insert into InvoiceProduct(invoiceId, productId, workValue) values (1,2,12.0);
 -- InvoiceProduct 3
-insert into InvoiceProduct(invoiceId, productId, workValue, associatedRepair) values (1,3,2.0, true);
+insert into InvoiceProduct(invoiceId, productId, workValue, associatedRepair) values (1,3,2.0, 'nfein2929');
 -- InvoiceProduct 4
 insert into InvoiceProduct(invoiceId, productId, workValue) values (1,4,22.0);
 
@@ -156,7 +156,7 @@ values ('INV002', 2, 2);
 -- InvoiceProduct 5
 insert into InvoiceProduct(invoiceId, productId, workValue) values (2,4,12.0);
 -- Invoice Product 6
-insert into InvoiceProduct(invoiceId, productId, workValue) values (2,3,3.0, false);
+insert into InvoiceProduct(invoiceId, productId, workValue) values (2,3,3.0);
 
 
 -- Test Case 3 INV003

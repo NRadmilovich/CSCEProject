@@ -28,7 +28,7 @@ import com.bc.model.Repair;
  * total, add more if required. Do not change any method signatures or the
  * package name.
  * 
- * Nick - 1,2,4,5,12,
+ * Nick - 1,4 Invoice Import
  * 
  * Adapted from Dr. Hasan's original version of this file
  * 
@@ -67,12 +67,25 @@ public class InvoiceData {
 		String query = null;
 		// Search for duplicate entries and adds to tables.
 		int personId = InvoiceData.getPersonId(personCode);
-		int stateId = InvoiceData.addState(state);
-		int countryId = InvoiceData.addCountry(country);
-		int addressId = InvoiceData.addAddress(street,city,stateId);
 
+		int addressId = InvoiceData.addAddress(street,city,zip,state,country);
+		// Insert into DB if no matching person was returned.
+		if(personId == 0) {
+		query = "insert into Person(personCode, firstName, lastName, address) values (?,?,?,?)";
+		try {
+			pre = conn.prepareStatement(query);	
+			pre.setString(1, personCode);
+			pre.setString(2, firstName);
+			pre.setString(3, lastName);
+			pre.setInt(4, addressId);
+			pre.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}}
 
-
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 		}
 		
 
@@ -90,7 +103,6 @@ public class InvoiceData {
 		
 		String query = "select Email.emailId from Email where email like ? ";
 		String emailTest = "%"+email +"%";
-		String personTest = "%"+ personCode +"%";
 		int personId = 0;
 		
 		try {
@@ -100,7 +112,7 @@ public class InvoiceData {
 			if(!rs.next()) {
 				query = "select Person.personId from Person where personCode like ? ";
 				pre = conn.prepareStatement(query);
-				pre.setString(1, personCode);
+				pre.setString(1, "%"+ personCode +"%");
 				rs = pre.executeQuery();
 				if(!rs.next()) {
 					throw new SQLException("Person does not exist!");
@@ -159,8 +171,28 @@ public class InvoiceData {
 	 * @param country
 	 */
 	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode,
-			String name, String street, String city, String state, String zip, String country) {
-		
+			String name, String street, String city, String state, String zip, String country){
+		int customerId = InvoiceData.getCustomerId(customerCode);
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		int addressId = InvoiceData.addAddress(street, city, zip, state, country);
+		int primaryContactId = InvoiceData.getPersonId(primaryContactPersonCode);
+		if(customerId == 0) {
+		String query = "insert into Customer(customerCode, customerType, customerName, primaryContact, address) values (?,?,?,?,?)";
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, customerCode);
+			pre.setString(2, customerType);
+			pre.setString(3, name);
+			pre.setInt(4, primaryContactId);
+			pre.setInt(5, addressId);
+			pre.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		}
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 	}
 
 	/**
@@ -396,9 +428,25 @@ public class InvoiceData {
 		/* TODO */
 		// Checks for duplicate
 		int invoiceId = InvoiceData.getInvoiceId(invoiceCode);
-		if (invoiceId != 0) {
-			return;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		String query = null;
+		if (invoiceId == 0) {
+			query = "insert into Invoice(invoiceCode, owner, customer) values (?,?,?);";
+			int ownerId = InvoiceData.getPersonId(ownerCode);
+			int customerId = InvoiceData.getCustomerId(customerCode);
+			try {
+				pre = conn.prepareStatement(query);
+				pre.setString(1,invoiceCode);
+				pre.setInt(2, ownerId);
+				pre.setInt(3, customerId);
+				pre.executeUpdate();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 	}
 
 	/**
@@ -466,48 +514,96 @@ public class InvoiceData {
 	 * 
 	 */
 	public static int addCountry(String country) {
+		// Checks for duplicate country
 		int countryId = InvoiceData.getCountryId(country);
-		
+		// If no duplicate is found, adds country.
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
+		if(countryId == 0) {
 		String query = "insert into Country(countryName) values (?)";
 		try {
 			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			pre.setString(1, country);
+			pre.executeUpdate();
 			rs = pre.getGeneratedKeys();
 			rs.next();
 			countryId = rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 		return countryId;
 	}
 	/**
 	 * Checks for duplicates, and adds country.
-	 * @return countryId
-	 * @param country
+	 * @return stateId
+	 * @param state
 	 * 
 	 */
 	public static int addState(String state) {
+		// Checks for duplicate State
 		int stateId = InvoiceData.getStateId(state);
-		
+		//If no duplicate, adds state
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
+		if(stateId == 0) {
 		String query = "insert into State(stateName) values (?)";
 		try {
 			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			pre.setString(1, state);
+			pre.executeUpdate();
 			rs = pre.getGeneratedKeys();
 			rs.next();
 			stateId = rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 		return stateId;
 	}
-	
+	/**
+	 * Checks for duplicates, and adds country.
+	 * @return stateId
+	 * @param state
+	 * 
+	 */
+	public static int addAddress(String street, String city,String zip, String state, String country) {
+		// Gets Id for State and country
+		int stateId = InvoiceData.addState(state);
+		int countryId = InvoiceData.addCountry(country);
+		//Checks for Duplicate Address
+		int addressId = InvoiceData.getAddressId(street,city,stateId);
+		// If no duplicate, adds address
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		if(addressId == 0) {
+		String query = "insert into Address(street, city, state, zip, country) values (?,?,?,?,?)";
+		try {
+			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			pre.setString(1, street);
+			pre.setString(2, city);
+			pre.setString(4, zip);
+			pre.setInt(3, stateId);
+			pre.setInt(5, countryId);
+			pre.executeUpdate();
+			rs = pre.getGeneratedKeys();
+			rs.next();
+			addressId = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+		return addressId;
+	}
 	/**
 	 * Helper: deletes address at a specific Index
 	 * 
@@ -549,9 +645,9 @@ public class InvoiceData {
 			pre.setDouble(3, workValue);
 			// Checks for the existence of an associatedRepair
 			if (repairCode != null) {
-				pre.setBoolean(4, true);
+				pre.setString(4, repairCode);
 			} else {
-				pre.setBoolean(4, false);
+				pre.setString(4, null);
 			}
 			pre.executeUpdate();
 
@@ -629,7 +725,7 @@ public class InvoiceData {
 	 * @return
 	 */
 	private static int getPersonId(String personCode) {
-		String query = "select personId from Person where invoiceCode = ?;";
+		String query = "select personId from Person where personCode = ?;";
 		int personId = 0;
 		PreparedStatement pre = null;
 		ResultSet rs = null;
@@ -665,7 +761,7 @@ public class InvoiceData {
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
-			pre.setString(1, country);
+			pre.setString(1, countryName);
 			rs = pre.executeQuery();
 			if (rs.next()) {
 				countryId = rs.getInt("countryId");
@@ -723,7 +819,7 @@ public class InvoiceData {
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
-			pre.setString(1, state);
+			pre.setString(1, stateName);
 			rs = pre.executeQuery();
 			if (rs.next()) {
 				stateId = rs.getInt("stateId");
@@ -736,6 +832,29 @@ public class InvoiceData {
 		DatabaseConnection.close(rs);
 
 		return stateId;
+	}
+	private static int getAddressId(String street, String city, int stateId) {
+		String query = "Select addressId from Address where (Address.street like ?) and (Address.city like ?) and (Address.state = ?);";
+		int addressId = 0;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		Connection conn = DatabaseConnection.connectionBuilder();
+		try {
+			pre = conn.prepareStatement(query);
+			pre.setString(1, "%"+street+"%");
+			pre.setString(2, "%"+city+"%");
+			pre.setInt(3,stateId);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				addressId = rs.getInt("addressId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(conn);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(rs);
+		return addressId;
 	}
 
 }

@@ -20,9 +20,9 @@ public class InvoiceReport {
 
 	public static void main(String[] args) {
 		//Data conversion for Person, Customer, and Products.
-		ArrayList<Person> people = Person.importPerson("Persons.dat");
+		ArrayList<Person> people = Person.importPersonDB();
 		HashMap<String,Person> personMap = Person.personMap(people);
-		ArrayList<Customer> customers = Customer.importCustomer("Customers.dat", personMap);
+		ArrayList<Customer> customers = Customer.importCustomerDB(personMap);
 		ArrayList<Products> products = Products.importProducts();
 		// Creates Product and Customer Hashmaps
 		HashMap<String,Products> productMap = Products.productMap(products);
