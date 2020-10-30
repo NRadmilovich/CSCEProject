@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * 
  * Description: The Towing class is a subclass of Products, and stores towing information for BumprCars.
  */
-public class Towing extends Products{
+public class Towing extends Product{
 
 	private Double costPerMile;
 	
@@ -66,7 +66,7 @@ public class Towing extends Products{
 	public String feePrint() {
 		return null;
 	}
-	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
+	public static void associatedRepairCheck(ArrayList<Product> potentials, ArrayList<Product> product, String repairVal) {
 		
 	}	
 

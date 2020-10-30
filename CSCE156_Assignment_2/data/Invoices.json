@@ -184,5 +184,75 @@
         "workValue": 20.0
       }
     ]
+  },
+  {
+    "invoiceCode": "54321",
+    "owner": {
+      "personCode": "12345",
+      "firstName": "Nick",
+      "lastName": "Radmilovich",
+      "Address": {
+        "Street": "123 not my Address",
+        "City": "Lincoln",
+        "State": "NE",
+        "Zip": "68528",
+        "Country": "USA"
+      },
+      "Email": [
+        "Nradmilovich4@gmail.com"
+      ]
+    },
+    "customerData": {
+      "customerCode": "12345",
+      "customerType": "P",
+      "name": "My business is personal",
+      "primaryContact": {
+        "personCode": "12345",
+        "firstName": "Nick",
+        "lastName": "Radmilovich",
+        "Address": {
+          "Street": "123 not my Address",
+          "City": "Lincoln",
+          "State": "NE",
+          "Zip": "68528",
+          "Country": "USA"
+        },
+        "Email": [
+          "Nradmilovich4@gmail.com"
+        ]
+      },
+      "address": {
+        "Street": "Still not my address",
+        "City": "Lincoln",
+        "State": "NE",
+        "Zip": "68528",
+        "Country": "USA"
+      }
+    },
+    "productList": [
+      {
+        "unitCost": 89898.23,
+        "productCode": "aldkjflaksjdfh",
+        "productType": "C",
+        "productLabel": "Hot Doggo",
+        "workValue": 25.0
+      },
+      {
+        "unitCost": 89898.23,
+        "associatedRepair": "nfein2929",
+        "productCode": "aldkjflaksjdfh",
+        "productType": "C",
+        "productLabel": "Hot Doggo",
+        "workValue": 15.0
+      },
+      {
+        "partsCost": 233.0,
+        "hourlyLaborCost": 2.0,
+        "productCode": "nfein2929",
+        "productType": "F",
+        "productLabel": "Light Replacement",
+        "workValue": 2100.0
+      }
+    ]
   }
 ]}

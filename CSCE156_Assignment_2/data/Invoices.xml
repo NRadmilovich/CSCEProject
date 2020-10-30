@@ -147,4 +147,60 @@
     </com.bc.Concession>
   </productList>
 </invoice>
+<invoice>
+  <invoiceCode>54321</invoiceCode>
+  <owner>
+    <personCode>12345</personCode>
+    <firstName>Nick</firstName>
+    <lastName>Radmilovich</lastName>
+    <Address>
+      <Street>123 not my Address</Street>
+      <City>Lincoln</City>
+      <State>NE</State>
+      <Zip>68528</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>Nradmilovich4@gmail.com</string>
+    </Email>
+  </owner>
+  <customerData>
+    <customerCode>12345</customerCode>
+    <customerType>P</customerType>
+    <name>My business is personal</name>
+    <primaryContact reference="../../owner"/>
+    <address>
+      <Street>Still not my address</Street>
+      <City>Lincoln</City>
+      <State>NE</State>
+      <Zip>68528</Zip>
+      <Country>USA</Country>
+    </address>
+  </customerData>
+  <productList>
+    <com.bc.Concession>
+      <productCode>aldkjflaksjdfh</productCode>
+      <productType>C</productType>
+      <productLabel>Hot Doggo</productLabel>
+      <workValue>25.0</workValue>
+      <unitCost>89898.23</unitCost>
+    </com.bc.Concession>
+    <com.bc.Concession>
+      <productCode>aldkjflaksjdfh</productCode>
+      <productType>C</productType>
+      <productLabel>Hot Doggo</productLabel>
+      <workValue>15.0</workValue>
+      <unitCost>89898.23</unitCost>
+      <associatedRepair>nfein2929</associatedRepair>
+    </com.bc.Concession>
+    <com.bc.Repair>
+      <productCode>nfein2929</productCode>
+      <productType>F</productType>
+      <productLabel>Light Replacement</productLabel>
+      <workValue>2100.0</workValue>
+      <partsCost>233.0</partsCost>
+      <hourlyLaborCost>2.0</hourlyLaborCost>
+    </com.bc.Repair>
+  </productList>
+</invoice>
 </Invoice>

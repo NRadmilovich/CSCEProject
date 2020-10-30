@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * 
  * Description: The Rental class is a subclass of Products, and stores rental data for BumprCars.
  */
-public class Rental extends Products{
+public class Rental extends Product{
 
 	private Double dailyCost;
 	private Double deposit;
@@ -88,7 +88,7 @@ public class Rental extends Products{
 		String fees = "(+ $" + this.cleaningFee + " cleaning fee, -$" + this.getDeposit() + " deposit refund)";
 		return fees;
 	}
-	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
+	public static void associatedRepairCheck(ArrayList<Product> potentials, ArrayList<Product> product, String repairVal) {
 		
 	}
 }

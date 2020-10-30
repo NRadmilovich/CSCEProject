@@ -28,8 +28,6 @@ import com.bc.model.Repair;
  * total, add more if required. Do not change any method signatures or the
  * package name.
  * 
- * Nick - 1,4 Invoice Import
- * 
  * Adapted from Dr. Hasan's original version of this file
  * 
  * @author Chloe
@@ -38,12 +36,33 @@ import com.bc.model.Repair;
 public class InvoiceData {
 
 	/**
-	 * 1. Method that removes every person record from the database 
+	 * 1. Method that removes every person record from the database
 	 */
 	public static void removeAllPersons() {
 		InvoiceData.removeAllInvoices();
 		InvoiceData.removeAllCusomters();
-		
+		InvoiceData.removeAllEmails();
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+
+		String query = "select address from Person";
+		try {
+			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			query = "delete from Person";
+			pre = conn.prepareStatement(query);
+			pre.executeUpdate();
+			while (rs.next()) {
+				InvoiceData.deleteAddress(rs.getInt("address"),"P");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
 	}
 
 	/**
@@ -68,26 +87,26 @@ public class InvoiceData {
 		// Search for duplicate entries and adds to tables.
 		int personId = InvoiceData.getPersonId(personCode);
 
-		int addressId = InvoiceData.addAddress(street,city,zip,state,country);
+		int addressId = InvoiceData.addAddress(street, city, zip, state, country);
 		// Insert into DB if no matching person was returned.
-		if(personId == 0) {
-		query = "insert into Person(personCode, firstName, lastName, address) values (?,?,?,?)";
-		try {
-			pre = conn.prepareStatement(query);	
-			pre.setString(1, personCode);
-			pre.setString(2, firstName);
-			pre.setString(3, lastName);
-			pre.setInt(4, addressId);
-			pre.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}}
+		if (personId == 0) {
+			query = "insert into Person(personCode, firstName, lastName, address) values (?,?,?,?)";
+			try {
+				pre = conn.prepareStatement(query);
+				pre.setString(1, personCode);
+				pre.setString(2, firstName);
+				pre.setString(3, lastName);
+				pre.setInt(4, addressId);
+				pre.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
-		}
-		
+	}
 
 	/**
 	 * 3. Adds an email record corresponding person record corresponding to the
@@ -100,58 +119,63 @@ public class InvoiceData {
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-		
+
 		String query = "select Email.emailId from Email where email like ? ";
-		String emailTest = "%"+email +"%";
+		String emailTest = "%" + email + "%";
 		int personId = 0;
-		
+
 		try {
 			pre = conn.prepareStatement(query);
 			pre.setString(1, emailTest);
 			rs = pre.executeQuery();
-			if(!rs.next()) {
+			if (!rs.next()) {
 				query = "select Person.personId from Person where personCode like ? ";
 				pre = conn.prepareStatement(query);
-				pre.setString(1, "%"+ personCode +"%");
+				pre.setString(1, "%" + personCode + "%");
 				rs = pre.executeQuery();
-				if(!rs.next()) {
+				if (!rs.next()) {
 					throw new SQLException("Person does not exist!");
-				}else {
+				} else {
 					personId = rs.getInt("personId");
 					query = "insert into Email(personId,email) values (?,?)";
 					pre = conn.prepareStatement(query);
 					pre.setInt(1, personId);
-					pre.setString(2,email);
+					pre.setString(2, email);
 					pre.executeUpdate();
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 	}
 
 	/**
-	 * 4. Method that removes every customer record from the database 
+	 * 4. Method that removes every customer record from the database
 	 */
 	public static void removeAllCusomters() {
 		InvoiceData.removeAllInvoices();
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-		
-		String query = null;
+
+		String query = "select address from Customer";
 		try {
 			pre = conn.prepareStatement(query);
+			rs = pre.executeQuery();
+			query = "delete from Customer";
+			pre = conn.prepareStatement(query);
+			pre.executeUpdate();
+			while (rs.next()) {
+				InvoiceData.deleteAddress(rs.getInt("address"),"C");
+			}
 
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
@@ -171,25 +195,25 @@ public class InvoiceData {
 	 * @param country
 	 */
 	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode,
-			String name, String street, String city, String state, String zip, String country){
+			String name, String street, String city, String state, String zip, String country) {
 		int customerId = InvoiceData.getCustomerId(customerCode);
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		int addressId = InvoiceData.addAddress(street, city, zip, state, country);
 		int primaryContactId = InvoiceData.getPersonId(primaryContactPersonCode);
-		if(customerId == 0) {
-		String query = "insert into Customer(customerCode, customerType, customerName, primaryContact, address) values (?,?,?,?,?)";
-		try {
-			pre = conn.prepareStatement(query);
-			pre.setString(1, customerCode);
-			pre.setString(2, customerType);
-			pre.setString(3, name);
-			pre.setInt(4, primaryContactId);
-			pre.setInt(5, addressId);
-			pre.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		if (customerId == 0) {
+			String query = "insert into Customer(customerCode, customerType, customerName, primaryContact, address) values (?,?,?,?,?)";
+			try {
+				pre = conn.prepareStatement(query);
+				pre.setString(1, customerCode);
+				pre.setString(2, customerType);
+				pre.setString(3, name);
+				pre.setInt(4, primaryContactId);
+				pre.setInt(5, addressId);
+				pre.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
@@ -199,7 +223,7 @@ public class InvoiceData {
 	 * 6. Removes all product records from the database
 	 */
 	public static void removeAllProducts() {
-		
+
 		String query = "delete from InvoiceProduct";
 		String query2 = "delete from Product";
 		PreparedStatement pre = null;
@@ -220,7 +244,7 @@ public class InvoiceData {
 //			query = "delete from Product";
 //			pre = conn.prepareStatement(query);
 //			pre.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -374,12 +398,12 @@ public class InvoiceData {
 		try {
 			pre = conn.prepareStatement(query);
 			rs = pre.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				iPCount = rs.getInt("count");
 			}
-			if(iPCount > 0) {
-				query  = "delete from InvoiceProduct where InvoiceProduct.invoiceProductId = ?";
-				while(iPCount > 0) {
+			if (iPCount > 0) {
+				query = "delete from InvoiceProduct where InvoiceProduct.invoiceProductId = ?";
+				while (iPCount > 0) {
 					pre = conn.prepareStatement(query);
 					pre.setInt(1, iPCount);
 					pre.executeUpdate();
@@ -396,12 +420,12 @@ public class InvoiceData {
 		try {
 			pre = conn.prepareStatement(query);
 			rs = pre.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				prodCount = rs.getInt("count");
 			}
-			if(prodCount > 0) {
-				query  = "delete from Invoice where Invoice.invoiceId = ?";
-				while(prodCount > 0) {
+			if (prodCount > 0) {
+				query = "delete from Invoice where Invoice.invoiceId = ?";
+				while (prodCount > 0) {
 					pre = conn.prepareStatement(query);
 					pre.setInt(1, prodCount);
 					pre.executeUpdate();
@@ -437,11 +461,11 @@ public class InvoiceData {
 			int customerId = InvoiceData.getCustomerId(customerCode);
 			try {
 				pre = conn.prepareStatement(query);
-				pre.setString(1,invoiceCode);
+				pre.setString(1, invoiceCode);
 				pre.setInt(2, ownerId);
 				pre.setInt(3, customerId);
 				pre.executeUpdate();
-			}catch (SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -507,8 +531,10 @@ public class InvoiceData {
 		String repairCode = null;
 		InvoiceData.addProductToInvoice(invoiceCode, productCode, daysRented, repairCode);
 	}
+
 	/**
 	 * Checks for duplicates, and adds country.
+	 * 
 	 * @return countryId
 	 * @param country
 	 * 
@@ -520,25 +546,28 @@ public class InvoiceData {
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-		if(countryId == 0) {
-		String query = "insert into Country(countryName) values (?)";
-		try {
-			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			pre.setString(1, country);
-			pre.executeUpdate();
-			rs = pre.getGeneratedKeys();
-			rs.next();
-			countryId = rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}}
+		if (countryId == 0) {
+			String query = "insert into Country(countryName) values (?)";
+			try {
+				pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				pre.setString(1, country);
+				pre.executeUpdate();
+				rs = pre.getGeneratedKeys();
+				rs.next();
+				countryId = rs.getInt(1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 		return countryId;
 	}
+
 	/**
 	 * Checks for duplicates, and adds country.
+	 * 
 	 * @return stateId
 	 * @param state
 	 * 
@@ -546,75 +575,113 @@ public class InvoiceData {
 	public static int addState(String state) {
 		// Checks for duplicate State
 		int stateId = InvoiceData.getStateId(state);
-		//If no duplicate, adds state
+		// If no duplicate, adds state
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-		if(stateId == 0) {
-		String query = "insert into State(stateName) values (?)";
-		try {
-			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			pre.setString(1, state);
-			pre.executeUpdate();
-			rs = pre.getGeneratedKeys();
-			rs.next();
-			stateId = rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}}
+		if (stateId == 0) {
+			String query = "insert into State(stateName) values (?)";
+			try {
+				pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				pre.setString(1, state);
+				pre.executeUpdate();
+				rs = pre.getGeneratedKeys();
+				rs.next();
+				stateId = rs.getInt(1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 		return stateId;
 	}
+
 	/**
 	 * Checks for duplicates, and adds country.
+	 * 
 	 * @return stateId
 	 * @param state
 	 * 
 	 */
-	public static int addAddress(String street, String city,String zip, String state, String country) {
+	public static int addAddress(String street, String city, String zip, String state, String country) {
 		// Gets Id for State and country
 		int stateId = InvoiceData.addState(state);
 		int countryId = InvoiceData.addCountry(country);
-		//Checks for Duplicate Address
-		int addressId = InvoiceData.getAddressId(street,city,stateId);
+		// Checks for Duplicate Address
+		int addressId = InvoiceData.getAddressId(street, city, stateId);
 		// If no duplicate, adds address
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-		if(addressId == 0) {
-		String query = "insert into Address(street, city, state, zip, country) values (?,?,?,?,?)";
-		try {
-			pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			pre.setString(1, street);
-			pre.setString(2, city);
-			pre.setString(4, zip);
-			pre.setInt(3, stateId);
-			pre.setInt(5, countryId);
-			pre.executeUpdate();
-			rs = pre.getGeneratedKeys();
-			rs.next();
-			addressId = rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}}
+		if (addressId == 0) {
+			String query = "insert into Address(street, city, state, zip, country) values (?,?,?,?,?)";
+			try {
+				pre = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				pre.setString(1, street);
+				pre.setString(2, city);
+				pre.setString(4, zip);
+				pre.setInt(3, stateId);
+				pre.setInt(5, countryId);
+				pre.executeUpdate();
+				rs = pre.getGeneratedKeys();
+				rs.next();
+				addressId = rs.getInt(1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 		return addressId;
 	}
-	/**
-	 * Helper: deletes address at a specific Index
-	 * 
-	 */
-	private static void deleteAddress(int index) {
+
+/**Helper to delete an address entry.
+ * Checks Person or Customer tables for matching entries.
+ * 
+ * @param index
+ * @param table = Table who values SHOULD be deleted.  C for Customer, P for Person
+ */
+	private static void deleteAddress(int index, String table) {
+		// Checks for which table to delete
+		if(table.contains("C")) {
+			table = "Person";
+		}else {
+			table = "Customer";
+		}
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
-		String query  = "delete from Address where Address.addressId = ?";
+		ResultSet rs = null;
+		String query = "select Address.addressId, Person.address as Person, Customer.address as Customer from Address\r\n"
+				+ "left join Person on Person.address = Address.addressId\r\n"
+				+ "left join Customer on Customer.address = Address.addressId\r\n" + "having addressId = ?;";
 		try {
 			pre = conn.prepareStatement(query);
 			pre.setInt(1, index);
+			rs = pre.executeQuery();
+			rs.next();
+			if (rs.getInt(table) == 0) {
+				query = "delete from Address where Address.addressId = ?";
+				pre = conn.prepareStatement(query);
+				pre.setInt(1, index);
+				pre.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+	}
+	public static void removeAllEmails() {
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+
+		String query = "delete from Email";
+		try {
+			pre = conn.prepareStatement(query);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -622,6 +689,7 @@ public class InvoiceData {
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 	}
+
 	/**
 	 * Helper: generalizes adding a product and is called by each addToInvoice
 	 * method for products
@@ -717,6 +785,7 @@ public class InvoiceData {
 
 		return invoiceId;
 	}
+
 	/**
 	 * Helper: gets personId for use in checking for duplication and adding things
 	 * to a person
@@ -746,6 +815,7 @@ public class InvoiceData {
 
 		return personId;
 	}
+
 	/**
 	 * Helper: gets countryId for use in checking for duplication and adding things
 	 * to a Country
@@ -775,6 +845,7 @@ public class InvoiceData {
 
 		return countryId;
 	}
+
 	/**
 	 * Helper: gets customerId for use in checking for duplication and adding things
 	 * to a Customer
@@ -804,6 +875,7 @@ public class InvoiceData {
 
 		return customerId;
 	}
+
 	/**
 	 * Helper: gets customerId for use in checking for duplication and adding things
 	 * to a Customer
@@ -833,6 +905,7 @@ public class InvoiceData {
 
 		return stateId;
 	}
+
 	private static int getAddressId(String street, String city, int stateId) {
 		String query = "Select addressId from Address where (Address.street like ?) and (Address.city like ?) and (Address.state = ?);";
 		int addressId = 0;
@@ -841,9 +914,9 @@ public class InvoiceData {
 		Connection conn = DatabaseConnection.connectionBuilder();
 		try {
 			pre = conn.prepareStatement(query);
-			pre.setString(1, "%"+street+"%");
-			pre.setString(2, "%"+city+"%");
-			pre.setInt(3,stateId);
+			pre.setString(1, "%" + street + "%");
+			pre.setString(2, "%" + city + "%");
+			pre.setInt(3, stateId);
 			rs = pre.executeQuery();
 			if (rs.next()) {
 				addressId = rs.getInt("addressId");

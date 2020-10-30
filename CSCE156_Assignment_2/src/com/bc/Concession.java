@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * 
  * Description: The Concession class is a subclass of Products, and stores information regarding concessions sold at BumprCars.
  */
-public class Concession extends Products {
+public class Concession extends Product {
 	
 	private Double unitCost;
 	private String associatedRepair;
@@ -66,12 +66,12 @@ public class Concession extends Products {
 		return null;
 	}
 	// Checks a list of concessions with associated repairs, to make sure the repair is in the same invoice.
-	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
-		for(Products prod: potentials) {
+	public static void associatedRepairCheck(ArrayList<Product> potentials, ArrayList<Product> product, String repairVal) {
+		for(Product prod: potentials) {
 			// Makes sure the potential is a concession.
 			if(prod instanceof Concession) {
 				Concession test = (Concession) prod;
-				for(Products prodList: products) {
+				for(Product prodList: product) {
 					// Checks against the associated repair code, and ensures it is a Repair.
 					if(prodList.getProductCode().contentEquals(repairVal) && prodList instanceof Repair) {
 						test.associatedRepair = repairVal;

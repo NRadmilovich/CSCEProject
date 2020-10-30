@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Products>
+<Product>
 <com.bc.Rental>
   <productCode>qeuriopt</productCode>
   <productType>R</productType>
@@ -31,4 +31,4 @@
   <workValue>0.0</workValue>
   <costPerMile>6.45</costPerMile>
 </com.bc.Towing>
-</Products>
+</Product>

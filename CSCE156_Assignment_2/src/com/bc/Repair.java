@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * 
  * Description: The Repair class is a subclass of Products, and stores repair data for BumprCars.
  */
-public class Repair extends Products{
+public class Repair extends Product{
 	
 	private Double partsCost;
 	private Double hourlyLaborCost;
@@ -79,7 +79,7 @@ public class Repair extends Products{
 		String fees = "(+ $" + this.getPartsCost() + " for parts)";
 		return fees;
 	}
-	public static void associatedRepairCheck(ArrayList<Products> potentials, ArrayList<Products> products, String repairVal) {
+	public static void associatedRepairCheck(ArrayList<Product> potentials, ArrayList<Product> product, String repairVal) {
 		
 	}
 }
