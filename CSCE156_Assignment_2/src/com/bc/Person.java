@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.List;
-import com.bc.Address;
 /**
  * Assignment 3
  * 

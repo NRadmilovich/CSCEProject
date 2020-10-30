@@ -1,206 +1,356 @@
 <?xml version="1.0"?>
 <Invoice>
 <invoice>
-  <invoiceCode>INV001</invoiceCode>
+  <invoiceCode>Invalid_Invoice</invoiceCode>
   <owner>
-    <personCode>jaoiejf</personCode>
-    <firstName>Neil</firstName>
-    <lastName>Armstrong</lastName>
+    <personCode>Invalid_Person</personCode>
+    <firstName>Invalid</firstName>
+    <lastName>Person</lastName>
     <Address>
-      <Street>Moon</Street>
-      <City>Moon</City>
-      <State>MN</State>
-      <Zip>60613</Zip>
+      <Street></Street>
+      <City></City>
+      <State></State>
+      <Zip></Zip>
+      <Country></Country>
+    </Address>
+    <Email/>
+  </owner>
+  <customerData>
+    <customerCode>Invalid_Customer</customerCode>
+    <customerType>C</customerType>
+    <name>Invalid_Customer</name>
+    <primaryContact reference="../../owner"/>
+    <address>
+      <Street></Street>
+      <City></City>
+      <State></State>
+      <Zip></Zip>
+      <Country></Country>
+    </address>
+  </customerData>
+  <productList>
+    <com.bc.Repair>
+      <productCode>Invalid_Repair</productCode>
+      <productType>F</productType>
+      <productLabel>Invalid R</productLabel>
+      <workValue>1.0</workValue>
+      <partsCost>211.0</partsCost>
+      <hourlyLaborCost>55.0</hourlyLaborCost>
+    </com.bc.Repair>
+  </productList>
+</invoice>
+<invoice>
+  <invoiceCode>xyz321</invoiceCode>
+  <owner>
+    <personCode>p420</personCode>
+    <firstName>CORMAC</firstName>
+    <lastName>McCARTHY</lastName>
+    <Address>
+      <Street>!@#</Street>
+      <City>LINCOLN</City>
+      <State>NE</State>
+      <Zip>XYZ 999</Zip>
       <Country>USA</Country>
     </Address>
+    <Email/>
+  </owner>
+  <customerData>
+    <customerCode>ABC GROUP</customerCode>
+    <customerType>C</customerType>
+    <name>THIS SHOULD NOT BE</name>
+    <primaryContact reference="../../owner"/>
+    <address>
+      <Street>ABC GROUP</Street>
+      <City></City>
+      <State></State>
+      <Zip></Zip>
+      <Country></Country>
+    </address>
+  </customerData>
+  <productList>
+    <com.bc.Repair>
+      <productCode>Invalid_Repair</productCode>
+      <productType>F</productType>
+      <productLabel>Invalid R</productLabel>
+      <workValue>10.0</workValue>
+      <partsCost>211.0</partsCost>
+      <hourlyLaborCost>55.0</hourlyLaborCost>
+    </com.bc.Repair>
+    <com.bc.Concession>
+      <productCode>RP</productCode>
+      <productType>C</productType>
+      <productLabel>RasPi</productLabel>
+      <workValue>1.0</workValue>
+      <unitCost>1.0</unitCost>
+      <associatedRepair>Invalid_Repair</associatedRepair>
+    </com.bc.Concession>
+  </productList>
+</invoice>
+<invoice>
+  <invoiceCode>INV001</invoiceCode>
+  <owner>
+    <personCode>123a</personCode>
+    <firstName>Petra</firstName>
+    <lastName>Battle</lastName>
+    <Address>
+      <Street>1 Blue Jays Way</Street>
+      <City>Toronto</City>
+      <State>ON</State>
+      <Zip>M5V 1J1</Zip>
+      <Country>Canada</Country>
+    </Address>
     <Email>
-      <string>neilA@gmail.com</string>
-      <string>pinkfloyd@yahoo.com</string>
+      <string>danextpm@canada.gov</string>
     </Email>
   </owner>
   <customerData>
-    <customerCode>lkjjdbbn</customerCode>
+    <customerCode>lsvntk</customerCode>
     <customerType>B</customerType>
-    <name>Dark Side of the Moon</name>
+    <name>State of Nebraska</name>
     <primaryContact reference="../../owner"/>
     <address>
-      <Street>690 N Shady St</Street>
-      <City>Moon</City>
-      <State>EA</State>
-      <Zip>80902</Zip>
+      <Street>100 W Fake Street</Street>
+      <City>Albaquerque</City>
+      <State>NM</State>
+      <Zip>80706</Zip>
       <Country>USA</Country>
     </address>
   </customerData>
   <productList>
     <com.bc.Rental>
-      <productCode>qeuriopt</productCode>
+      <productCode>qwertyuiop</productCode>
       <productType>R</productType>
-      <productLabel>1964 Chevy Impala</productLabel>
-      <workValue>5.0</workValue>
-      <dailyCost>89.29</dailyCost>
-      <deposit>400.0</deposit>
-      <cleaningFee>25.69</cleaningFee>
+      <productLabel>2007 Ford Crown Victoria</productLabel>
+      <workValue>4.0</workValue>
+      <dailyCost>50.75</dailyCost>
+      <deposit>200.0</deposit>
+      <cleaningFee>25.39</cleaningFee>
     </com.bc.Rental>
     <com.bc.Repair>
-      <productCode>nfein2929</productCode>
+      <productCode>b4z1ng4</productCode>
       <productType>F</productType>
-      <productLabel>Light Replacement</productLabel>
-      <workValue>12.0</workValue>
-      <partsCost>233.0</partsCost>
-      <hourlyLaborCost>2.0</hourlyLaborCost>
-    </com.bc.Repair>
-    <com.bc.Concession>
-      <productCode>aldkjflaksjdfh</productCode>
-      <productType>C</productType>
-      <productLabel>Hot Doggo</productLabel>
+      <productLabel>Bumper Replacement</productLabel>
       <workValue>2.0</workValue>
-      <unitCost>89898.23</unitCost>
-      <associatedRepair>nfein2929</associatedRepair>
-    </com.bc.Concession>
+      <partsCost>100.0</partsCost>
+      <hourlyLaborCost>75.0</hourlyLaborCost>
+    </com.bc.Repair>
     <com.bc.Towing>
-      <productCode>utieow39</productCode>
+      <productCode>ugis43</productCode>
       <productType>T</productType>
-      <productLabel>Tow 20 Miles</productLabel>
-      <workValue>22.0</workValue>
-      <costPerMile>6.45</costPerMile>
+      <productLabel>Tow &gt; 10 miles</productLabel>
+      <workValue>15.0</workValue>
+      <costPerMile>4.0</costPerMile>
     </com.bc.Towing>
+    <com.bc.Concession>
+      <productCode>kvnjgbf5</productCode>
+      <productType>C</productType>
+      <productLabel>Large &quot;Homemade&quot; Raisin Cookie</productLabel>
+      <workValue>3.0</workValue>
+      <unitCost>10.0</unitCost>
+      <associatedRepair>b4z1ng4</associatedRepair>
+    </com.bc.Concession>
   </productList>
 </invoice>
 <invoice>
   <invoiceCode>INV002</invoiceCode>
   <owner>
-    <personCode>nvnoee</personCode>
-    <firstName>Kyrie</firstName>
-    <lastName>Irving</lastName>
+    <personCode>lejnr4</personCode>
+    <firstName>Kenan</firstName>
+    <lastName>Spooner</lastName>
     <Address>
-      <Street>2 Broadway St</Street>
-      <City>New York</City>
-      <State>NY</State>
-      <Zip>68117</Zip>
+      <Street>123 N 1st Street</Street>
+      <City>Compton</City>
+      <State>CA</State>
+      <Zip>90210</Zip>
       <Country>USA</Country>
     </Address>
-    <Email/>
+    <Email>
+      <string>kspoons@emailservice.domain</string>
+      <string>thespoonman@soundgarden.com</string>
+    </Email>
   </owner>
   <customerData>
-    <customerCode>99999ndkf90</customerCode>
-    <customerType>B</customerType>
-    <name>Tesla</name>
-    <primaryContact reference="../../owner"/>
+    <customerCode>asdf419</customerCode>
+    <customerType>P</customerType>
+    <name>Fenton Industries</name>
+    <primaryContact>
+      <personCode>biz45</personCode>
+      <firstName>Fenton</firstName>
+      <lastName>Hart</lastName>
+      <Address>
+        <Street>1 Wall Street</Street>
+        <City>New York</City>
+        <State>NY</State>
+        <Zip>10005-0012</Zip>
+        <Country>USA</Country>
+      </Address>
+      <Email>
+        <string>fentony@windstream.net</string>
+      </Email>
+    </primaryContact>
     <address>
-      <Street>2 Broadway St</Street>
-      <City>New York</City>
-      <State>NY</State>
-      <Zip>68117</Zip>
+      <Street>1060 West Addison Street</Street>
+      <City>Chicago</City>
+      <State>IL</State>
+      <Zip>60613</Zip>
       <Country>USA</Country>
     </address>
   </customerData>
   <productList>
-    <com.bc.Towing>
-      <productCode>utieow39</productCode>
-      <productType>T</productType>
-      <productLabel>Tow 20 Miles</productLabel>
-      <workValue>12.0</workValue>
-      <costPerMile>6.45</costPerMile>
-    </com.bc.Towing>
+    <com.bc.Repair>
+      <productCode>t0m03</productCode>
+      <productType>F</productType>
+      <productLabel>Full Wheel Replacement</productLabel>
+      <workValue>1.0</workValue>
+      <partsCost>800.0</partsCost>
+      <hourlyLaborCost>25.0</hourlyLaborCost>
+    </com.bc.Repair>
     <com.bc.Concession>
-      <productCode>aldkjflaksjdfh</productCode>
+      <productCode>k04l4</productCode>
       <productType>C</productType>
-      <productLabel>Hot Doggo</productLabel>
-      <workValue>3.0</workValue>
-      <unitCost>89898.23</unitCost>
+      <productLabel>12-oz Coffee</productLabel>
+      <workValue>10.0</workValue>
+      <unitCost>4.75</unitCost>
+      <associatedRepair>t0m03</associatedRepair>
     </com.bc.Concession>
+    <com.bc.Towing>
+      <productCode>sievub</productCode>
+      <productType>T</productType>
+      <productLabel>Tow &lt; 10 Miles</productLabel>
+      <workValue>6.0</workValue>
+      <costPerMile>6.0</costPerMile>
+    </com.bc.Towing>
   </productList>
 </invoice>
 <invoice>
   <invoiceCode>INV003</invoiceCode>
   <owner>
-    <personCode>oiasudem</personCode>
-    <firstName>Eric</firstName>
-    <lastName>Cartman</lastName>
+    <personCode>123a</personCode>
+    <firstName>Petra</firstName>
+    <lastName>Battle</lastName>
     <Address>
-      <Street>23450 1st St</Street>
-      <City>South Park</City>
-      <State>CO</State>
-      <Country>USA</Country>
-    </Address>
-    <Email/>
-  </owner>
-  <customerData>
-    <customerCode>uebgmk</customerCode>
-    <customerType>P</customerType>
-    <name>Big Al</name>
-    <primaryContact reference="../../owner"/>
-    <address>
-      <Street>123 1st St</Street>
-      <City>South Park</City>
-      <State>CO</State>
-      <Country>USA</Country>
-    </address>
-  </customerData>
-  <productList>
-    <com.bc.Concession>
-      <productCode>aldkjflaksjdfh</productCode>
-      <productType>C</productType>
-      <productLabel>Hot Doggo</productLabel>
-      <workValue>20.0</workValue>
-      <unitCost>89898.23</unitCost>
-    </com.bc.Concession>
-  </productList>
-</invoice>
-<invoice>
-  <invoiceCode>54321</invoiceCode>
-  <owner>
-    <personCode>12345</personCode>
-    <firstName>Nick</firstName>
-    <lastName>Radmilovich</lastName>
-    <Address>
-      <Street>123 not my Address</Street>
-      <City>Lincoln</City>
-      <State>NE</State>
-      <Zip>68528</Zip>
-      <Country>USA</Country>
+      <Street>1 Blue Jays Way</Street>
+      <City>Toronto</City>
+      <State>ON</State>
+      <Zip>M5V 1J1</Zip>
+      <Country>Canada</Country>
     </Address>
     <Email>
-      <string>Nradmilovich4@gmail.com</string>
+      <string>danextpm@canada.gov</string>
     </Email>
   </owner>
   <customerData>
-    <customerCode>12345</customerCode>
+    <customerCode>avnkbkjds</customerCode>
     <customerType>P</customerType>
-    <name>My business is personal</name>
-    <primaryContact reference="../../owner"/>
+    <name>Juno Stephenson</name>
+    <primaryContact>
+      <personCode>lejnr4</personCode>
+      <firstName>Kenan</firstName>
+      <lastName>Spooner</lastName>
+      <Address>
+        <Street>123 N 1st Street</Street>
+        <City>Compton</City>
+        <State>CA</State>
+        <Zip>90210</Zip>
+        <Country>USA</Country>
+      </Address>
+      <Email>
+        <string>kspoons@emailservice.domain</string>
+        <string>thespoonman@soundgarden.com</string>
+      </Email>
+    </primaryContact>
     <address>
-      <Street>Still not my address</Street>
-      <City>Lincoln</City>
-      <State>NE</State>
-      <Zip>68528</Zip>
+      <Street>123 N 1st Street</Street>
+      <City>Compton</City>
+      <State>CA</State>
+      <Zip>90210</Zip>
       <Country>USA</Country>
     </address>
   </customerData>
   <productList>
-    <com.bc.Concession>
-      <productCode>aldkjflaksjdfh</productCode>
-      <productType>C</productType>
-      <productLabel>Hot Doggo</productLabel>
-      <workValue>25.0</workValue>
-      <unitCost>89898.23</unitCost>
-    </com.bc.Concession>
-    <com.bc.Concession>
-      <productCode>aldkjflaksjdfh</productCode>
-      <productType>C</productType>
-      <productLabel>Hot Doggo</productLabel>
-      <workValue>15.0</workValue>
-      <unitCost>89898.23</unitCost>
-      <associatedRepair>nfein2929</associatedRepair>
-    </com.bc.Concession>
+    <com.bc.Rental>
+      <productCode>yuasi</productCode>
+      <productType>R</productType>
+      <productLabel>Tesla Cybertruck</productLabel>
+      <workValue>12.0</workValue>
+      <dailyCost>1000.0</dailyCost>
+      <deposit>5000.0</deposit>
+      <cleaningFee>50.0</cleaningFee>
+    </com.bc.Rental>
+  </productList>
+</invoice>
+<invoice>
+  <invoiceCode>INV004</invoiceCode>
+  <owner>
+    <personCode>abc2</personCode>
+    <firstName>Wiktoria</firstName>
+    <lastName>Medrano</lastName>
+    <Address>
+      <Street>1025 S Street st.</Street>
+      <City>Chichago</City>
+      <State>IL</State>
+      <Zip>60613</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>therealwiki@gmail.com</string>
+      <string>wiktoria.m@yahoo.com</string>
+    </Email>
+  </owner>
+  <customerData>
+    <customerCode>l0000000000ngc0d3</customerCode>
+    <customerType>B</customerType>
+    <name>Demolition Derby</name>
+    <primaryContact>
+      <personCode>lejnr4</personCode>
+      <firstName>Kenan</firstName>
+      <lastName>Spooner</lastName>
+      <Address>
+        <Street>123 N 1st Street</Street>
+        <City>Compton</City>
+        <State>CA</State>
+        <Zip>90210</Zip>
+        <Country>USA</Country>
+      </Address>
+      <Email>
+        <string>kspoons@emailservice.domain</string>
+        <string>thespoonman@soundgarden.com</string>
+      </Email>
+    </primaryContact>
+    <address>
+      <Street>126-01 Roosevelt Ave</Street>
+      <City>Flushing</City>
+      <State>NY</State>
+      <Zip>11368</Zip>
+      <Country>USA</Country>
+    </address>
+  </customerData>
+  <productList>
+    <com.bc.Rental>
+      <productCode>yuasi</productCode>
+      <productType>R</productType>
+      <productLabel>Tesla Cybertruck</productLabel>
+      <workValue>14.0</workValue>
+      <dailyCost>1000.0</dailyCost>
+      <deposit>5000.0</deposit>
+      <cleaningFee>50.0</cleaningFee>
+    </com.bc.Rental>
     <com.bc.Repair>
-      <productCode>nfein2929</productCode>
+      <productCode>b4z1ng4</productCode>
       <productType>F</productType>
-      <productLabel>Light Replacement</productLabel>
-      <workValue>2100.0</workValue>
-      <partsCost>233.0</partsCost>
-      <hourlyLaborCost>2.0</hourlyLaborCost>
+      <productLabel>Bumper Replacement</productLabel>
+      <workValue>5.0</workValue>
+      <partsCost>100.0</partsCost>
+      <hourlyLaborCost>75.0</hourlyLaborCost>
     </com.bc.Repair>
+    <com.bc.Concession>
+      <productCode>k04l4</productCode>
+      <productType>C</productType>
+      <productLabel>12-oz Coffee</productLabel>
+      <workValue>20.0</workValue>
+      <unitCost>4.75</unitCost>
+      <associatedRepair>b4z1ng4</associatedRepair>
+    </com.bc.Concession>
   </productList>
 </invoice>
 </Invoice>

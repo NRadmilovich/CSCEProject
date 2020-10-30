@@ -1,105 +1,214 @@
 <?xml version="1.0"?>
 <Customer>
 <customer>
-  <customerCode>lkjjdbbn</customerCode>
-  <customerType>B</customerType>
-  <name>Dark Side of the Moon</name>
+  <customerCode>Invalid_Customer</customerCode>
+  <customerType>C</customerType>
+  <name>Invalid_Customer</name>
   <primaryContact>
-    <personCode>jaoiejf</personCode>
-    <firstName>Neil</firstName>
-    <lastName>Armstrong</lastName>
+    <personCode>Invalid_Person</personCode>
+    <firstName>Invalid</firstName>
+    <lastName>Person</lastName>
     <Address>
-      <Street>Moon</Street>
-      <City>Moon</City>
-      <State>MN</State>
-      <Zip>60613</Zip>
+      <Street></Street>
+      <City></City>
+      <State></State>
+      <Zip></Zip>
+      <Country></Country>
+    </Address>
+    <Email/>
+  </primaryContact>
+  <address>
+    <Street></Street>
+    <City></City>
+    <State></State>
+    <Zip></Zip>
+    <Country></Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>ABC GROUP</customerCode>
+  <customerType>C</customerType>
+  <name>THIS SHOULD NOT BE</name>
+  <primaryContact>
+    <personCode>p420</personCode>
+    <firstName>CORMAC</firstName>
+    <lastName>McCARTHY</lastName>
+    <Address>
+      <Street>!@#</Street>
+      <City>LINCOLN</City>
+      <State>NE</State>
+      <Zip>XYZ 999</Zip>
       <Country>USA</Country>
     </Address>
+    <Email/>
+  </primaryContact>
+  <address>
+    <Street>ABC GROUP</Street>
+    <City></City>
+    <State></State>
+    <Zip></Zip>
+    <Country></Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>lsvntk</customerCode>
+  <customerType>B</customerType>
+  <name>State of Nebraska</name>
+  <primaryContact>
+    <personCode>123a</personCode>
+    <firstName>Petra</firstName>
+    <lastName>Battle</lastName>
+    <Address>
+      <Street>1 Blue Jays Way</Street>
+      <City>Toronto</City>
+      <State>ON</State>
+      <Zip>M5V 1J1</Zip>
+      <Country>Canada</Country>
+    </Address>
     <Email>
-      <string>neilA@gmail.com</string>
-      <string>pinkfloyd@yahoo.com</string>
+      <string>danextpm@canada.gov</string>
     </Email>
   </primaryContact>
   <address>
-    <Street>690 N Shady St</Street>
-    <City>Moon</City>
-    <State>EA</State>
-    <Zip>80902</Zip>
+    <Street>100 W Fake Street</Street>
+    <City>Albaquerque</City>
+    <State>NM</State>
+    <Zip>80706</Zip>
     <Country>USA</Country>
   </address>
 </customer>
 <customer>
-  <customerCode>99999ndkf90</customerCode>
-  <customerType>B</customerType>
-  <name>Tesla</name>
+  <customerCode>dvkh</customerCode>
+  <customerType>P</customerType>
+  <name>Wacky Wally&apos;s Used Cars</name>
   <primaryContact>
-    <personCode>nvnoee</personCode>
-    <firstName>Kyrie</firstName>
-    <lastName>Irving</lastName>
+    <personCode>zyx321</personCode>
+    <firstName>Ayaana</firstName>
+    <lastName>Dolan</lastName>
     <Address>
-      <Street>2 Broadway St</Street>
+      <Street>23450 Cabo San Lucas</Street>
+      <City>Los Cabos</City>
+      <State>BCS</State>
+      <Zip></Zip>
+      <Country>Mexico</Country>
+    </Address>
+    <Email/>
+  </primaryContact>
+  <address>
+    <Street>123 Madison Avenue</Street>
+    <City>Bodega</City>
+    <State>NL</State>
+    <Zip></Zip>
+    <Country>CUBA</Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>l0000000000ngc0d3</customerCode>
+  <customerType>B</customerType>
+  <name>Demolition Derby</name>
+  <primaryContact>
+    <personCode>lejnr4</personCode>
+    <firstName>Kenan</firstName>
+    <lastName>Spooner</lastName>
+    <Address>
+      <Street>123 N 1st Street</Street>
+      <City>Compton</City>
+      <State>CA</State>
+      <Zip>90210</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>kspoons@emailservice.domain</string>
+      <string>thespoonman@soundgarden.com</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>126-01 Roosevelt Ave</Street>
+    <City>Flushing</City>
+    <State>NY</State>
+    <Zip>11368</Zip>
+    <Country>USA</Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>asdf419</customerCode>
+  <customerType>P</customerType>
+  <name>Fenton Industries</name>
+  <primaryContact>
+    <personCode>biz45</personCode>
+    <firstName>Fenton</firstName>
+    <lastName>Hart</lastName>
+    <Address>
+      <Street>1 Wall Street</Street>
       <City>New York</City>
       <State>NY</State>
-      <Zip>68117</Zip>
-      <Country>USA</Country>
-    </Address>
-    <Email/>
-  </primaryContact>
-  <address>
-    <Street>2 Broadway St</Street>
-    <City>New York</City>
-    <State>NY</State>
-    <Zip>68117</Zip>
-    <Country>USA</Country>
-  </address>
-</customer>
-<customer>
-  <customerCode>uebgmk</customerCode>
-  <customerType>P</customerType>
-  <name>Big Al</name>
-  <primaryContact>
-    <personCode>oiasudem</personCode>
-    <firstName>Eric</firstName>
-    <lastName>Cartman</lastName>
-    <Address>
-      <Street>23450 1st St</Street>
-      <City>South Park</City>
-      <State>CO</State>
-      <Country>USA</Country>
-    </Address>
-    <Email/>
-  </primaryContact>
-  <address>
-    <Street>123 1st St</Street>
-    <City>South Park</City>
-    <State>CO</State>
-    <Country>USA</Country>
-  </address>
-</customer>
-<customer>
-  <customerCode>12345</customerCode>
-  <customerType>P</customerType>
-  <name>My business is personal</name>
-  <primaryContact>
-    <personCode>12345</personCode>
-    <firstName>Nick</firstName>
-    <lastName>Radmilovich</lastName>
-    <Address>
-      <Street>123 not my Address</Street>
-      <City>Lincoln</City>
-      <State>NE</State>
-      <Zip>68528</Zip>
+      <Zip>10005-0012</Zip>
       <Country>USA</Country>
     </Address>
     <Email>
-      <string>Nradmilovich4@gmail.com</string>
+      <string>fentony@windstream.net</string>
     </Email>
   </primaryContact>
   <address>
-    <Street>Still not my address</Street>
-    <City>Lincoln</City>
-    <State>NE</State>
-    <Zip>68528</Zip>
+    <Street>1060 West Addison Street</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60613</Zip>
+    <Country>USA</Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>421asdf</customerCode>
+  <customerType>B</customerType>
+  <name>Foundation for the Arts</name>
+  <primaryContact>
+    <personCode>biz45</personCode>
+    <firstName>Fenton</firstName>
+    <lastName>Hart</lastName>
+    <Address>
+      <Street>1 Wall Street</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10005-0012</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>fentony@windstream.net</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>1 MetLife Stadium Dr</Street>
+    <City>East Rutherford</City>
+    <State>NJ</State>
+    <Zip>07073</Zip>
+    <Country>USA</Country>
+  </address>
+</customer>
+<customer>
+  <customerCode>avnkbkjds</customerCode>
+  <customerType>P</customerType>
+  <name>Juno Stephenson</name>
+  <primaryContact>
+    <personCode>lejnr4</personCode>
+    <firstName>Kenan</firstName>
+    <lastName>Spooner</lastName>
+    <Address>
+      <Street>123 N 1st Street</Street>
+      <City>Compton</City>
+      <State>CA</State>
+      <Zip>90210</Zip>
+      <Country>USA</Country>
+    </Address>
+    <Email>
+      <string>kspoons@emailservice.domain</string>
+      <string>thespoonman@soundgarden.com</string>
+    </Email>
+  </primaryContact>
+  <address>
+    <Street>123 N 1st Street</Street>
+    <City>Compton</City>
+    <State>CA</State>
+    <Zip>90210</Zip>
     <Country>USA</Country>
   </address>
 </customer>

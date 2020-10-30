@@ -86,7 +86,6 @@ public class InvoiceData {
 		String query = null;
 		// Search for duplicate entries and adds to tables.
 		int personId = InvoiceData.getPersonId(personCode);
-
 		int addressId = InvoiceData.addAddress(street, city, zip, state, country);
 		// Insert into DB if no matching person was returned.
 		if (personId == 0) {
@@ -391,52 +390,17 @@ public class InvoiceData {
 		// Establish connections
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
-		ResultSet rs = null;
 		// Delete all ProductInvoice entries
-		int iPCount = 0;
-		String query = "select count(InvoiceProduct.invoiceProductId) as count from InvoiceProduct;";
+		String query = "delete from InvoiceProduct;";
 		try {
 			pre = conn.prepareStatement(query);
-			rs = pre.executeQuery();
-			if (rs.next()) {
-				iPCount = rs.getInt("count");
-			}
-			if (iPCount > 0) {
-				query = "delete from InvoiceProduct where InvoiceProduct.invoiceProductId = ?";
-				while (iPCount > 0) {
-					pre = conn.prepareStatement(query);
-					pre.setInt(1, iPCount);
-					pre.executeUpdate();
-					iPCount--;
-				}
-			}
-
+			pre.executeUpdate();
+			query = "delete from Invoice";
+			pre = conn.prepareStatement(query);
+			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// Delete all invoices.
-		int prodCount = 0;
-		query = "select count(Invoice.invoiceId) as count from Invoice;";
-		try {
-			pre = conn.prepareStatement(query);
-			rs = pre.executeQuery();
-			if (rs.next()) {
-				prodCount = rs.getInt("count");
-			}
-			if (prodCount > 0) {
-				query = "delete from Invoice where Invoice.invoiceId = ?";
-				while (prodCount > 0) {
-					pre = conn.prepareStatement(query);
-					pre.setInt(1, prodCount);
-					pre.executeUpdate();
-					prodCount--;
-				}
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 	}

@@ -1,105 +1,214 @@
 {
 "Customer":[
   {
-    "customerCode": "lkjjdbbn",
-    "customerType": "B",
-    "name": "Dark Side of the Moon",
+    "customerCode": "Invalid_Customer",
+    "customerType": "C",
+    "name": "Invalid_Customer",
     "primaryContact": {
-      "personCode": "jaoiejf",
-      "firstName": "Neil",
-      "lastName": "Armstrong",
+      "personCode": "Invalid_Person",
+      "firstName": "Invalid",
+      "lastName": "Person",
       "Address": {
-        "Street": "Moon",
-        "City": "Moon",
-        "State": "MN",
-        "Zip": "60613",
+        "Street": "",
+        "City": "",
+        "State": "",
+        "Zip": "",
+        "Country": ""
+      },
+      "Email": []
+    },
+    "address": {
+      "Street": "",
+      "City": "",
+      "State": "",
+      "Zip": "",
+      "Country": ""
+    }
+  },
+  {
+    "customerCode": "ABC GROUP",
+    "customerType": "C",
+    "name": "THIS SHOULD NOT BE",
+    "primaryContact": {
+      "personCode": "p420",
+      "firstName": "CORMAC",
+      "lastName": "McCARTHY",
+      "Address": {
+        "Street": "!@#",
+        "City": "LINCOLN",
+        "State": "NE",
+        "Zip": "XYZ 999",
         "Country": "USA"
       },
+      "Email": []
+    },
+    "address": {
+      "Street": "ABC GROUP",
+      "City": "",
+      "State": "",
+      "Zip": "",
+      "Country": ""
+    }
+  },
+  {
+    "customerCode": "lsvntk",
+    "customerType": "B",
+    "name": "State of Nebraska",
+    "primaryContact": {
+      "personCode": "123a",
+      "firstName": "Petra",
+      "lastName": "Battle",
+      "Address": {
+        "Street": "1 Blue Jays Way",
+        "City": "Toronto",
+        "State": "ON",
+        "Zip": "M5V 1J1",
+        "Country": "Canada"
+      },
       "Email": [
-        "neilA@gmail.com",
-        "pinkfloyd@yahoo.com"
+        "danextpm@canada.gov"
       ]
     },
     "address": {
-      "Street": "690 N Shady St",
-      "City": "Moon",
-      "State": "EA",
-      "Zip": "80902",
+      "Street": "100 W Fake Street",
+      "City": "Albaquerque",
+      "State": "NM",
+      "Zip": "80706",
       "Country": "USA"
     }
   },
   {
-    "customerCode": "99999ndkf90",
-    "customerType": "B",
-    "name": "Tesla",
+    "customerCode": "dvkh",
+    "customerType": "P",
+    "name": "Wacky Wally\u0027s Used Cars",
     "primaryContact": {
-      "personCode": "nvnoee",
-      "firstName": "Kyrie",
-      "lastName": "Irving",
+      "personCode": "zyx321",
+      "firstName": "Ayaana",
+      "lastName": "Dolan",
       "Address": {
-        "Street": "2 Broadway St",
+        "Street": "23450 Cabo San Lucas",
+        "City": "Los Cabos",
+        "State": "BCS",
+        "Zip": "",
+        "Country": "Mexico"
+      },
+      "Email": []
+    },
+    "address": {
+      "Street": "123 Madison Avenue",
+      "City": "Bodega",
+      "State": "NL",
+      "Zip": "",
+      "Country": "CUBA"
+    }
+  },
+  {
+    "customerCode": "l0000000000ngc0d3",
+    "customerType": "B",
+    "name": "Demolition Derby",
+    "primaryContact": {
+      "personCode": "lejnr4",
+      "firstName": "Kenan",
+      "lastName": "Spooner",
+      "Address": {
+        "Street": "123 N 1st Street",
+        "City": "Compton",
+        "State": "CA",
+        "Zip": "90210",
+        "Country": "USA"
+      },
+      "Email": [
+        "kspoons@emailservice.domain",
+        "thespoonman@soundgarden.com"
+      ]
+    },
+    "address": {
+      "Street": "126-01 Roosevelt Ave",
+      "City": "Flushing",
+      "State": "NY",
+      "Zip": "11368",
+      "Country": "USA"
+    }
+  },
+  {
+    "customerCode": "asdf419",
+    "customerType": "P",
+    "name": "Fenton Industries",
+    "primaryContact": {
+      "personCode": "biz45",
+      "firstName": "Fenton",
+      "lastName": "Hart",
+      "Address": {
+        "Street": "1 Wall Street",
         "City": "New York",
         "State": "NY",
-        "Zip": "68117",
-        "Country": "USA"
-      },
-      "Email": []
-    },
-    "address": {
-      "Street": "2 Broadway St",
-      "City": "New York",
-      "State": "NY",
-      "Zip": "68117",
-      "Country": "USA"
-    }
-  },
-  {
-    "customerCode": "uebgmk",
-    "customerType": "P",
-    "name": "Big Al",
-    "primaryContact": {
-      "personCode": "oiasudem",
-      "firstName": "Eric",
-      "lastName": "Cartman",
-      "Address": {
-        "Street": "23450 1st St",
-        "City": "South Park",
-        "State": "CO",
-        "Country": "USA"
-      },
-      "Email": []
-    },
-    "address": {
-      "Street": "123 1st St",
-      "City": "South Park",
-      "State": "CO",
-      "Country": "USA"
-    }
-  },
-  {
-    "customerCode": "12345",
-    "customerType": "P",
-    "name": "My business is personal",
-    "primaryContact": {
-      "personCode": "12345",
-      "firstName": "Nick",
-      "lastName": "Radmilovich",
-      "Address": {
-        "Street": "123 not my Address",
-        "City": "Lincoln",
-        "State": "NE",
-        "Zip": "68528",
+        "Zip": "10005-0012",
         "Country": "USA"
       },
       "Email": [
-        "Nradmilovich4@gmail.com"
+        "fentony@windstream.net"
       ]
     },
     "address": {
-      "Street": "Still not my address",
-      "City": "Lincoln",
-      "State": "NE",
-      "Zip": "68528",
+      "Street": "1060 West Addison Street",
+      "City": "Chicago",
+      "State": "IL",
+      "Zip": "60613",
+      "Country": "USA"
+    }
+  },
+  {
+    "customerCode": "421asdf",
+    "customerType": "B",
+    "name": "Foundation for the Arts",
+    "primaryContact": {
+      "personCode": "biz45",
+      "firstName": "Fenton",
+      "lastName": "Hart",
+      "Address": {
+        "Street": "1 Wall Street",
+        "City": "New York",
+        "State": "NY",
+        "Zip": "10005-0012",
+        "Country": "USA"
+      },
+      "Email": [
+        "fentony@windstream.net"
+      ]
+    },
+    "address": {
+      "Street": "1 MetLife Stadium Dr",
+      "City": "East Rutherford",
+      "State": "NJ",
+      "Zip": "07073",
+      "Country": "USA"
+    }
+  },
+  {
+    "customerCode": "avnkbkjds",
+    "customerType": "P",
+    "name": "Juno Stephenson",
+    "primaryContact": {
+      "personCode": "lejnr4",
+      "firstName": "Kenan",
+      "lastName": "Spooner",
+      "Address": {
+        "Street": "123 N 1st Street",
+        "City": "Compton",
+        "State": "CA",
+        "Zip": "90210",
+        "Country": "USA"
+      },
+      "Email": [
+        "kspoons@emailservice.domain",
+        "thespoonman@soundgarden.com"
+      ]
+    },
+    "address": {
+      "Street": "123 N 1st Street",
+      "City": "Compton",
+      "State": "CA",
+      "Zip": "90210",
       "Country": "USA"
     }
   }

@@ -1,34 +1,80 @@
 <?xml version="1.0"?>
 <Product>
-<com.bc.Rental>
-  <productCode>qeuriopt</productCode>
-  <productType>R</productType>
-  <productLabel>1964 Chevy Impala</productLabel>
-  <workValue>0.0</workValue>
-  <dailyCost>89.29</dailyCost>
-  <deposit>400.0</deposit>
-  <cleaningFee>25.69</cleaningFee>
-</com.bc.Rental>
 <com.bc.Repair>
-  <productCode>nfein2929</productCode>
+  <productCode>Invalid_Repair</productCode>
   <productType>F</productType>
-  <productLabel>Light Replacement</productLabel>
+  <productLabel>Invalid R</productLabel>
   <workValue>0.0</workValue>
-  <partsCost>233.0</partsCost>
-  <hourlyLaborCost>2.0</hourlyLaborCost>
+  <partsCost>211.0</partsCost>
+  <hourlyLaborCost>55.0</hourlyLaborCost>
 </com.bc.Repair>
 <com.bc.Concession>
-  <productCode>aldkjflaksjdfh</productCode>
+  <productCode>RP</productCode>
   <productType>C</productType>
-  <productLabel>Hot Doggo</productLabel>
+  <productLabel>RasPi</productLabel>
   <workValue>0.0</workValue>
-  <unitCost>89898.23</unitCost>
+  <unitCost>1.0</unitCost>
+</com.bc.Concession>
+<com.bc.Rental>
+  <productCode>qwertyuiop</productCode>
+  <productType>R</productType>
+  <productLabel>2007 Ford Crown Victoria</productLabel>
+  <workValue>0.0</workValue>
+  <dailyCost>50.75</dailyCost>
+  <deposit>200.0</deposit>
+  <cleaningFee>25.39</cleaningFee>
+</com.bc.Rental>
+<com.bc.Repair>
+  <productCode>b4z1ng4</productCode>
+  <productType>F</productType>
+  <productLabel>Bumper Replacement</productLabel>
+  <workValue>0.0</workValue>
+  <partsCost>100.0</partsCost>
+  <hourlyLaborCost>75.0</hourlyLaborCost>
+</com.bc.Repair>
+<com.bc.Concession>
+  <productCode>k04l4</productCode>
+  <productType>C</productType>
+  <productLabel>12-oz Coffee</productLabel>
+  <workValue>0.0</workValue>
+  <unitCost>4.75</unitCost>
 </com.bc.Concession>
 <com.bc.Towing>
-  <productCode>utieow39</productCode>
+  <productCode>sievub</productCode>
   <productType>T</productType>
-  <productLabel>Tow 20 Miles</productLabel>
+  <productLabel>Tow &lt; 10 Miles</productLabel>
   <workValue>0.0</workValue>
-  <costPerMile>6.45</costPerMile>
+  <costPerMile>6.0</costPerMile>
+</com.bc.Towing>
+<com.bc.Rental>
+  <productCode>yuasi</productCode>
+  <productType>R</productType>
+  <productLabel>Tesla Cybertruck</productLabel>
+  <workValue>0.0</workValue>
+  <dailyCost>1000.0</dailyCost>
+  <deposit>5000.0</deposit>
+  <cleaningFee>50.0</cleaningFee>
+</com.bc.Rental>
+<com.bc.Repair>
+  <productCode>t0m03</productCode>
+  <productType>F</productType>
+  <productLabel>Full Wheel Replacement</productLabel>
+  <workValue>0.0</workValue>
+  <partsCost>800.0</partsCost>
+  <hourlyLaborCost>25.0</hourlyLaborCost>
+</com.bc.Repair>
+<com.bc.Concession>
+  <productCode>kvnjgbf5</productCode>
+  <productType>C</productType>
+  <productLabel>Large &quot;Homemade&quot; Raisin Cookie</productLabel>
+  <workValue>0.0</workValue>
+  <unitCost>10.0</unitCost>
+</com.bc.Concession>
+<com.bc.Towing>
+  <productCode>ugis43</productCode>
+  <productType>T</productType>
+  <productLabel>Tow &gt; 10 miles</productLabel>
+  <workValue>0.0</workValue>
+  <costPerMile>4.0</costPerMile>
 </com.bc.Towing>
 </Product>
