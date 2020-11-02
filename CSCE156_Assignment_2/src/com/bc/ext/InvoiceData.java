@@ -248,17 +248,6 @@ public class InvoiceData {
 			pre.executeUpdate();
 			pre = conn.prepareStatement(query2);
 			pre.executeUpdate();
-//			while(rs.next()) {
-//				int productId = rs.getInt("productId");
-//				
-//				query = "delete from InvoiceProduct where productId = ?";
-//				pre = conn.prepareStatement(query);
-//				pre.setInt(1, productId);
-//				pre.executeUpdate();
-//			}
-//			query = "delete from Product";
-//			pre = conn.prepareStatement(query);
-//			pre.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
