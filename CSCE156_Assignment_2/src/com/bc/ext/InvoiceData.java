@@ -39,20 +39,24 @@ public class InvoiceData {
 	 * 1. Method that removes every person record from the database
 	 */
 	public static void removeAllPersons() {
+		// Removes all conflicting tables
 		InvoiceData.removeAllInvoices();
 		InvoiceData.removeAllCusomters();
 		InvoiceData.removeAllEmails();
+		// Opens connections
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
 
 		String query = "select address from Person";
 		try {
+			// Deletes all Person entries
 			pre = conn.prepareStatement(query);
 			rs = pre.executeQuery();
 			query = "delete from Person";
 			pre = conn.prepareStatement(query);
 			pre.executeUpdate();
+			// Deletes all remaining addresses linked to a person
 			while (rs.next()) {
 				InvoiceData.deleteAddress(rs.getInt("address"),"P");
 			}
@@ -60,6 +64,7 @@ public class InvoiceData {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		// Close connections
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
@@ -101,7 +106,7 @@ public class InvoiceData {
 				e.printStackTrace();
 			}
 		}
-
+		// Close connections
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
@@ -115,10 +120,11 @@ public class InvoiceData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
+		// Open connections
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-
+		// Check for existing email
 		String query = "select Email.emailId from Email where email like ? ";
 		String emailTest = "%" + email + "%";
 		int personId = 0;
@@ -127,6 +133,7 @@ public class InvoiceData {
 			pre = conn.prepareStatement(query);
 			pre.setString(1, emailTest);
 			rs = pre.executeQuery();
+			// Retrieves Person code
 			if (!rs.next()) {
 				query = "select Person.personId from Person where personCode like ? ";
 				pre = conn.prepareStatement(query);
@@ -135,6 +142,7 @@ public class InvoiceData {
 				if (!rs.next()) {
 					throw new SQLException("Person does not exist!");
 				} else {
+					// Adds email
 					personId = rs.getInt("personId");
 					query = "insert into Email(personId,email) values (?,?)";
 					pre = conn.prepareStatement(query);
@@ -146,7 +154,7 @@ public class InvoiceData {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		// Close connections
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
@@ -156,11 +164,13 @@ public class InvoiceData {
 	 * 4. Method that removes every customer record from the database
 	 */
 	public static void removeAllCusomters() {
+		// Removes conflicting tables
 		InvoiceData.removeAllInvoices();
+		// Opens Connections
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		ResultSet rs = null;
-
+		// Stores Customer addressIds
 		String query = "select address from Customer";
 		try {
 			pre = conn.prepareStatement(query);
@@ -168,13 +178,14 @@ public class InvoiceData {
 			query = "delete from Customer";
 			pre = conn.prepareStatement(query);
 			pre.executeUpdate();
+			// Deletes Customer address if it is not associated with a Person entry
 			while (rs.next()) {
 				InvoiceData.deleteAddress(rs.getInt("address"),"C");
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		// Close connections
 		DatabaseConnection.close(rs);
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
@@ -195,11 +206,15 @@ public class InvoiceData {
 	 */
 	public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode,
 			String name, String street, String city, String state, String zip, String country) {
+		// Checks for existing Customer
 		int customerId = InvoiceData.getCustomerId(customerCode);
+		// Opens Connections
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
+		// Checks for existing address, and adds address if it does not exist.
 		int addressId = InvoiceData.addAddress(street, city, zip, state, country);
 		int primaryContactId = InvoiceData.getPersonId(primaryContactPersonCode);
+		// Inserts Customer
 		if (customerId == 0) {
 			String query = "insert into Customer(customerCode, customerType, customerName, primaryContact, address) values (?,?,?,?,?)";
 			try {
@@ -214,6 +229,7 @@ public class InvoiceData {
 				e.printStackTrace();
 			}
 		}
+		// Close Connections
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 	}
@@ -395,6 +411,7 @@ public class InvoiceData {
 		try {
 			pre = conn.prepareStatement(query);
 			pre.executeUpdate();
+			// Delete all Invoices
 			query = "delete from Invoice";
 			pre = conn.prepareStatement(query);
 			pre.executeUpdate();
@@ -416,9 +433,11 @@ public class InvoiceData {
 		/* TODO */
 		// Checks for duplicate
 		int invoiceId = InvoiceData.getInvoiceId(invoiceCode);
+		// Open Connections
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
 		String query = null;
+		// Adds invoice if no duplicate is found.
 		if (invoiceId == 0) {
 			query = "insert into Invoice(invoiceCode, owner, customer) values (?,?,?);";
 			int ownerId = InvoiceData.getPersonId(ownerCode);
@@ -433,6 +452,7 @@ public class InvoiceData {
 				e.printStackTrace();
 			}
 		}
+		// Close Connections
 		DatabaseConnection.close(pre);
 		DatabaseConnection.close(conn);
 	}

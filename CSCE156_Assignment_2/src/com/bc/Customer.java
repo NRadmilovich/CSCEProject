@@ -161,10 +161,9 @@ public class Customer {
 		if (this.customerType.equals("B")) {
 			return 75.50;
 			
-		}else if (this.customerType.equals("P")) {
+		}else  {
 			return 0;
 		}
-		return 0;
 	}
 
 	public double getTaxes(double totalBeforeTax) {
@@ -173,10 +172,8 @@ public class Customer {
 		if (this.customerType.equals("B")) {
 			return .0425 * totalBeforeTax;
 			
-		}else if (this.customerType.equals("P")) {
+		}else {
 			return .08 * totalBeforeTax;
 		}
-		return 0;
-		
 	}
 }

@@ -135,14 +135,24 @@ public class InvoiceReport {
 			// Print owner
 			Person owner = invoice.getOwner();
 			Address ownerAddress = owner.getAddress();
+			int emails = owner.getEmail().size();
+			String emailArray = Arrays.toString(owner.getEmail().toArray());
+			if(emails == 0) {
+				emailArray = "[No emails on record]";
+			}
 			System.out.println("Owner:");
-			System.out.printf("\t%s \n\t%s \n\t%s \n", owner.toString(), Arrays.toString(owner.getEmail().toArray()),
+			System.out.printf("\t%s \n\t%s \n\t%s \n", owner.toString(), emailArray,
 					ownerAddress.toString());
 
 			// Prints customer info
 			Customer customer = invoice.getCustomerData();
 			Address customerAddress = customer.getAddress();
 			String acctType = "";
+			if(customer.getCustomerType().compareTo("B") == 0) {
+				acctType = "(Business Account)";
+			}else {
+				acctType = "(Personal Account)";
+			}
 			double extraFee = customer.getFees();
 			double loyalDiscount = 0;
 			System.out.println("Customer:");

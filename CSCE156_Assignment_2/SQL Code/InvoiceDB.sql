@@ -22,15 +22,17 @@ create table Country(
 countryId int not null primary key auto_increment,
 countryName varchar(40) unique);
 
-Create table Address(
-addressId int not null primary key auto_increment,
-street varchar(250) not null,
-city varchar(50) not null,
-state int,
-zip int,
-country int not null,
-foreign key (State) references State(stateId),
-foreign key (country) references Country(countryId)
+CREATE TABLE Address (
+    addressId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    street VARCHAR(250) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state INT,
+    zip VARCHAR(10),
+    country INT NOT NULL,
+    FOREIGN KEY (State)
+        REFERENCES State (stateId),
+    FOREIGN KEY (country)
+        REFERENCES Country (countryId)
 );
 
 create table Person (
@@ -113,7 +115,7 @@ Insert into Country(countryName) values ('USA');
 -- State 1
 Insert into State(stateName) values ('MN');
 -- Address 1
-insert into Address(street, city, state, zip, country) values ('Moon','Moon',1,60613,1);
+insert into Address(street, city, state, zip, country) values ('Moon','Moon',1,'60613',1);
 -- Person 1
 insert into Person(personCode, firstName, lastName,address) values ('jaoiejf','Neil','Armstrong',1);
 -- Email 1 and 2
@@ -123,7 +125,7 @@ insert into Email(email,personId) values ('pinkfloyd@yahoo.com',1);
 Insert into State(stateName) values ('EA');
 -- Address 2
 insert into Address(street, city, state, zip, country) 
-values ('690 N Shady St','Moon',2,80902,1);
+values ('690 N Shady St','Moon',2,'80902',1);
 -- Customer 1
 insert into Customer(customerCode, customerType, customerName, primaryContact,address)
 values ('lkjjdbbn','B','Dark Side of the Moon',1, 2);
@@ -143,7 +145,7 @@ insert into InvoiceProduct(invoiceId, productId, workValue) values (1,4,22.0);
 insert into State(stateName) values ('NY');
 -- Address 3
 insert into Address(street, city, state, zip, country)
-values ('2 Broadway St','New York',3,68117,1);
+values ('2 Broadway St','New York',3,'68117',1);
 -- Person 2
 insert into Person(personCode, firstName, lastName, address)
 values ('nvnoee', 'Kyrie', 'Irving',3);

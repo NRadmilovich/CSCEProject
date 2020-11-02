@@ -94,8 +94,8 @@ public class Address {
 	}
 	@Override
 	public String toString() {
-		return Street + "\n\t" + City + ", " + State + ", " + Zip + ", "
-				+ Country;
+		return Street + "\n\t" + City + ", " + State +" " + Country + " "
+				+ Zip;
 	}
 	
 	
