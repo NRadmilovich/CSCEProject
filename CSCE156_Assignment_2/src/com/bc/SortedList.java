@@ -4,18 +4,24 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-
+/**
+ * Idea: Have a list that every time someone adds an element, 
+ * list will be sorted in decreasing order
+ * 
+ * @author caden
+ *
+ * @param <T>
+ */
 public class SortedList<T> implements Iterable<T>{
 	
 	private static final int SIZE = 5;
 	private T arr[];
 	private int size; 
 
-	public SortedList(T[] arr, int size, Comparator<T> invoiceDesc) {
+	public SortedList(T[] arr, int size, Comparator<T> Desc) {
 		super();
-		this.arr = arr;
-		this.size = size;
-		InvoiceDesc = invoiceDesc;
+		this.arr = (T[])new Object[SIZE];
+		this.size = 0;
 	}
 
 	// Increases array size by 5
@@ -61,10 +67,10 @@ public class SortedList<T> implements Iterable<T>{
 	}
 	
 	public void sortList() {
-		Collections.sort(this, InvoiceDesc);
+		Collections.sort(this, Desc);
 	}
 	
-	Comparator<T> InvoiceDesc = new Comparator<T>() {
+	Comparator<T> Desc = new Comparator<T>() {
 		@Override
 		public int compare(T x, T y) {
 			
