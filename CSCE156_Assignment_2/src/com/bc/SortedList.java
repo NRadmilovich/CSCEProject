@@ -1,6 +1,7 @@
 package com.bc;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
@@ -9,13 +10,12 @@ public class SortedList<T> implements Iterable<T>{
 	private static final int SIZE = 5;
 	private T arr[];
 	private int size; 
-	
-	
-	public SortedList(T[] arr, int size, Comparator<Invoice> desc) {
+
+	public SortedList(T[] arr, int size, Comparator<T> invoiceDesc) {
 		super();
 		this.arr = arr;
 		this.size = size;
-		InvoiceDesc = desc;
+		InvoiceDesc = invoiceDesc;
 	}
 
 	// Increases array size by 5
@@ -60,13 +60,17 @@ public class SortedList<T> implements Iterable<T>{
 		this.size++;
 	}
 	
-	Comparator<Invoice> InvoiceDesc = new Comparator<Invoice>() {
+	public void sortList() {
+		Collections.sort(this, InvoiceDesc);
+	}
+	
+	Comparator<T> InvoiceDesc = new Comparator<T>() {
 		@Override
-		public int compare(Invoice x, Invoice y) {
+		public int compare(T x, T y) {
 			
-			if(x.getInvoiceTotal() > y.getInvoiceTotal()) {
+			if(((Invoice) x).getInvoiceTotal() > ((Invoice) y).getInvoiceTotal()) {
 				return -1;
-			} else if (y.getInvoiceTotal() > x.getInvoiceTotal()) {
+			} else if (((Invoice) y).getInvoiceTotal() > ((Invoice) x).getInvoiceTotal()) {
 				return 1;
 			} else {			
 				return 0;
