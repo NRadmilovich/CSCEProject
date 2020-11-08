@@ -25,6 +25,7 @@ public class Invoice {
 	private Person owner;
 	private Customer customerData;
 	private ArrayList<Product> productList;
+	private double invoiceTotal;
 
 	public String getInvoiceCode() {
 		return invoiceCode;
@@ -41,6 +42,10 @@ public class Invoice {
 	public ArrayList<? extends Product> getProductList() {
 		return productList;
 	}
+	
+	public double getInvoiceTotal() {
+		return invoiceTotal;
+	}
 
 	public Invoice(String invoiceCode, Person owner, Customer customerData, ArrayList<Product> productList) {
 		super();
@@ -48,6 +53,7 @@ public class Invoice {
 		this.owner = owner;
 		this.customerData = customerData;
 		this.productList = productList;
+		this.invoiceTotal = this.calcInvoiceTotal(); 
 	}
 
 	public static ArrayList<Invoice> importInvoice(String filename, HashMap<String, Person> personMap,
@@ -164,7 +170,7 @@ public class Invoice {
 	 * Gets invoice total for use in ordering invoices
 	 * @return
 	 */
-	public double getInvoiceTotal() {
+	private double calcInvoiceTotal() {
 
 			double invoiceSubtotal = 0;
 			double invoiceDiscounts = 0;

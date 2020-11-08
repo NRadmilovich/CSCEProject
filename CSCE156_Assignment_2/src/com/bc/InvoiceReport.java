@@ -35,6 +35,9 @@ public class InvoiceReport {
 		InvoiceReport.printSummary(invoices);
 		System.out.printf("\n\n\n");
 		InvoiceReport.printDetailed(invoices);
+		for(Invoice invoice: invoices) {
+			System.out.println(invoice.getInvoiceTotal());
+		}
 	}
 	/**
 	 * Prints a summary of all invoices in a given input of invoices.
