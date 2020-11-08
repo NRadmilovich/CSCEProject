@@ -1,0 +1,92 @@
+package com.bc;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+
+public class SortedList<T> implements Iterable<T>{
+	
+	private static final int SIZE = 5;
+	private T arr[];
+	private int size; 
+	
+	
+	public SortedList(T[] arr, int size, Comparator<Invoice> desc) {
+		super();
+		this.arr = arr;
+		this.size = size;
+		InvoiceDesc = desc;
+	}
+
+	// Increases array size by 5
+	private void increaseArraySize() {
+		
+		this.arr = Arrays.copyOf(this.arr, this.arr.length + SIZE);
+	}
+	
+	public T getElementAtIndex(int index) {
+		
+		if (index < 0 || index>this.size) {
+			throw new ArrayIndexOutOfBoundsException("Enter a correct index!!");
+		}
+		return this.arr[index];
+	}
+
+	
+	public void addElementToEnd(T item) {
+		
+		this.addElementAtIndex(item, this.size);
+	}
+	
+	public void addElementToStart(T item) {
+		
+		this.addElementAtIndex(item, 0);
+	}
+	
+	public void addElementAtIndex(T item, int index) {
+		
+		if (index < 0 || index>this.size) {
+			throw new ArrayIndexOutOfBoundsException("Enter a correct index!!");
+		}
+		
+		if(this.arr.length == this.size) {
+			this.increaseArraySize();
+		}
+		
+		for (int i = this.size; i>index; i--) {
+			arr[i] = arr[i - 1];
+		}
+		this.arr[index] = item;
+		this.size++;
+	}
+	
+	Comparator<Invoice> InvoiceDesc = new Comparator<Invoice>() {
+		@Override
+		public int compare(Invoice x, Invoice y) {
+			
+			if(x.getInvoiceTotal() > y.getInvoiceTotal()) {
+				return -1;
+			} else if (y.getInvoiceTotal() > x.getInvoiceTotal()) {
+				return 1;
+			} else {			
+				return 0;
+			}		
+		}		
+	};
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+//	public String toString() {
+//		
+//		StringBuilder sb = new StringBuilder();
+//		for (int i = 0; i<this.size; i++) {
+//			sb.append(this.arr[i] + ",");
+//		}
+//		return sb.toString();
+//	}
+
+}
