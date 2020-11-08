@@ -1,7 +1,6 @@
 package com.bc;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 /**
@@ -18,10 +17,11 @@ public class SortedList<T> implements Iterable<T>{
 	private T arr[];
 	private int size; 
 
-	public SortedList(T[] arr, int size, Comparator<T> Desc) {
+	public SortedList(T[] arr, int size, Comparator<T> desc) {
 		super();
 		this.arr = (T[])new Object[SIZE];
 		this.size = 0;
+		Desc = desc;
 	}
 
 	// Increases array size by 5
@@ -67,27 +67,28 @@ public class SortedList<T> implements Iterable<T>{
 	}
 	
 	public void sortList() {
-		Collections.sort(this, Desc);
+		// TODO use comparator to sort elements
 	}
 	
-	Comparator<T> Desc = new Comparator<T>() {
+	private Comparator<T> Desc = new Comparator<T>() {
 		@Override
 		public int compare(T x, T y) {
-			
-			if(((Invoice) x).getInvoiceTotal() > ((Invoice) y).getInvoiceTotal()) {
-				return -1;
-			} else if (((Invoice) y).getInvoiceTotal() > ((Invoice) x).getInvoiceTotal()) {
-				return 1;
-			} else {			
-				return 0;
-			}		
-		}		
+			if (x instanceof Invoice) {
+				if(((Invoice) x).getInvoiceTotal() > ((Invoice) y).getInvoiceTotal()) {
+					return -1;
+				} else if (((Invoice) y).getInvoiceTotal() > ((Invoice) x).getInvoiceTotal()) {
+					return 1;
+				} else {			
+					return 0;
+				}		
+			}	
+			return 2;
+		}
 	};
 
 	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.iterator();
 	}
 	
 //	public String toString() {
