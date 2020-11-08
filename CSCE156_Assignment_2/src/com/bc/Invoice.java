@@ -159,4 +159,50 @@ public class Invoice {
 		
 		return invoices;
 	}
+	
+	/**
+	 * Gets invoice total for use in ordering invoices
+	 * @return
+	 */
+	public double getInvoiceTotal() {
+
+			double invoiceSubtotal = 0;
+			double invoiceDiscounts = 0;
+			double invoiceFees = 0;
+			double invoiceTaxes = 0;
+			double invoiceTotal = 0;
+			int freeFlag = 0;
+
+			// Checking if Towing is free
+			for (Product p : this.getProductList()) {
+				if (p instanceof Rental) {
+					freeFlag += 1;
+				} else if (p instanceof Repair) {
+					freeFlag += 1;
+				} else if (p instanceof Towing) {
+					freeFlag += 1;
+				}
+			}
+
+			// Calculating totals of 1 invoice
+			for (Product p : this.getProductList()) {
+				double productSubtotal = p.getSubtotal();
+				double productDiscounts = p.getDiscounts(freeFlag);
+				double productTaxes = this.getCustomerData().getTaxes(productSubtotal + productDiscounts);
+				invoiceSubtotal += productSubtotal;
+				invoiceDiscounts += productDiscounts;
+				invoiceTaxes += productTaxes;
+
+			}
+
+			// Apply entire invoice fees and discounts
+			double businessAccountFee = this.getCustomerData().getFees();
+			double loyalDiscount = this.getCustomerData().getLoyalDiscount(invoiceSubtotal + invoiceTaxes);
+			invoiceFees += businessAccountFee;
+			invoiceDiscounts += loyalDiscount;
+			invoiceTotal = invoiceSubtotal + invoiceDiscounts + invoiceFees + invoiceTaxes;
+
+		return invoiceTotal;
+	}
+
 }
