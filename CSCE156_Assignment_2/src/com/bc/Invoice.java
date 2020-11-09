@@ -170,7 +170,7 @@ public class Invoice {
 	 * Gets invoice total for use in ordering invoices
 	 * @return
 	 */
-	private double calcInvoiceTotal() {
+	public double calcInvoiceTotal() {
 
 			double invoiceSubtotal = 0;
 			double invoiceDiscounts = 0;
@@ -207,7 +207,7 @@ public class Invoice {
 			invoiceFees += businessAccountFee;
 			invoiceDiscounts += loyalDiscount;
 			invoiceTotal = invoiceSubtotal + invoiceDiscounts + invoiceFees + invoiceTaxes;
-
+			
 		return invoiceTotal;
 	}
 

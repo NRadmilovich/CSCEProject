@@ -1,25 +1,45 @@
 package com.bc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-public interface InvoiceADT {
-public static ArrayList<Invoice> InvoiceSort(ArrayList<Invoice> values){
-	// Initialize Variables
-	int i,j,index;
-	Invoice temp;
-	index = values.size() - 1;
-	for( i = 0; i < (index); i++) {
-		for(j = 0; j<(index - i - 1); j++) {
-			if(values.get(j).totalCalc() < values.get(j+1).totalCalc()) {
-				temp = values.get(j);
-				//values[j] = values[j+1];
-				//values[j+1] = temp;
-			}
+public class InvoiceADT<T> {
+	
+	private T array[];
+	private int size;
+	
+	public InvoiceADT() {
+		this.size = 0;
+		this.array =  (T[])new Object[size];
+
+	}
+	public void addAt(T item, int index) {
+		if (index < 0 || index > this.size) {
+			throw new ArrayIndexOutOfBoundsException("Enter a correct index!");
 		}
 	}
-	return values;
-}
-public static void swap(ArrayList<Invoice> list, int index1, int index2) {
+	public void set(int index, T object) {
+		if(index > this.size - 1) {
+			throw new ArrayIndexOutOfBoundsException("Index out of array bounds!");
+		}
+		this.array[index] = object;
+	}
+	public static void swap(ArrayList<Invoice> list, int index1, int index2) {
+		Invoice temp = list.get(index1);
+		list.set(index1, list.get(index2));
+		list.set(index2, temp);
+	}
 	
-}
+	public static ArrayList<Invoice> InvoiceSort(ArrayList<Invoice> values){
+		// Initialize Variables
+		int i,j,index;
+		index = values.size();
+		for( i = 0; i < (index-1); i++) {
+			for(j = 0; j<(index - i - 1); j++) {
+				if(values.get(j).getInvoiceTotal() < values.get(j+1).getInvoiceTotal()) {
+					InvoiceADT.swap(values,j,j+1);
+				}}}
+		return values;
+	}
 }

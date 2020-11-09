@@ -23,18 +23,25 @@ public class InvoiceReport {
 	public static void main(String[] args) {
 		//Data conversion for Person, Customer, and Products.
 		ArrayList<Person> people = Person.importPersonDB();
+		System.out.println("People retrieved!");
 		HashMap<String,Person> personMap = Person.personMap(people);
 		ArrayList<Customer> customers = Customer.importCustomerDB(personMap);
+		System.out.println("Customers retrieved!");
 		ArrayList<Product> product = Product.importProducts();
+		System.out.println("Products retrieved!");
 		// Creates Product and Customer Hashmaps
 		HashMap<String,Product> productMap = Product.productMap(product);
 		HashMap<String,Customer> customerMap = Customer.customerMap(customers);
 		// Creates Invoice ArrayList based on invoice flat file
 		ArrayList<Invoice> invoices = Invoice.importInvoiceDB(personMap, customerMap, productMap);
+		System.out.println("Invoices retrieved!");
+		invoices = InvoiceADT.InvoiceSort(invoices);
+		System.out.println("Invoices sorted!");
 		// Prints Invoices
 		InvoiceReport.printSummary(invoices);
 		System.out.printf("\n\n\n");
 		InvoiceReport.printDetailed(invoices);
+
 	}
 	/**
 	 * Prints a summary of all invoices in a given input of invoices.

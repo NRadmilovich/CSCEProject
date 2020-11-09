@@ -50,11 +50,6 @@ public class Person  {
 	public ArrayList<String> getEmail() {
 		return Email;
 	}
-	// One setter kept, in order to assign an empty person to the customer class.  This allows the customers person code
-	//to be retained, when no matching person is present.
-	public void setPersonCode(String personCode) {
-		this.personCode = personCode;
-	}
 	//Constructors
 	//General Constructor
 	public Person() {
