@@ -25,6 +25,12 @@ public class InvoiceADT<T> {
 		}
 		this.array[index] = object;
 	}
+	public T get(int index) {
+		if(index > this.size - 1) {
+			throw new ArrayIndexOutOfBoundsException("Index out of array bounds!");
+		}
+		return this.array[index];
+	}
 	public static void swap(ArrayList<Invoice> list, int index1, int index2) {
 		Invoice temp = list.get(index1);
 		list.set(index1, list.get(index2));
