@@ -45,10 +45,10 @@ public class InvoiceReport {
 
 		// Print top of table
 		System.out.println("Executive Summary Report:");
-		System.out.printf("%n%-10s %-25s %-30s %-11s %-11s  %-11s  %-10s  %-10s %n", "Code", "Owner",
+		System.out.printf("%n%-15s %-25s %-30s %-11s %-11s  %-11s  %-10s  %-10s %n", "Code", "Owner",
 				"Customer Account", "Subtotal", "Discounts", "Fees", "Taxes", "Total");
 		System.out.println(
-				"---------------------------------------------------------------------------------------------------------------------------------");
+				"--------------------------------------------------------------------------------------------------------------------------------------");
 
 		double totalInvoiceSubtotal = 0;
 		double totalInvoiceDiscounts = 0;
@@ -96,7 +96,7 @@ public class InvoiceReport {
 			invoiceTotal = invoiceSubtotal + invoiceDiscounts + invoiceFees + invoiceTaxes;
 
 			// Print one invoice
-			System.out.printf("%-10s %-25s %-30s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", invoice.getInvoiceCode(),
+			System.out.printf("%-15s %-25s %-30s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", invoice.getInvoiceCode(),
 					invoice.getOwner(), invoice.getCustomerData().getName(), invoiceSubtotal, invoiceDiscounts,
 					invoiceFees, invoiceTaxes, invoiceTotal);
 
@@ -110,8 +110,8 @@ public class InvoiceReport {
 		}
 
 		System.out.println(
-				"=================================================================================================================================");
-		System.out.printf("%-67s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", "TOTALS", totalInvoiceSubtotal,
+				"======================================================================================================================================");
+		System.out.printf("%-72s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", "TOTALS", totalInvoiceSubtotal,
 				totalInvoiceDiscounts, totalInvoiceFees, totalInvoiceTaxes, totalInvoiceTotal);
 	}
 	/**
@@ -164,7 +164,7 @@ public class InvoiceReport {
 			System.out.printf("  %s %18s %67s %12s %9s %12s \n", "Code", "Description", "Subtotal", "Discount", "Taxes",
 					"Total");
 			System.out.println(
-					"  ------------------------------------------------------------------------------------------------------------------------------------");
+					"  -------------------------------------------------------------------------------------------------------------------------------------");
 			ArrayList<? extends Product> productList = invoice.getProductList();
 			int freeFlag = 0;
 
@@ -194,7 +194,7 @@ public class InvoiceReport {
 				invoiceTaxes += productTaxes;
 				invoiceTotal += productTotal;
 
-				System.out.printf("  %-12s%-69s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n", prod.getProductCode(),
+				System.out.printf("  %-12s%-70s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n", prod.getProductCode(),
 						description, productSubtotal, productDiscounts, productTaxes, productTotal);
 				
 				// Checks for fees to print under detailed description.
@@ -204,22 +204,22 @@ public class InvoiceReport {
 				}
 			}
 			System.out.println(
-					"======================================================================================================================================");
+					"=======================================================================================================================================");
 
-			System.out.printf("%-83s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n", "ITEM TOTALS:", invoiceSubTotal,
+			System.out.printf("%-84s $ %9.2f  $ %9.2f  $ %9.2f  $ %9.2f \n", "ITEM TOTALS:", invoiceSubTotal,
 					invoiceDiscounts, invoiceTaxes, invoiceTotal);
 			
 			// Calculated loyalty discount, and prints value for loyalty discount or business fee, if applicable.
 			loyalDiscount = customer.getLoyalDiscount(invoiceTotal);
 			if (loyalDiscount != 0 && customer.getCustomerType().contains("P")) {
-				System.out.printf("LOYAL CUSTOMER DISCOUT (5%% OFF) %92s %9.2f \n", "$", loyalDiscount);
+				System.out.printf("LOYAL CUSTOMER DISCOUT (5%% OFF) %93s %9.2f \n", "$", loyalDiscount);
 			} else if (extraFee != 0 && customer.getCustomerType().contains("B")) {
-				System.out.printf("BUSINESS ACCOUNT FEE: %102s %9.2f\n", "$", extraFee);
+				System.out.printf("BUSINESS ACCOUNT FEE: %103s %9.2f\n", "$", extraFee);
 			}
 			
 			// Prints grand total.
 			double grandTotal = invoiceTotal + loyalDiscount + extraFee;
-			System.out.printf("%-122s $ %9.2f \n", "GRAND TOTAL:", grandTotal);
+			System.out.printf("%-123s $ %9.2f \n", "GRAND TOTAL:", grandTotal);
 			
 			// Print closer
 			System.out.printf("\n\n\t\t THANK YOU FOR YOUR BUSINESS WITH US! \n\n\n\n");
