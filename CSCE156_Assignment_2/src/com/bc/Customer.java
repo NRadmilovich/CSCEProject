@@ -83,10 +83,6 @@ public class Customer {
 				Person primaryContact = contacts.get(splitToken[3]);
 				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2], primaryContact,
 						address));
-			} else {
-				Person p = new Person();
-				p.setPersonCode(splitToken[3]);
-				customers.add(new Customer(splitToken[0], splitToken[1], splitToken[2], p, address));
 			}
 		}
 		s.close();

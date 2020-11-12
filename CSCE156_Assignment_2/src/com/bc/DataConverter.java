@@ -31,7 +31,7 @@ public class DataConverter {
 		HashMap<String,Product> productMap = Product.productMap(product);
 		HashMap<String,Customer> customerMap = Customer.customerMap(customers);
 		// Creates Invoice ArrayList
-		ArrayList<Invoice> invoices = Invoice.importInvoiceDB( personMap, customerMap, productMap);
+		ArrayList<Invoice> invoices = Invoice.importInvoiceDBAL( personMap, customerMap, productMap);
 		//Print xml to file
 		XMLPrint.printXML("data/Persons.xml", people, "Person");
 		XMLPrint.printXML("data/Customers.xml", customers, "Customer");

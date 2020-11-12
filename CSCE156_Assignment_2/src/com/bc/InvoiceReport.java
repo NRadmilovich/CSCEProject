@@ -33,10 +33,8 @@ public class InvoiceReport {
 		HashMap<String,Product> productMap = Product.productMap(product);
 		HashMap<String,Customer> customerMap = Customer.customerMap(customers);
 		// Creates Invoice ArrayList based on invoice flat file
-		ArrayList<Invoice> invoices = Invoice.importInvoiceDB(personMap, customerMap, productMap);
+		LinkList<Invoice> invoices = Invoice.importInvoiceDB(personMap, customerMap, productMap);
 		System.out.println("Invoices retrieved!");
-		invoices = InvoiceADT.InvoiceSort(invoices);
-		System.out.println("Invoices sorted!");
 		// Prints Invoices
 		InvoiceReport.printSummary(invoices);
 		System.out.printf("\n\n\n");
@@ -47,7 +45,7 @@ public class InvoiceReport {
 	 * Prints a summary of all invoices in a given input of invoices.
 	 * @param invoiceList
 	 */
-	public static void printSummary(Collection<Invoice> invoiceList) {
+	public static void printSummary(LinkList<Invoice> invoiceList) {
 
 		// Print top of table
 		System.out.println("Executive Summary Report:");
@@ -124,7 +122,7 @@ public class InvoiceReport {
 	 * Prints detailed descriptions of all invoices within a group of invoices.
 	 * @param invoiceList
 	 */
-	public static void printDetailed(Collection<Invoice> invoiceList) {
+	public static void printDetailed(LinkList<Invoice> invoiceList) {
 		System.out.println("Invoice Details:");
 		for (Invoice invoice : invoiceList) {
 			
@@ -136,7 +134,7 @@ public class InvoiceReport {
 
 			// Prints Header
 			System.out.println(
-					"=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
+					"=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
 			System.out.printf("Invoice %s \n------------------------------------------ \n", invoice.getInvoiceCode());
 
 			// Print owner

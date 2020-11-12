@@ -3,6 +3,7 @@ package com.bc;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.*;
@@ -19,7 +20,7 @@ import java.sql.*;
  * Customer, in order to structure invoice data for BumprCars.
  */
 
-public class Invoice {
+public class Invoice implements Comparator<Invoice>, Comparable<Invoice>{
 
 	private String invoiceCode;
 	private Person owner;
@@ -109,10 +110,10 @@ public class Invoice {
 		scanner.close();
 		return Invoices;
 	}
-	public static ArrayList<Invoice> importInvoiceDB(HashMap<String, Person> personMap,
+	public static LinkList<Invoice> importInvoiceDB(HashMap<String, Person> personMap,
 			HashMap<String, Customer> customerMap, HashMap<String, Product> productMap){
 		
-		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+		LinkList<Invoice> invoices = new LinkList<Invoice>();
 
 		Connection conn = DatabaseConnection.connectionBuilder();
 		PreparedStatement pre = null;
@@ -209,6 +210,94 @@ public class Invoice {
 			invoiceTotal = invoiceSubtotal + invoiceDiscounts + invoiceFees + invoiceTaxes;
 			
 		return invoiceTotal;
+	}
+	// Sort for Array Lists
+	public static void swap(ArrayList<Invoice> list, int index1, int index2) {
+		Invoice temp = list.get(index1);
+		list.set(index1, list.get(index2));
+		list.set(index2, temp);
+	}
+	
+	public static ArrayList<Invoice> InvoiceSort(ArrayList<Invoice> values){
+		// Initialize Variables
+		int i,j,index;
+		index = values.size();
+		for( i = 0; i < (index-1); i++) {
+			for(j = 0; j<(index - i - 1); j++) {
+				if(values.get(j).getInvoiceTotal() < values.get(j+1).getInvoiceTotal()) {
+					Invoice.swap(values,j,j+1);
+				}}}
+		return values;
+	}
+	public int compare(Invoice item1, Invoice item2) {
+		if(item1.getInvoiceTotal() > item2.getInvoiceTotal()) {
+			return 1;
+		}else if(item1.getInvoiceTotal() < item2.getInvoiceTotal()) {
+			return -1;
+		}else {
+			return 0;
+		}
+	}
+
+	public static ArrayList<Invoice> importInvoiceDBAL(HashMap<String, Person> personMap,
+			HashMap<String, Customer> customerMap, HashMap<String, Product> productMap) {
+		ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+
+		Connection conn = DatabaseConnection.connectionBuilder();
+		PreparedStatement pre = null;
+		ResultSet rsProd = null;
+		ResultSet rs = null;
+		
+		String query1 = "select Invoice.invoiceId, Invoice.invoiceCode, Person.personCode as owner, Customer.customerCode as customer from Invoice\r\n"
+				+ "left join Person on Person.personId = Invoice.owner\r\n"
+				+ "left join Customer on Customer.customerId = Invoice.customer;";
+		String query2 = "select InvoiceProduct.invoiceProductId, InvoiceProduct.invoiceId, Product.productCode, InvoiceProduct.workValue, InvoiceProduct.associatedRepair from InvoiceProduct\r\n"
+				+ "left join Product on Product.productId = InvoiceProduct.productId\r\n"
+				+ "having InvoiceProduct.invoiceId = ?;";
+		try {
+			pre = conn.prepareStatement(query1);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				int invoiceId = rs.getInt("invoiceId");
+				ArrayList<Product> productList = new ArrayList<Product>();
+				ArrayList<Product> potentialAssociations = new ArrayList<Product>();
+				String associatedCode = null;
+				pre = conn.prepareStatement(query2);
+				pre.setInt(1,invoiceId);
+				rsProd = pre.executeQuery();
+				while(rsProd.next()) {
+					Product newProd = null;
+					double workVal = rsProd.getDouble("workValue");
+					newProd = Product.deepCopy(productMap.get(rsProd.getString("productCode")), workVal);
+					productList.add(newProd);
+					if(rsProd.getString("associatedRepair") != null) {
+						associatedCode = rsProd.getString("associatedRepair");
+						potentialAssociations.add(newProd);
+					}
+				}
+				String invoiceCode = rs.getString("invoiceCode");
+				Person owner = personMap.get(rs.getString("owner"));
+				Customer customer = customerMap.get(rs.getString("customer"));
+				if (associatedCode != null) {
+					Concession.associatedRepairCheck(potentialAssociations, productList, associatedCode);
+				}
+				invoices.add(new Invoice(invoiceCode, owner, customer, productList));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		DatabaseConnection.close(rs);
+		DatabaseConnection.close(rsProd);
+		DatabaseConnection.close(pre);
+		DatabaseConnection.close(conn);
+		
+		return invoices;
+	}
+
+	@Override
+	public int compareTo(Invoice arg0) {
+		return this.compare(this, arg0);
 	}
 
 }
