@@ -23,18 +23,14 @@ public class InvoiceReport {
 	public static void main(String[] args) {
 		//Data conversion for Person, Customer, and Products.
 		ArrayList<Person> people = Person.importPersonDB();
-		System.out.println("People retrieved!");
 		HashMap<String,Person> personMap = Person.personMap(people);
 		ArrayList<Customer> customers = Customer.importCustomerDB(personMap);
-		System.out.println("Customers retrieved!");
 		ArrayList<Product> product = Product.importProducts();
-		System.out.println("Products retrieved!");
 		// Creates Product and Customer Hashmaps
 		HashMap<String,Product> productMap = Product.productMap(product);
 		HashMap<String,Customer> customerMap = Customer.customerMap(customers);
 		// Creates Invoice ArrayList based on invoice flat file
 		LinkList<Invoice> invoices = Invoice.importInvoiceDB(personMap, customerMap, productMap);
-		System.out.println("Invoices retrieved!");
 		// Prints Invoices
 		InvoiceReport.printSummary(invoices);
 		System.out.printf("\n\n\n");
@@ -49,10 +45,10 @@ public class InvoiceReport {
 
 		// Print top of table
 		System.out.println("Executive Summary Report:");
-		System.out.printf("%n%-10s %-25s %-30s %-10s %-10s  %-10s  %-10s  %-10s %n", "Code", "Owner",
+		System.out.printf("%n%-10s %-25s %-30s %-11s %-11s  %-11s  %-10s  %-10s %n", "Code", "Owner",
 				"Customer Account", "Subtotal", "Discounts", "Fees", "Taxes", "Total");
 		System.out.println(
-				"----------------------------------------------------------------------------------------------------------------------------");
+				"---------------------------------------------------------------------------------------------------------------------------------");
 
 		double totalInvoiceSubtotal = 0;
 		double totalInvoiceDiscounts = 0;
@@ -114,7 +110,7 @@ public class InvoiceReport {
 		}
 
 		System.out.println(
-				"============================================================================================================================");
+				"=================================================================================================================================");
 		System.out.printf("%-67s $%10.2f $%10.2f  $%10.2f  $%10.2f $%10.2f%n", "TOTALS", totalInvoiceSubtotal,
 				totalInvoiceDiscounts, totalInvoiceFees, totalInvoiceTaxes, totalInvoiceTotal);
 	}

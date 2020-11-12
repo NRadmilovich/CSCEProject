@@ -57,9 +57,8 @@ public class LinkList<T extends Comparable<T>> implements Iterable<T> {
 		}
 		while(current.hasNext()) {
 			System.out.print("We are here");
-			if(item.compareTo(current.getNext().getItem()) != -1) {
+			if(item.compareTo(current.getNext().getItem()) <= 0) {
 				current = current.getNext();
-			}else if(item.compareTo(current.getNext().getItem()) != -1 && current.getNext().hasNext() == false){
 			}else {
 				newNode.setNext(current.getNext());
 				current.setNext(newNode);
@@ -67,7 +66,7 @@ public class LinkList<T extends Comparable<T>> implements Iterable<T> {
 				return;
 			}
 		}
-		
+		current.setNext(newNode);
 	}
 	public void set(int index, T object) {
 		if(index > this.size - 1) {
