@@ -2,6 +2,7 @@ package com.bc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -23,7 +24,7 @@ import java.util.List;
  * Description: The Person class stores primary contact information for BumprCars.  It can be passed to an Invoice or Customer class.
  */
 
-public class Person  {
+public class Person implements Comparator<Person>, Comparable<Person> {
 	private String personCode;
 	private String firstName;
 	private String lastName;
@@ -171,5 +172,12 @@ public class Person  {
 	public String toString() {
 		return lastName + ", " + firstName;
 	}
+	// Comparator and Comparable methods
+		public int compare(Person item1, Person item2) {
+			return item1.getLastName().compareTo(item2.getLastName());
+		}
+		public int compareTo(Person arg0) {
+			return this.compare(this, arg0);
+		}
 	
 }

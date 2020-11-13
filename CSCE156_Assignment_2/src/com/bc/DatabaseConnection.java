@@ -5,7 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * CSCE 156
+ * 
+ * Authors:
+ * Caden Kirby
+ * Nick Radmilovich
+ * 
+ * 11/13/2020
+ * 
+ * Connection constructing class used in database connection.
+ */
 public class DatabaseConnection {
 	public static final String PARAMETERS = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 

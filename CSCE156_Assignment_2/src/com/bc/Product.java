@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.*;
 
 
 /**
@@ -18,7 +19,7 @@ import java.util.HashMap;
  * Description: The Products class is a superclass to Rental, Repair, Towing, and Concessions.  It is used by the invoice class
  * to store information about the products offered by BumprCars.
  */
-public abstract class Product {
+public abstract class Product implements Comparable<Product>, Comparator<Product>{
 	
 	protected String productCode;
 	protected String productType;
@@ -135,6 +136,15 @@ public abstract class Product {
 			newProd = new Concession(old,workVal);
 		}return newProd;
 	}
+	
+	// Comparator and Comparable methods
+	public int compare(Product item1, Product item2) {
+		return item1.getProductCode().compareTo(item2.getProductCode());
+	}
+	public int compareTo(Product arg0) {
+		return this.compare(this, arg0);
+	}
+
 	
 	// Product Calculations
 	public abstract double getSubtotal();

@@ -17,9 +17,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
-public class Customer {
+public class Customer implements Comparable<Customer>, Comparator<Customer>{
 	private String customerCode;
 	private String customerType;
 	private String name;
@@ -172,4 +172,11 @@ public class Customer {
 			return .08 * totalBeforeTax;
 		}
 	}
+	// Comparator and Comparable methods
+		public int compare(Customer item1, Customer item2) {
+			return item1.getName().compareTo(item2.getName());
+		}
+		public int compareTo(Customer arg0) {
+			return this.compare(this, arg0);
+		}
 }

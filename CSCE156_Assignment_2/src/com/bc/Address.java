@@ -67,6 +67,7 @@ public class Address {
 		}
 		return out;
 	}
+	// Retrieves Address from DB
 	public static Address getAddressDB(int addressId){
 		Address address= null;
 		// Build Connections

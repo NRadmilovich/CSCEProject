@@ -4,7 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import com.bc.ext.InvoiceData;
+/**
+ * CSCE 156
+ * 
+ * Authors:
+ * Caden Kirby
+ * Nick Radmilovich
+ * 
+ * 10/1/2020
+ * 
+ * Test class to work with specific methods.
+ */
 
 public class test {
 
